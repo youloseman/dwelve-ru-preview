@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Обновляй lastmod только когда контент страницы реально изменился: карта сайта,
+     которая заявляет дату без основания, приучает краулеры игнорировать это поле.
+     Отчёт, кейс и юридические страницы добавляются сюда по мере появления. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://dwelve.ru/</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

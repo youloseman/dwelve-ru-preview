@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dwelve — нахожу, где бизнес недополучает продажи</title>
+  <meta name="description" content="Разбираю маркетинг, продукт, продажи и работу с клиентами как единую систему. Показываю, где бизнес теряет деньги, что менять и какие показатели должны измениться. От 50 000 ₽.">
+  <meta name="keywords" content="аудит маркетинга, маркетинговый аудит, точки роста бизнеса, консультация по маркетингу, маркетинговая стратегия">
+  <link rel="canonical" href="https://dwelve.ru/">
+
+  <!-- Open Graph / Twitter.
+       og:image намеренно НЕ подключён: канадская карточка (og-image.png в корне
+       репозитория) сверстана на английском, и русской аудитории показывать её хуже,
+       чем не показывать ничего. Раскомментировать после того, как tools/build-og.mjs
+       отрисует русский вариант в ru/og-image.png. -->
+  <meta property="og:site_name" content="Dwelve">
+  <meta property="og:title" content="Dwelve — нахожу, где бизнес недополучает продажи">
+  <meta property="og:description" content="Аудит маркетинга, продукта и продаж как единой системы. Отчёт с точками роста, планом действий и расчётом, сколько можно заработать.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://dwelve.ru/">
+  <!--
+  <meta property="og:image" content="https://dwelve.ru/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://dwelve.ru/og-image.png">
+  -->
+
+  <!-- Шрифты. Playfair Display общий с dwelve.ca и поддерживает кириллицу;
+       Manrope и JetBrains Mono заменяют DM Sans и DM Mono, у которых кириллицы нет. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'%3E%3Cg transform='translate(100,100)'%3E%3Ccircle cx='0' cy='-65' r='8' fill='%231A1A2E'/%3E%3Ccircle cx='32.5' cy='-56.29' r='11' fill='%23FF7518'/%3E%3Ccircle cx='56.29' cy='-32.5' r='5' fill='%231A1A2E'/%3E%3Ccircle cx='65' cy='0' r='4.5' fill='%231A1A2E'/%3E%3Ccircle cx='56.29' cy='32.5' r='4' fill='%231A1A2E'/%3E%3Ccircle cx='32.5' cy='56.29' r='3.5' fill='%231A1A2E'/%3E%3Ccircle cx='0' cy='65' r='3' fill='%231A1A2E'/%3E%3Ccircle cx='-32.5' cy='56.29' r='2.8' fill='%231A1A2E'/%3E%3Ccircle cx='-56.29' cy='32.5' r='2.8' fill='%231A1A2E'/%3E%3Ccircle cx='-65' cy='0' r='3.8' fill='%231A1A2E'/%3E%3Ccircle cx='-56.29' cy='-32.5' r='5' fill='%231A1A2E'/%3E%3Ccircle cx='-32.5' cy='-56.29' r='6.5' fill='%231A1A2E'/%3E%3C/g%3E%3C/svg%3E">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Dwelve",
+    "description": "Аудит маркетинга, продукта и продаж для бизнеса: точки роста, план действий и расчёт денежного эффекта",
+    "url": "https://dwelve.ru",
+    "areaServed": "RU",
+    "priceRange": "50000 ₽ - 197000 ₽",
+    "inLanguage": "ru",
+    "founder": { "@type": "Person", "name": "Дарья Подгорная" }
+  }
+  </script>
+
+  <link rel="stylesheet" href="theme.css">
+
+  <style>
+    /* =========================================================================
+       КОМПОНЕНТЫ
+       Токены, сброс и базовая типографика живут в theme.css.
+       ========================================================================= */
+
+    /* Зернистая плёнка поверх всей страницы — общий приём с канадской версией. */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    section {
+      position: relative;
+      z-index: 2;
+      padding: var(--space-3xl) 0;
+    }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Акцентная черта под H2 — общая с канадской версией. */
+    .section-title {
+      position: relative;
+      padding-bottom: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 48px;
+      height: 3px;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+    }
+
+    /* ==============================
+       КНОПКИ
+       ============================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      padding: 14px var(--space-lg);
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: var(--text-body);
+      line-height: 1.2;
+      text-align: center;
+      transition: transform var(--dur-fast) var(--ease-out),
+                  box-shadow var(--dur-base) var(--ease-out),
+                  background-color var(--dur-base) var(--ease-out),
+                  border-color var(--dur-base) var(--ease-out);
+    }
+
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: var(--color-cta);
+      color: var(--color-white);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-cta-hover);
+      box-shadow: var(--shadow-blue);
+    }
+
+    .btn-accent {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .btn-accent:hover {
+      background: var(--color-primary-light);
+      box-shadow: var(--shadow-orange);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--color-cta);
+      color: var(--color-cta);
+    }
+
+    .btn-block { width: 100%; }
+
+    /* ==============================
+       НАВИГАЦИЯ
+       ============================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--dur-base) var(--ease-out),
+                  box-shadow var(--dur-base) var(--ease-out);
+    }
+
+    .nav.is-scrolled {
+      border-bottom-color: var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      height: 76px;
+      transition: height var(--dur-base) var(--ease-out);
+    }
+
+    .nav.is-scrolled .nav-inner { height: 64px; }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+
+    .nav-links a {
+      position: relative;
+      font-size: var(--text-small);
+      font-weight: 500;
+      color: var(--color-text-muted);
+      padding: var(--space-xs) 0;
+      transition: color var(--dur-base) var(--ease-out);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 200ms var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--color-text); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta { display: none; }
+
+    .nav-burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      padding: 10px;
+      margin-right: -10px;
+    }
+
+    .nav-burger span {
+      display: block;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: var(--radius-full);
+      transition: transform var(--dur-base) var(--ease-out),
+                  opacity var(--dur-fast) var(--ease-out);
+    }
+
+    .nav-burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.is-open span:nth-child(2) { opacity: 0; }
+    .nav-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(26, 26, 46, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--dur-base) var(--ease-out), visibility var(--dur-base);
+    }
+
+    .nav-overlay.is-open { opacity: 1; visibility: visible; }
+
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 101;
+      width: min(320px, 84vw);
+      height: 100dvh;
+      padding: var(--space-xl) var(--space-lg);
+      background: var(--color-white);
+      box-shadow: var(--shadow-xl);
+      transform: translateX(100%);
+      /* Скрытая шторка обязана быть visibility: hidden, а не просто уехавшей за
+         край: иначе она удлиняет документ по горизонтали и её ссылки остаются
+         достижимы по Tab при закрытом меню. Переход visibility дискретный —
+         элемент доживает видимым до конца выездной анимации. */
+      visibility: hidden;
+      transition: transform 300ms var(--ease-out), visibility 300ms;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .nav-drawer.is-open {
+      transform: translateX(0);
+      visibility: visible;
+    }
+
+    .nav-drawer a {
+      padding: var(--space-md) 0;
+      font-size: 1.0625rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .nav-drawer .btn { margin-top: var(--space-md); }
+
+    /* ==============================
+       БЛОК 1 — ХИРО
+       ============================== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-3xl) 0 var(--space-2xl);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 640px;
+      height: 640px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+                  rgba(255, 117, 24, 0.13) 0%,
+                  rgba(65, 102, 245, 0.07) 45%,
+                  transparent 70%);
+      pointer-events: none;
+      animation: glow 8s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { transform: scale(1);    opacity: 0.5; }
+      50%      { transform: scale(1.06); opacity: 0.75; }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+    }
+
+    .hero h1 { margin-bottom: var(--space-lg); }
+
+    .hero h1 .accent {
+      background: linear-gradient(180deg, transparent 62%, rgba(255, 117, 24, 0.28) 62%);
+    }
+
+    .hero-sub {
+      font-size: 1.0625rem;
+      color: var(--color-text-muted);
+      max-width: var(--max-text);
+      margin-bottom: var(--space-xl);
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+
+    /* Строка доверия. Разделители — псевдоэлементы, чтобы при переносе
+       на мобильном не оставалось висящей точки в начале строки. */
+    .hero-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-md);
+      font-size: var(--text-small);
+      color: var(--color-text-light);
+    }
+
+    .hero-proof li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .hero-proof li:not(:last-child)::after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      opacity: 0.6;
+    }
+
+    /* ==============================
+       БЛОК 2 — БОЛИ И ЦЕННОСТЬ
+       ============================== */
+    .pains { background: var(--color-base-dark); }
+
+    .pains-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      margin-bottom: var(--space-3xl);
+    }
+
+    .pain {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--dur-base) var(--ease-out),
+                  box-shadow var(--dur-base) var(--ease-out),
+                  border-color var(--dur-base) var(--ease-out);
+    }
+
+    .pain:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(255, 107, 107, 0.4);
+    }
+
+    .pain-mark {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      border-radius: 50%;
+      background: var(--color-coral-pale);
+      color: var(--color-coral);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 22px;
+      text-align: center;
+    }
+
+    /* Ценность: «вода» против денег */
+    .value {
+      max-width: 880px;
+      padding: var(--space-xl);
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-top: 3px solid var(--color-cta);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+    }
+
+    .value > p { margin-bottom: var(--space-lg); }
+    .value > p:last-child { margin-bottom: 0; }
+
+    .compare {
+      display: grid;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      padding: var(--space-lg);
+      background: var(--color-base-dark);
+      border-radius: var(--radius-lg);
+    }
+
+    .compare-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      font-size: var(--text-small);
+    }
+
+    .compare-mark {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    .compare-row--no .compare-mark { background: var(--color-coral-pale); color: var(--color-coral); }
+    .compare-row--no  { color: var(--color-text-light); text-decoration: line-through; text-decoration-color: rgba(138,138,154,0.5); }
+    .compare-row--yes .compare-mark { background: var(--color-teal-pale); color: var(--color-teal); }
+    .compare-row--yes { color: var(--color-text); font-weight: 600; }
+
+    .compare-arrow {
+      justify-self: start;
+      margin-left: 36px;
+      width: 40px;
+      height: 2px;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 400ms var(--ease-out) 150ms;
+    }
+
+    .is-visible .compare-arrow { transform: scaleX(1); }
+
+    /* ==============================
+       БЛОК 3 — ТАРИФЫ
+       ============================== */
+    .pricing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .pricing-labels { display: none; }
+
+    .pricing-col {
+      display: flex;
+      flex-direction: column;
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pricing-col--featured {
+      border-color: var(--color-cta);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pricing-cell {
+      padding: var(--space-md) var(--space-lg);
+      font-size: var(--text-small);
+      color: var(--color-text-muted);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .pricing-cell:last-child { border-bottom: none; }
+
+    .pricing-cell-label {
+      display: block;
+      margin-bottom: var(--space-xs);
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+    }
+
+    .pricing-cell--head {
+      padding-top: var(--space-lg);
+      background: var(--color-base-dark);
+    }
+
+    .pricing-col--featured .pricing-cell--head {
+      background: var(--color-blue-pale);
+    }
+
+    .pricing-name {
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      margin-top: var(--space-sm);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: var(--color-cta);
+      color: var(--color-white);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .pricing-price {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.1;
+    }
+
+    .pricing-period {
+      display: block;
+      margin-top: var(--space-xs);
+      font-family: var(--font-body);
+      font-size: var(--text-small);
+      font-weight: 500;
+      color: var(--color-text-light);
+      letter-spacing: 0;
+    }
+
+    .pricing-note { color: var(--color-text-light); }
+
+    .pricing-note a {
+      color: var(--color-cta);
+      font-weight: 600;
+      border-bottom: 1px solid rgba(65, 102, 245, 0.35);
+      transition: border-color var(--dur-base) var(--ease-out);
+    }
+
+    .pricing-note a:hover { border-bottom-color: var(--color-cta); }
+
+    .pricing-cell--cta { padding-bottom: var(--space-lg); }
+
+    .pricing-guarantee {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      max-width: 640px;
+      margin-top: var(--space-xl);
+      padding: var(--space-lg);
+      background: var(--color-teal-pale);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-small);
+    }
+
+    .pricing-guarantee strong { color: var(--color-text); }
+
+    /* ==============================
+       БЛОК 4 — ОБО МНЕ
+       ============================== */
+    .about { background: var(--color-base-dark); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .about-photo {
+      position: relative;
+      max-width: 280px;
+    }
+
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Разомкнутая рамка — приём с канадской версии. */
+    .about-photo::after {
+      content: '';
+      position: absolute;
+      right: -12px;
+      bottom: -12px;
+      width: 60%;
+      height: 60%;
+      border-right: 2px solid var(--color-primary);
+      border-bottom: 2px solid var(--color-primary);
+      border-radius: 0 0 var(--radius-xl) 0;
+      pointer-events: none;
+    }
+
+    .about-name {
+      margin-top: var(--space-lg);
+      font-family: var(--font-display);
+      font-size: 1.375rem;
+      font-weight: 700;
+    }
+
+    .about-role {
+      font-size: var(--text-small);
+      color: var(--color-text-light);
+      margin-bottom: var(--space-md);
+    }
+
+    .about-socials {
+      display: flex;
+      gap: var(--space-sm);
+    }
+
+    .about-socials a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-card);
+      color: var(--color-text-muted);
+      font-size: var(--text-small);
+      font-weight: 600;
+      transition: border-color var(--dur-base) var(--ease-out),
+                  color var(--dur-base) var(--ease-out),
+                  transform var(--dur-base) var(--ease-out);
+    }
+
+    .about-socials a:hover {
+      border-color: var(--color-cta);
+      color: var(--color-cta);
+      transform: translateY(-2px);
+    }
+
+    /* Селектор .todo ниже проигрывает .about-socials a по специфичности,
+       а незаполненная ссылка обязана быть заметна — иначе уедет в продакшн. */
+    .about-socials a.todo {
+      color: var(--color-primary);
+      border-style: dashed;
+      border-color: rgba(255, 117, 24, 0.7);
+    }
+
+    .about-text p { margin-bottom: var(--space-md); }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-lead {
+      font-family: var(--font-display);
+      font-size: 1.375rem;
+      line-height: 1.4;
+      color: var(--color-text);
+    }
+
+    /* ==============================
+       БЛОК 5 — FAQ
+       ============================== */
+    .faq-list {
+      max-width: 860px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .faq-item { border-bottom: 1px solid var(--color-border); }
+
+    .faq-q {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      width: 100%;
+      padding: var(--space-lg) 0;
+      text-align: left;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--color-text);
+      transition: color var(--dur-base) var(--ease-out);
+    }
+
+    .faq-q:hover { color: var(--color-cta); }
+
+    .faq-icon {
+      position: relative;
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      margin-top: 2px;
+      transition: transform 300ms var(--ease-in-out);
+    }
+
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+      transform: translate(-50%, -50%);
+    }
+
+    .faq-icon::before { width: 14px; height: 2px; }
+    .faq-icon::after  { width: 2px; height: 14px; }
+
+    .faq-item.is-open .faq-icon { transform: rotate(45deg); }
+
+    .faq-a {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: grid-template-rows 250ms var(--ease-in-out),
+                  opacity 200ms var(--ease-in-out);
+    }
+
+    .faq-item.is-open .faq-a {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      transition: grid-template-rows 300ms var(--ease-in-out),
+                  opacity 300ms var(--ease-in-out) 80ms;
+    }
+
+    .faq-a-inner {
+      overflow: hidden;
+      color: var(--color-text-muted);
+      font-size: var(--text-small);
+    }
+
+    .faq-a-inner > div { padding-bottom: var(--space-lg); }
+    .faq-a-inner p + p { margin-top: var(--space-md); }
+
+    /* ==============================
+       БЛОК 6 — ФОРМА
+       ============================== */
+    .contact {
+      position: relative;
+      overflow: hidden;
+      background: var(--color-dark);
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .contact::after {
+      content: '';
+      position: absolute;
+      left: -10%;
+      bottom: -40%;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 117, 24, 0.16) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .contact .container { position: relative; z-index: 2; }
+    .contact h2 { color: var(--color-white); }
+    .contact .section-num { color: rgba(255, 255, 255, 0.45); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+
+    .contact-lead {
+      font-size: 1.0625rem;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: var(--space-lg);
+    }
+
+    .contact-facts {
+      display: grid;
+      gap: var(--space-md);
+      font-size: var(--text-small);
+    }
+
+    .contact-fact {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .contact-fact-mark {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(14, 165, 165, 0.22);
+      color: #5FE3E3;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    .form {
+      padding: var(--space-xl);
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      color: var(--color-text);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .field { margin-bottom: var(--space-md); }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: var(--text-small);
+      font-weight: 600;
+    }
+
+    .field .opt {
+      font-weight: 400;
+      color: var(--color-text-light);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 12px var(--space-md);
+      font: inherit;
+      font-size: var(--text-small);
+      color: var(--color-text);
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      transition: border-color var(--dur-base) var(--ease-out),
+                  box-shadow var(--dur-base) var(--ease-out);
+    }
+
+    .field textarea { min-height: 108px; resize: vertical; }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--color-cta);
+      box-shadow: 0 0 0 3px rgba(65, 102, 245, 0.12);
+    }
+
+    .field input:user-invalid,
+    .field textarea:user-invalid {
+      border-color: var(--color-error);
+    }
+
+    .field.is-shaking { animation: shake 400ms var(--ease-in-out); }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+      font-size: var(--text-caption);
+      line-height: 1.5;
+      color: var(--color-text-muted);
+      cursor: pointer;
+    }
+
+    .consent input {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      accent-color: var(--color-cta);
+    }
+
+    .consent a {
+      color: var(--color-cta);
+      border-bottom: 1px solid rgba(65, 102, 245, 0.35);
+    }
+
+    .form-status {
+      margin-top: var(--space-md);
+      font-size: var(--text-small);
+      line-height: 1.5;
+    }
+
+    .form-status:empty { margin-top: 0; }
+    .form-status[data-state="error"]   { color: var(--color-error); }
+    .form-status[data-state="success"] { color: var(--color-teal); font-weight: 600; }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-top-color: var(--color-white);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ==============================
+       ФУТЕР
+       ============================== */
+    .footer {
+      padding: var(--space-2xl) 0;
+      background: var(--color-dark);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: var(--text-small);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer h4 {
+      color: var(--color-white);
+      font-size: var(--text-small);
+      margin-bottom: var(--space-md);
+    }
+
+    .footer a { transition: color var(--dur-base) var(--ease-out); }
+    .footer a:hover { color: var(--color-white); }
+
+    .footer-list li { margin-bottom: var(--space-sm); }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-lg);
+      justify-content: space-between;
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: var(--text-caption);
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* Незаполненные реквизиты видны и в вёрстке, и глазом — чтобы такой
+       плейсхолдер не уехал в продакшн незамеченным. */
+    .todo {
+      border-bottom: 1px dashed rgba(255, 117, 24, 0.7);
+      color: var(--color-primary-light);
+    }
+
+    /* ==============================
+       ВОДЯНЫЕ ЗНАКИ
+       ============================== */
+    .watermark {
+      position: absolute;
+      z-index: 0;
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 16vw, 13rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--color-text);
+      opacity: 0.028;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      transform: translateY(var(--parallax-y, 0));
+    }
+
+    .watermark--pains   { top: 8%;  right: -3%; }
+    .watermark--pricing { bottom: 4%; left: -3%; }
+
+    /* Знаки намеренно заходят за края секции, и правый из них удлиняет документ
+       по горизонтали — на мобильном это даёт боковую прокрутку всей страницы.
+       Клип на секции: переполнение остаётся визуальным приёмом, а не багом. */
+    .pains,
+    #pricing { overflow: hidden; }
+
+    /* ==============================
+       ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ
+       ============================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity var(--dur-slow) var(--ease-out),
+                  transform var(--dur-slow) var(--ease-out);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ==============================
+       АДАПТИВ
+       ============================== */
+    @media (min-width: 560px) {
+      .pains-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row   { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 768px) {
+      .about-inner  { grid-template-columns: 280px 1fr; gap: var(--space-2xl); }
+      .contact-inner{ grid-template-columns: 1fr 1.15fr; }
+      .footer-inner { grid-template-columns: 1.4fr 1fr 1fr; }
+      .pains-grid   { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 900px) {
+      .nav-links,
+      .nav-cta      { display: flex; }
+      .nav-burger   { display: none; }
+      .nav-drawer,
+      .nav-overlay  { display: none; }
+
+      /* Тарифы становятся таблицей сравнения. Колонки — .pricing-col со
+         `display: contents`: их ячейки раскладываются напрямую в сетку,
+         а `grid-auto-flow: column` при семи заданных строках заполняет
+         сетку по столбцам. Так строки «Формат» и «Цена» стоят на одной
+         горизонтали во всех трёх тарифах — ради чего таблица и выбрана
+         вместо трёх независимых карточек. Разметка при этом остаётся
+         одна: на мобильном те же элементы собираются в карточки. */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: minmax(140px, 0.7fr) repeat(3, 1fr);
+        grid-template-rows: repeat(7, auto);
+        grid-auto-flow: column;
+        gap: 0;
+        align-items: stretch;
+      }
+
+      .pricing-labels,
+      .pricing-col { display: contents; }
+
+      .pricing-cell-label { display: none; }
+
+      .pricing-label {
+        display: flex;
+        align-items: flex-start;
+        padding: var(--space-md) var(--space-md) var(--space-md) 0;
+        font-family: var(--font-mono);
+        font-size: var(--text-caption);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-text-light);
+        border-bottom: 1px solid var(--color-border-light);
+      }
+
+      .pricing-label--head,
+      .pricing-label--cta { border-bottom: none; }
+
+      .pricing-cell {
+        border: 1px solid var(--color-border);
+        border-top: none;
+        border-left: none;
+        background: var(--color-card);
+      }
+
+      .pricing-col > .pricing-cell:first-child {
+        border-top: 1px solid var(--color-border);
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      }
+
+      .pricing-col > .pricing-cell:last-child {
+        border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+      }
+
+      .pricing-col:first-of-type > .pricing-cell { border-left: 1px solid var(--color-border); }
+
+      /* Выделенный тариф приподнят целиком: `display: contents` не даёт
+         сдвинуть колонку одним трансформом, поэтому сдвигаются все её
+         ячейки на одну и ту же величину — визуально это то же самое. */
+      .pricing-col--featured > .pricing-cell {
+        transform: translateY(-12px);
+        border-left: 1px solid var(--color-cta);
+        border-right: 1px solid var(--color-cta);
+        border-bottom-color: rgba(65, 102, 245, 0.25);
+        box-shadow: 0 0 0 0 transparent;
+      }
+
+      .pricing-col--featured > .pricing-cell:first-child {
+        border-top: 1px solid var(--color-cta);
+        box-shadow: 0 -6px 24px rgba(65, 102, 245, 0.10);
+      }
+
+      .pricing-col--featured > .pricing-cell:last-child {
+        box-shadow: 0 12px 32px rgba(65, 102, 245, 0.14);
+      }
+
+      /* Подсветка строки при наведении — то, ради чего таблица нужна:
+         глаз сравнивает три тарифа по одному параметру. Соседние ячейки
+         строки одним CSS не достать, класс вешает JS. */
+      .pricing-cell.is-row-hover { background: var(--color-band); }
+      .pricing-label.is-row-hover { color: var(--color-text-muted); }
+
+      .pricing-price { font-size: 2rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .hero { padding-top: 96px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==============================
+       НАВИГАЦИЯ
+       ============================== -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="nav-logo" aria-label="Dwelve — на главную">
+        <svg width="28" height="28" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <g transform="translate(100,100)">
+            <circle cx="0" cy="-65" r="8" fill="#1A1A2E"/>
+            <circle cx="32.5" cy="-56.29" r="11" fill="#FF7518"/>
+            <circle cx="56.29" cy="-32.5" r="5" fill="#1A1A2E"/>
+            <circle cx="65" cy="0" r="4.5" fill="#1A1A2E"/>
+            <circle cx="56.29" cy="32.5" r="4" fill="#1A1A2E"/>
+            <circle cx="32.5" cy="56.29" r="3.5" fill="#1A1A2E"/>
+            <circle cx="0" cy="65" r="3" fill="#1A1A2E"/>
+            <circle cx="-32.5" cy="56.29" r="2.8" fill="#1A1A2E"/>
+            <circle cx="-56.29" cy="32.5" r="2.8" fill="#1A1A2E"/>
+            <circle cx="-65" cy="0" r="3.8" fill="#1A1A2E"/>
+            <circle cx="-56.29" cy="-32.5" r="5" fill="#1A1A2E"/>
+            <circle cx="-32.5" cy="-56.29" r="6.5" fill="#1A1A2E"/>
+          </g>
+        </svg>
+        Dwelve
+      </a>
+
+      <nav class="nav-links" aria-label="Основная навигация">
+        <a href="#pains">Кому подходит</a>
+        <a href="#pricing">Услуги и цены</a>
+        <a href="#about">Обо мне</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a href="#contact" class="btn btn-primary nav-cta" data-tariff="">Обсудить задачу</a>
+
+      <button class="nav-burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-overlay" id="overlay" hidden></div>
+
+  <aside class="nav-drawer" id="drawer" aria-label="Меню" aria-hidden="true">
+    <a href="#pains">Кому подходит</a>
+    <a href="#pricing">Услуги и цены</a>
+    <a href="#about">Обо мне</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="btn btn-primary btn-block">Обсудить задачу</a>
+  </aside>
+
+  <main id="top">
+
+    <!-- ==============================
+         БЛОК 1 — ОСНОВНОЙ ЭКРАН
+         ============================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <h1 id="hero-title" class="reveal">
+          Нахожу, где бизнес <span class="accent">недополучает продажи</span> — и что именно нужно изменить для роста
+        </h1>
+
+        <p class="hero-sub reveal" style="--reveal-delay: 120ms">
+          Разбираю маркетинг, продукт, продажи и работу с клиентами как единую систему.
+          Показываю, где бизнес теряет деньги и возможности роста, что именно стоит менять,
+          как это сделать и какие показатели должны измениться в результате.
+        </p>
+
+        <div class="hero-buttons reveal" style="--reveal-delay: 240ms">
+          <a href="#contact" class="btn btn-primary" data-tariff="">Обсудить мою задачу</a>
+          <a href="#pricing" class="btn btn-ghost">Услуги и цены</a>
+        </div>
+
+        <ul class="hero-proof reveal" style="--reveal-delay: 360ms">
+          <li>NDA</li>
+          <li>Не увидите ценности — верну деньги</li>
+          <li>Каждый проект веду лично</li>
+          <li>10+ лет опыта</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==============================
+         БЛОК 2 — КОМУ ПОДХОДИТ
+         ============================== -->
+    <section class="pains" id="pains" aria-labelledby="pains-title">
+      <span class="watermark watermark--pains" aria-hidden="true" data-parallax="0.06">Рост</span>
+
+      <div class="container">
+        <p class="section-num reveal">02 / Кому подходит</p>
+        <h2 class="section-title reveal" id="pains-title">Узнали себя?</h2>
+
+        <div class="pains-grid">
+          <div class="pain reveal"><span class="pain-mark" aria-hidden="true">✕</span>Нет новых клиентов</div>
+          <div class="pain reveal" style="--reveal-delay: 70ms"><span class="pain-mark" aria-hidden="true">✕</span>Старые клиенты не возвращаются</div>
+          <div class="pain reveal" style="--reveal-delay: 140ms"><span class="pain-mark" aria-hidden="true">✕</span>Средний чек не растёт</div>
+          <div class="pain reveal" style="--reveal-delay: 210ms"><span class="pain-mark" aria-hidden="true">✕</span>Акции и скидки не работают</div>
+          <div class="pain reveal" style="--reveal-delay: 280ms"><span class="pain-mark" aria-hidden="true">✕</span>Прибыль и продажи не растут</div>
+          <div class="pain reveal" style="--reveal-delay: 350ms"><span class="pain-mark" aria-hidden="true">✕</span>Появились мысли о закрытии бизнеса</div>
+        </div>
+
+        <div class="value reveal">
+          <p>
+            Даю чёткие рекомендации, основанные на денежных KPI, а не маркетинговую воду.
+          </p>
+
+          <div class="compare">
+            <div class="compare-row compare-row--no">
+              <span class="compare-mark" aria-hidden="true">✕</span>
+              <span>охваты · клики · узнаваемость · вовлечённость</span>
+            </div>
+            <span class="compare-arrow" aria-hidden="true"></span>
+            <div class="compare-row compare-row--yes">
+              <span class="compare-mark" aria-hidden="true">✓</span>
+              <span>выручка · валовая прибыль · средний чек · частота покупок · LTV · CAC</span>
+            </div>
+          </div>
+
+          <p>
+            Никакой воды — чёткие измеримые метрики, которые сразу отражают изменения в прибыли.
+          </p>
+          <p>
+            Вы получаете документ, где понятно, сколько конкретно денег можно заработать,
+            если устранить текущие проблемы и найти точки роста.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         БЛОК 3 — ФОРМАТ РАБОТЫ И ЦЕНЫ
+         ============================== -->
+    <section id="pricing" aria-labelledby="pricing-title">
+      <span class="watermark watermark--pricing" aria-hidden="true" data-parallax="-0.05">Прибыль</span>
+
+      <div class="container">
+        <p class="section-num reveal">03 / Формат работы</p>
+        <h2 class="section-title reveal" id="pricing-title">Услуги и цены</h2>
+
+        <div class="pricing-grid reveal" id="pricing-grid">
+
+          <!-- Колонка подписей строк. На мобильном скрыта: там каждая ячейка
+               несёт собственную подпись в .pricing-cell-label. -->
+          <div class="pricing-labels" aria-hidden="true">
+            <div class="pricing-label pricing-label--head"></div>
+            <div class="pricing-label" data-row="when">Когда подходит</div>
+            <div class="pricing-label" data-row="what">Что получите</div>
+            <div class="pricing-label" data-row="format">Формат</div>
+            <div class="pricing-label" data-row="price">Цена</div>
+            <div class="pricing-label" data-row="note">Важно</div>
+            <div class="pricing-label pricing-label--cta"></div>
+          </div>
+
+          <div class="pricing-col">
+            <div class="pricing-cell pricing-cell--head">
+              <span class="pricing-name">Точка роста</span>
+            </div>
+            <div class="pricing-cell" data-row="when">
+              <span class="pricing-cell-label">Когда подходит</span>
+              Есть конкретная проблема и нужно понять, что делать
+            </div>
+            <div class="pricing-cell" data-row="what">
+              <span class="pricing-cell-label">Что получите</span>
+              Анализ одной проблемы и конкретный план действий по ней
+            </div>
+            <div class="pricing-cell" data-row="format">
+              <span class="pricing-cell-label">Формат</span>
+              Бриф + видеозвонок
+            </div>
+            <div class="pricing-cell" data-row="price">
+              <span class="pricing-cell-label">Цена</span>
+              <span class="pricing-price num" data-count="50000">50&nbsp;000&nbsp;₽</span>
+            </div>
+            <div class="pricing-cell pricing-note" data-row="note">
+              <span class="pricing-cell-label">Важно</span>
+              Закажете аудит в течение 7 дней — стоимость консультации зачтётся в цену аудита
+            </div>
+            <div class="pricing-cell pricing-cell--cta">
+              <a href="#contact" class="btn btn-ghost btn-block" data-tariff="Точка роста">Заказать</a>
+            </div>
+          </div>
+
+          <div class="pricing-col pricing-col--featured">
+            <div class="pricing-cell pricing-cell--head">
+              <span class="pricing-name">Карта роста</span>
+              <span class="pricing-badge">Основной формат</span>
+            </div>
+            <div class="pricing-cell" data-row="when">
+              <span class="pricing-cell-label">Когда подходит</span>
+              Непонятно, где именно бизнес теряет деньги и что мешает расти
+            </div>
+            <div class="pricing-cell" data-row="what">
+              <span class="pricing-cell-label">Что получите</span>
+              Комплексный аудит бизнеса: отчёт с проблемами, точками роста, планом действий
+              и расчётом, сколько вы сможете заработать, если устраните проблемы
+            </div>
+            <div class="pricing-cell" data-row="format">
+              <span class="pricing-cell-label">Формат</span>
+              Бриф + детальный отчёт (аудит) + видеозвонок
+            </div>
+            <div class="pricing-cell" data-row="price">
+              <span class="pricing-cell-label">Цена</span>
+              <span class="pricing-price num" data-count="197000">197&nbsp;000&nbsp;₽</span>
+            </div>
+            <div class="pricing-cell pricing-note" data-row="note">
+              <span class="pricing-cell-label">Важно</span>
+              <a href="#contact" data-tariff="Пример отчёта">Скачать пример отчёта</a>
+            </div>
+            <div class="pricing-cell pricing-cell--cta">
+              <a href="#contact" class="btn btn-primary btn-block" data-tariff="Карта роста">Заказать</a>
+            </div>
+          </div>
+
+          <div class="pricing-col">
+            <div class="pricing-cell pricing-cell--head">
+              <span class="pricing-name">Рост под контролем</span>
+            </div>
+            <div class="pricing-cell" data-row="when">
+              <span class="pricing-cell-label">Когда подходит</span>
+              План уже есть — нужно довести изменения до результата
+            </div>
+            <div class="pricing-cell" data-row="what">
+              <span class="pricing-cell-label">Что получите</span>
+              Контроль над внедрением инициатив из аудита и предложение новых идей по тому,
+              что ещё можно улучшить для роста
+            </div>
+            <div class="pricing-cell" data-row="format">
+              <span class="pricing-cell-label">Формат</span>
+              Еженедельный статус в почте + звонок по результатам месяца
+            </div>
+            <div class="pricing-cell" data-row="price">
+              <span class="pricing-cell-label">Цена</span>
+              <span class="pricing-price num" data-count="84000">84&nbsp;000&nbsp;₽</span>
+              <span class="pricing-period">в месяц</span>
+            </div>
+            <div class="pricing-cell pricing-note" data-row="note">
+              <span class="pricing-cell-label">Важно</span>
+              Доступно только для клиентов, заказавших аудит
+            </div>
+            <div class="pricing-cell pricing-cell--cta">
+              <a href="#contact" class="btn btn-ghost btn-block" data-tariff="Рост под контролем">Заказать</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="pricing-guarantee reveal">
+          <span class="compare-mark" aria-hidden="true" style="background: rgba(14,165,165,.18); color: var(--color-teal);">✓</span>
+          <p>
+            <strong>Не увидите ценности — верну деньги.</strong>
+            Гарантия действует на все три формата работы.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         БЛОК 4 — КТО СТОИТ ЗА ПРОЕКТОМ
+         ============================== -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <p class="section-num reveal">04 / Обо мне</p>
+        <h2 class="section-title reveal" id="about-title">Кто стоит за проектом Dwelve</h2>
+
+        <div class="about-inner">
+          <div class="reveal">
+            <div class="about-photo">
+              <img src="photos/photo_2026-02-19_16-18-48.jpg"
+                   alt="Дарья Подгорная, основатель Dwelve"
+                   width="280" height="350" loading="lazy">
+            </div>
+            <p class="about-name">Дарья Подгорная</p>
+            <p class="about-role">Основатель Dwelve · маркетинг и рост</p>
+            <div class="about-socials">
+              <!-- TODO: подставить реальные ссылки, когда придут -->
+              <a href="#" class="todo" aria-label="Telegram" title="Ссылка ещё не задана">TG</a>
+              <a href="#" class="todo" aria-label="VC.ru" title="Ссылка ещё не задана">VC</a>
+              <a href="#" class="todo" aria-label="LinkedIn" title="Ссылка ещё не задана">In</a>
+            </div>
+          </div>
+
+          <div class="about-text reveal" style="--reveal-delay: 120ms">
+            <p class="about-lead">
+              Маркетинг для меня — это не реклама. Это комплексная система,
+              которая должна приносить бизнесу деньги.
+            </p>
+            <p>
+              12 лет я работаю с маркетингом компаний разного масштаба — от небольших
+              локальных проектов до международных корпораций.
+            </p>
+            <p>
+              За это время я видела очень разные бизнес-модели, рынки, команды и проблемы
+              роста. Сейчас живу в Канаде и работаю одновременно с российскими и
+              североамериканскими клиентами, поэтому могу смотреть на бизнес шире локального
+              рынка и использовать подходы, которые работают в разных странах и категориях.
+            </p>
+            <p>
+              Моя задача — не выдать клиенту красивую стратегию и теорию. Моя задача —
+              показать, что именно нужно изменить и как понять в цифрах, что это
+              изменение сработало.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         БЛОК 5 — FAQ
+         ============================== -->
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <p class="section-num reveal">05 / Вопросы</p>
+        <h2 class="section-title reveal" id="faq-title">Частые вопросы</h2>
+
+        <div class="faq-list reveal">
+
+          <div class="faq-item is-open">
+            <button class="faq-q" aria-expanded="true" aria-controls="faq-a-1">
+              У меня уже есть маркетолог, отдел маркетинга или агентство. Зачем мне вы?
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="faq-a-1" role="region">
+              <div class="faq-a-inner"><div>
+                <p>
+                  Я не заменяю вашу команду. Моя задача — независимо посмотреть на бизнес целиком
+                  и понять, что именно сейчас мешает росту и куда команде стоит направить усилия.
+                </p>
+                <p>
+                  Часто проблема находится не только в рекламе, а в продукте, ценах, клиентской
+                  базе, ассортименте, retention или продажах. После аудита у команды появляется
+                  понятный список приоритетов и KPI.
+                </p>
+              </div></div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a-2">
+              Какие данные нужно будет предоставить?
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="faq-a-2" role="region">
+              <div class="faq-a-inner"><div>
+                <p>
+                  Зависит от бизнеса. Обычно это данные о продажах, клиентах, маркетинговых
+                  расходах, продуктах или услугах, CRM и текущих активностях.
+                </p>
+                <p>
+                  Не обязательно иметь идеальную аналитику. Сначала я смотрю, какие данные уже
+                  есть, и использую максимум из доступного.
+                </p>
+              </div></div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a-3">
+              Как проходит оплата?
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="faq-a-3" role="region">
+              <div class="faq-a-inner"><div>
+                <p>
+                  Оплатить услуги можно банковской картой или по счёту для компании.
+                </p>
+                <p>
+                  Если вы выбираете тариф «Карта роста», то оплачиваете 50% до старта работ
+                  и 50% после получения отчёта. Для остальных форматов предусмотрена предоплата.
+                </p>
+              </div></div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a-4">
+              Вы работаете официально?
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="faq-a-4" role="region">
+              <div class="faq-a-inner"><div>
+                <p>
+                  Да, вся работа ведётся по договору в соответствии с законодательством
+                  Российской Федерации.
+                </p>
+              </div></div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a-5">
+              Есть ли у вас NDA?
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="faq-a-5" role="region">
+              <div class="faq-a-inner"><div>
+                <p>
+                  Да, при необходимости подписываем NDA до передачи данных.
+                </p>
+              </div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         БЛОК 6 — ФОРМА
+         ============================== -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-inner">
+
+          <div class="reveal">
+            <p class="section-num">06 / Связаться</p>
+            <h2 class="section-title" id="contact-title">Обсудим вашу задачу</h2>
+            <p class="contact-lead">
+              Расскажите, что происходит с бизнесом. Отвечу и предложу формат,
+              который подходит именно вашей ситуации — или скажу, что мой формат вам сейчас
+              не нужен.
+            </p>
+
+            <div class="contact-facts">
+              <div class="contact-fact">
+                <span class="contact-fact-mark" aria-hidden="true">✓</span>
+                <span>Отвечаю лично в течение одного рабочего дня</span>
+              </div>
+              <div class="contact-fact">
+                <span class="contact-fact-mark" aria-hidden="true">✓</span>
+                <span>NDA подписываем до передачи любых данных</span>
+              </div>
+              <div class="contact-fact">
+                <span class="contact-fact-mark" aria-hidden="true">✓</span>
+                <span>Не увидите ценности — верну деньги</span>
+              </div>
+            </div>
+          </div>
+
+          <form class="form reveal" id="lead-form" novalidate style="--reveal-delay: 120ms">
+            <div class="form-row">
+              <div class="field">
+                <label for="f-name">Как вас зовут</label>
+                <input type="text" id="f-name" name="name" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="f-email">Email</label>
+                <input type="email" id="f-email" name="email" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="f-contact">Телефон или мессенджер <span class="opt">— необязательно</span></label>
+                <input type="text" id="f-contact" name="messenger" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="f-company">Компания и сфера <span class="opt">— необязательно</span></label>
+                <input type="text" id="f-company" name="company" autocomplete="organization">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-tariff">Что вас интересует</label>
+              <select id="f-tariff" name="tariff">
+                <option>Пока не знаю — нужен совет</option>
+                <option>Точка роста</option>
+                <option>Карта роста</option>
+                <option>Рост под контролем</option>
+                <option>Пример отчёта</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="f-message">Что происходит с бизнесом</label>
+              <textarea id="f-message" name="message" required
+                placeholder="Например: выручка стоит третий квартал, реклама работает, но повторных покупок почти нет"></textarea>
+            </div>
+
+            <label class="consent" for="f-consent">
+              <input type="checkbox" id="f-consent" name="consent" required>
+              <span>
+                Я согласен на обработку персональных данных в соответствии с
+                <a href="documents.html#privacy">политикой обработки персональных данных</a>.
+              </span>
+            </label>
+
+            <button type="submit" class="btn btn-accent btn-block" id="submit-btn">Отправить</button>
+
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================
+       ФУТЕР
+       ============================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div>
+          <div class="footer-logo">
+            <svg width="26" height="26" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+              <g transform="translate(100,100)">
+                <circle cx="0" cy="-65" r="8" fill="#FFFFFF"/>
+                <circle cx="32.5" cy="-56.29" r="11" fill="#FF7518"/>
+                <circle cx="56.29" cy="-32.5" r="5" fill="#FFFFFF"/>
+                <circle cx="65" cy="0" r="4.5" fill="#FFFFFF"/>
+                <circle cx="56.29" cy="32.5" r="4" fill="#FFFFFF"/>
+                <circle cx="32.5" cy="56.29" r="3.5" fill="#FFFFFF"/>
+                <circle cx="0" cy="65" r="3" fill="#FFFFFF"/>
+                <circle cx="-32.5" cy="56.29" r="2.8" fill="#FFFFFF"/>
+                <circle cx="-56.29" cy="32.5" r="2.8" fill="#FFFFFF"/>
+                <circle cx="-65" cy="0" r="3.8" fill="#FFFFFF"/>
+                <circle cx="-56.29" cy="-32.5" r="5" fill="#FFFFFF"/>
+                <circle cx="-32.5" cy="-56.29" r="6.5" fill="#FFFFFF"/>
+              </g>
+            </svg>
+            Dwelve
+          </div>
+          <p style="max-width: 320px;">
+            Аудит маркетинга, продукта и продаж как единой системы.
+            Рекомендации на денежных KPI, а не на охватах.
+          </p>
+        </div>
+
+        <div>
+          <h4>Контакты</h4>
+          <ul class="footer-list">
+            <li><a href="mailto:hello@dwelve.ru" class="todo">hello@dwelve.ru</a></li>
+            <li><a href="#" class="todo">Telegram</a></li>
+            <li><a href="#" class="todo">VC.ru</a></li>
+            <li><a href="#contact">Написать через форму</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Документы</h4>
+          <ul class="footer-list">
+            <li><a href="documents.html#offer">Публичная оферта</a></li>
+            <li><a href="documents.html#privacy">Обработка персональных данных</a></li>
+            <li><a href="documents.html#refund">Условия возврата</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Dwelve</span>
+        <span class="todo">ИП / ООО, ИНН — реквизиты уточняются</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* =====================================================================
+       ОТПРАВКА ФОРМЫ
+       Сайт статический, бэкенда нет. Пока адрес обработчика не задан, форма
+       собирает письмо и открывает почтовый клиент — лид не теряется, но и
+       иллюзии, что заявка ушла на сервер, не создаётся.
+
+       Обработчик выбирать под российскую аудиторию: Formspree и подобные
+       зарубежные сервисы у части посетителей не открываются без VPN, что
+       ровно та причина, по которой на сайте форма, а не ссылка на Telegram.
+       ===================================================================== */
+    var FORM_ENDPOINT = '';           // ← URL обработчика
+    var FALLBACK_EMAIL = 'hello@dwelve.ru';
+
+    var $  = function (s, c) { return (c || document).querySelector(s); };
+    var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+    /* ---------- Мобильное меню ---------- */
+    var burger  = $('#burger');
+    var drawer  = $('#drawer');
+    var overlay = $('#overlay');
+
+    function setMenu(open) {
+      burger.classList.toggle('is-open', open);
+      drawer.classList.toggle('is-open', open);
+      overlay.classList.toggle('is-open', open);
+      overlay.hidden = !open;
+      burger.setAttribute('aria-expanded', String(open));
+      drawer.setAttribute('aria-hidden', String(!open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    burger.addEventListener('click', function () {
+      setMenu(!drawer.classList.contains('is-open'));
+    });
+    overlay.addEventListener('click', function () { setMenu(false); });
+    $$('#drawer a').forEach(function (a) {
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) setMenu(false);
+    });
+
+    // На десктопе шторка и оверлей скрыты по display, но overflow: hidden на body
+    // остался бы висеть — страница перестала бы скроллиться после поворота экрана.
+    var desktop = window.matchMedia('(min-width: 900px)');
+    (desktop.addEventListener ? desktop.addEventListener.bind(desktop, 'change')
+                              : desktop.addListener.bind(desktop))(function (e) {
+      if (e.matches && drawer.classList.contains('is-open')) setMenu(false);
+    });
+
+    /* ---------- Состояние навигации при скролле ---------- */
+    var nav = $('#nav');
+    function onScrollNav() { nav.classList.toggle('is-scrolled', window.scrollY > 40); }
+    onScrollNav();
+
+    /* ---------- Параллакс водяных знаков ---------- */
+    var marks = $$('[data-parallax]');
+    function onScrollParallax() {
+      var y = window.scrollY;
+      marks.forEach(function (m) {
+        m.style.setProperty('--parallax-y', (y * parseFloat(m.dataset.parallax)).toFixed(1) + 'px');
+      });
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        onScrollNav();
+        onScrollParallax();
+        ticking = false;
+      });
+    }, { passive: true });
+
+    /* ---------- Появление при скролле ---------- */
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reveals = $$('.reveal');
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      reveals.forEach(function (el) { el.classList.add('is-visible'); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+          if (entry.target.id === 'pricing-grid') countPrices();
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(function (el) { io.observe(el); });
+    }
+
+    /* ---------- Набегающие цены ----------
+       Форматируем через toLocaleString('ru-RU'), чтобы разряды разделялись
+       так же, как в статической разметке, а не пробелом другой ширины. */
+    function countPrices() {
+      if (reduced) return;
+      $$('#pricing-grid [data-count]').forEach(function (el) {
+        var target = parseInt(el.dataset.count, 10);
+        var start = performance.now();
+        var suffix = ' ₽';
+        (function step(now) {
+          var p = Math.min((now - start) / 800, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased).toLocaleString('ru-RU') + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        })(start);
+      });
+    }
+
+    /* ---------- Подсветка строки таблицы тарифов ----------
+       На десктопе колонки разложены в общую сетку через display: contents,
+       поэтому «соседей по строке» селектором не достать — метим по data-row. */
+    var grid = $('#pricing-grid');
+    grid.addEventListener('mouseover', function (e) {
+      var cell = e.target.closest('[data-row]');
+      if (!cell || !grid.contains(cell)) return;
+      setRowHover(cell.dataset.row, true);
+    });
+    grid.addEventListener('mouseout', function (e) {
+      var cell = e.target.closest('[data-row]');
+      if (!cell || !grid.contains(cell)) return;
+      setRowHover(cell.dataset.row, false);
+    });
+
+    function setRowHover(row, on) {
+      $$('[data-row="' + row + '"]', grid).forEach(function (el) {
+        el.classList.toggle('is-row-hover', on);
+      });
+    }
+
+    /* ---------- FAQ ---------- */
+    $$('.faq-q').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.parentElement;
+        var open = item.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    });
+
+    /* ---------- Предвыбор тарифа при переходе к форме ---------- */
+    var tariffSelect = $('#f-tariff');
+    $$('[data-tariff]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var value = link.dataset.tariff;
+        if (!value) return;
+        var match = Array.prototype.find.call(tariffSelect.options, function (o) {
+          return o.value === value || o.textContent.trim() === value;
+        });
+        if (match) tariffSelect.value = match.value;
+      });
+    });
+
+    /* ---------- Отправка ---------- */
+    var form   = $('#lead-form');
+    var status = $('#form-status');
+    var submit = $('#submit-btn');
+
+    function setStatus(text, state) {
+      status.textContent = text;
+      if (state) status.setAttribute('data-state', state);
+      else status.removeAttribute('data-state');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // novalidate снят с браузера намеренно: так первое невалидное поле
+      // можно подсветить и прокрутить к нему самим, а не полагаться на
+      // системную подсказку, которая на мобильных часто уезжает за экран.
+      var invalid = $$('input, textarea, select', form).find(function (el) {
+        return !el.checkValidity();
+      });
+
+      if (invalid) {
+        var field = invalid.closest('.field') || invalid.closest('.consent');
+        if (field) {
+          field.classList.add('is-shaking');
+          setTimeout(function () { field.classList.remove('is-shaking'); }, 420);
+        }
+        invalid.focus({ preventScroll: false });
+        setStatus(invalid.name === 'consent'
+          ? 'Без согласия на обработку персональных данных заявку принять нельзя.'
+          : 'Заполните обязательные поля.', 'error');
+        return;
+      }
+
+      var data = Object.fromEntries(new FormData(form).entries());
+
+      if (!FORM_ENDPOINT) {
+        var body = [
+          'Имя: ' + data.name,
+          'Email: ' + data.email,
+          'Телефон / мессенджер: ' + (data.messenger || '—'),
+          'Компания и сфера: ' + (data.company || '—'),
+          'Интересует: ' + data.tariff,
+          '',
+          data.message
+        ].join('\n');
+
+        window.location.href = 'mailto:' + FALLBACK_EMAIL +
+          '?subject=' + encodeURIComponent('Заявка с сайта — ' + data.tariff) +
+          '&body=' + encodeURIComponent(body);
+
+        setStatus('Открыл почтовый клиент с готовым письмом — осталось нажать «Отправить». ' +
+                  'Если он не открылся, напишите на ' + FALLBACK_EMAIL + '.', 'error');
+        return;
+      }
+
+      var original = submit.innerHTML;
+      submit.disabled = true;
+      submit.innerHTML = '<span class="spinner" aria-hidden="true"></span> Отправляю';
+      setStatus('');
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          form.reset();
+          setStatus('Заявка отправлена. Отвечу лично в течение одного рабочего дня.', 'success');
+        })
+        .catch(function () {
+          setStatus('Не получилось отправить. Напишите, пожалуйста, на ' + FALLBACK_EMAIL + '.', 'error');
+        })
+        .finally(function () {
+          submit.disabled = false;
+          submit.innerHTML = original;
+        });
+    });
+
+    /* ---------- Год в футере ---------- */
+    $('#year').textContent = new Date().getFullYear();
+  })();
+  </script>
+
+</body>
+</html>
