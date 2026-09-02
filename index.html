@@ -233,9 +233,12 @@
     }
 
     .hero-doc { position: relative; display: none; }
-    .hero-doc .doc-page { --doc-scale: .92; transform: rotate(-1.2deg); }
+    /* Свечение и документ стакаются внутри .hero-doc, а не через z-index: -1:
+       секция теперь собственный контекст наложения, и отрицательный индекс
+       увёл бы свечение под её же фон. */
+    .hero-doc .doc-page { --doc-scale: .92; transform: rotate(-1.2deg); position: relative; z-index: 1; }
     .hero-doc::before {
-      content: ''; position: absolute; z-index: -1;
+      content: ''; position: absolute; z-index: 0;
       inset: -14% -18% -10% -12%;
       background: radial-gradient(circle at 60% 40%, rgba(255,117,24,.15) 0%, rgba(65,102,245,.09) 42%, transparent 70%);
     }
@@ -1068,7 +1071,7 @@
   </section>
 
   <!-- ================= 02 — УСЛУГИ И ЦЕНЫ ================= -->
-  <section class="sec sec--tint" id="pricing" aria-labelledby="pricing-title">
+  <section class="sec sec--tint sec--wb" id="pricing" aria-labelledby="pricing-title">
     <div class="container">
       <div class="sec-head sec-head--split">
         <p class="eyebrow reveal"><b>02</b> · Формат работы</p>
@@ -1271,7 +1274,7 @@
   </section>
 
   <!-- ================= 04 — ПРИМЕР РЕЗУЛЬТАТА ================= -->
-  <section class="sec sec--tint" id="report" aria-labelledby="report-title">
+  <section class="sec sec--tint sec--wb" id="report" aria-labelledby="report-title">
     <div class="container">
       <div class="sec-head sec-head--split">
         <p class="eyebrow reveal"><b>04</b> · Пример результата</p>
@@ -1326,7 +1329,7 @@
   </section>
 
   <!-- ================= 05 — ЭКОНОМИКА РАЗБОРА ================= -->
-  <section class="sec sec--dark" aria-labelledby="econ-title">
+  <section class="sec sec--dark sec--wb" aria-labelledby="econ-title">
     <div class="container">
       <div class="sec-head">
         <p class="eyebrow reveal"><b>05</b> · Экономика разбора</p>
@@ -1448,7 +1451,7 @@
   </section>
 
   <!-- ================= 07 — ОБО МНЕ ================= -->
-  <section class="sec sec--blue" id="about" aria-labelledby="about-title">
+  <section class="sec sec--blue sec--wb" id="about" aria-labelledby="about-title">
     <div class="container">
       <div class="sec-head">
         <p class="eyebrow reveal"><b>07</b> · Обо мне</p>
@@ -1578,7 +1581,7 @@
   </section>
 
   <!-- ================= 09 — БЛОГ ================= -->
-  <section class="sec" id="blog" aria-labelledby="blog-title">
+  <section class="sec sec--wb" id="blog" aria-labelledby="blog-title">
     <div class="container">
       <div class="sec-head sec-head--split">
         <p class="eyebrow reveal"><b>09</b> · Блог</p>
