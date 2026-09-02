@@ -1,27 +1,29 @@
 /* =============================================================================
    DWELVE RU — тема
    -----------------------------------------------------------------------------
-   Палитра — из брендбука v2.0 (синий #4166F5, оранжевый #FF7518, чернила
-   #1A1A2E), но посажена не на белый, а на кремовую подложку: так секции
-   разделяются без разноцветных заливок. Жёлтый, зелёный и розовый из ранних
-   макетов не используются — это и есть «менее пёстро» из ТЗ.
+   Палитра из брендбука v2.0: синий #4166F5, оранжевый #FF7518, чернила #1A1A2E.
 
-   ПРАВИЛО ЦВЕТА ДЕЙСТВИЯ (главная находка аудита англоязычной версии):
+   ПРАВИЛО ЦВЕТА ДЕЙСТВИЯ
      синий  = действие. Все кнопки, ведущие к цели, синие.
-     белый  = то же действие на тёмной или оранжевой подложке.
-     оранжевый НИКОГДА не кнопка — только типографический акцент:
-              маркер под словом, эйбров, номер, подчёркивание.
+     белый  = то же действие на тёмной подложке.
+     оранжевый НИКОГДА не кнопка — только типографический акцент.
    На dwelve.ca оранжевый по очереди значит «демо», «подписка» и «купить»,
    поэтому цвет там ничего не сообщает. Здесь он сообщает.
 
-   ТИПОГРАФИКА
-     Oswald   — крупные заглавные заголовки. На кириллице узкий гротеск
-                держит крупный кегль лучше, чем Playfair, у которого
-                кириллица тяжелее латиницы.
-     Manrope  — весь текст. У DM Sans с канадской версии кириллицы нет.
-     Playfair — курсивные акцентные строки и заголовки страниц отчёта:
-                единственное, что визуально роднит два сайта.
-     JetBrains Mono — эйбровы, номера секций, цифры в таблицах.
+   ТИПОГРАФИКА — как на англоязычной версии
+     Playfair Display — заголовки, обычным регистром, не заглавными.
+                        Кириллицу поддерживает; строчные буквы дают тот же
+                        спокойный редакционный тон, что и на dwelve.ca.
+     Manrope          — весь текст. Ближайший к DM Sans гротеск с кириллицей:
+                        та же низкоконтрастная геометрия и открытые апертуры.
+     JetBrains Mono   — эйбровы, номера секций, цифры в таблицах.
+
+   ПЕРЕХОДЫ МЕЖДУ СЕКЦИЯМИ — приём с англоязычной версии
+     У секций нет краёв. Одна общая подложка на всю страницу, а каждая секция
+     красит вертикальный градиент, прозрачный на 0% и 100% и подкрашенный
+     в середине. Соседние секции растворяются друг в друге: переход читается
+     как смена оттенка, а не как линия. Жёсткая граница на странице ровно
+     одна — у тёмных секций, и она работает именно потому, что единственная.
    ============================================================================= */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -63,11 +65,11 @@ ul, ol { list-style: none; }
   --orange: #FF7518;
   --orange-dark: #E06010;
   --orange-pale: #FFF0E5;
-  --marker: rgba(255, 117, 24, 0.30);
+  --marker: rgba(255, 117, 24, 0.28);
 
   /* --- Подложки --- */
-  --cream: #FAF8F3;
-  --cream-2: #F2EFE7;
+  --cream: #FAF8F4;
+  --cream-2: #F3F0E9;
   --white: #FFFFFF;
 
   /* --- Служебные --- */
@@ -80,16 +82,14 @@ ul, ol { list-style: none; }
 
   /* --- Шрифты. Хвост каждого стека — системный шрифт с кириллицей,
          чтобы страница не рассыпалась, если Google Fonts не ответит. --- */
-  --font-display: 'Oswald', 'Arial Narrow', 'Segoe UI', sans-serif;
+  --font-display: 'Playfair Display', 'Times New Roman', Georgia, serif;
   --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-  --font-accent: 'Playfair Display', 'Times New Roman', Georgia, serif;
   --font-mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, monospace;
 
-  /* --- Кегли. Крупные — текучие: русский заголовок заглавными
-         на 360-пиксельном экране обязан ужиматься. --- */
-  --text-hero: clamp(2.6rem, 1.4rem + 5.4vw, 5.5rem);
-  --text-h2: clamp(2rem, 1.2rem + 3.4vw, 3.75rem);
-  --text-h3: clamp(1.25rem, 1.05rem + 0.8vw, 1.5rem);
+  /* --- Кегли --- */
+  --text-hero: clamp(2.25rem, 1.5rem + 3.1vw, 4rem);
+  --text-h2: clamp(1.75rem, 1.35rem + 1.7vw, 2.75rem);
+  --text-h3: clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem);
   --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
   --text-body: 1rem;
   --text-small: 0.9375rem;
@@ -97,7 +97,6 @@ ul, ol { list-style: none; }
   --text-micro: 0.6875rem;
 
   --leading-body: 1.7;
-  --leading-tight: 0.94;
 
   /* --- Отступы, шаг 8 --- */
   --sp-xs: 4px;  --sp-sm: 8px;  --sp-md: 16px; --sp-lg: 24px;
@@ -114,8 +113,8 @@ ul, ol { list-style: none; }
   --shadow-lg: 0 14px 40px rgba(26,26,46,.10);
   --shadow-xl: 0 24px 64px rgba(26,26,46,.14);
 
-  --max-width: 1240px;
-  --max-text: 760px;
+  --max-width: 1200px;
+  --max-text: 700px;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
@@ -127,29 +126,21 @@ ul, ol { list-style: none; }
 /* =============================================================================
    ТИПОГРАФИКА
    ============================================================================= */
-
-/* Заглавные Oswald: кириллица в нём сидит плотно, на крупном кегле
-   межбуквенное нужно чуть разжать, иначе слова слипаются. */
-.display {
+h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 700;
-  text-transform: uppercase;
-  line-height: var(--leading-tight);
-  letter-spacing: 0.005em;
+  line-height: 1.15;
+  /* Кириллица в Playfair сидит плотнее латиницы: на крупном кегле без
+     отрицательного трекинга буквы выглядят разреженными. */
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 
-h1 { font-size: var(--text-hero); }
+h1 { font-size: var(--text-hero); line-height: 1.08; letter-spacing: -0.025em; }
 h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); line-height: 1.25; }
 
-h3 {
-  font-family: var(--font-body);
-  font-size: var(--text-h3);
-  font-weight: 800;
-  line-height: 1.3;
-  text-wrap: balance;
-}
-
+/* H4 — гротеск: на этом кегле антиква мельчит и хуже читается в кириллице. */
 h4 {
   font-family: var(--font-body);
   font-size: 1.0625rem;
@@ -159,7 +150,6 @@ h4 {
 
 p { max-width: var(--max-text); }
 
-/* Эйбров секции: 03 · УСЛУГИ И ЦЕНЫ */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-micro);
@@ -172,22 +162,22 @@ p { max-width: var(--max-text); }
 
 /* Курсивная серифная строка — голос, а не заголовок */
 .accent-line {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
   color: var(--orange-dark);
   line-height: 1.35;
+  letter-spacing: 0;
 }
 
-/* Оранжевый маркер под словом — подчёркивает нижнюю треть букв, а не
-   превращает слово в плашку. Размер и положение заданы в em, а не в
-   процентах строки: у заголовков line-height 0.94, и процент от такой
-   строки увёл бы полосу под базовую линию. */
+/* Оранжевый маркер под словом. Размер и положение в em, а не в процентах
+   строки: процент считается от line-height, и полоса уехала бы под базовую
+   линию, стоит поменять межстрочное. */
 .marker {
   background-image: linear-gradient(var(--marker), var(--marker));
   background-repeat: no-repeat;
-  background-size: 100% 0.26em;
-  background-position: 0 0.58em;
+  background-size: 100% 0.22em;
+  background-position: 0 0.69em;
   padding: 0 0.04em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -200,6 +190,63 @@ p { max-width: var(--max-text); }
 }
 
 /* =============================================================================
+   СЕКЦИИ БЕЗ КРАЁВ
+   ============================================================================= */
+.sec { position: relative; padding: var(--sp-3xl) 0; }
+
+.sec--tint {
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(26, 26, 46, 0.010) 28%,
+    rgba(26, 26, 46, 0.018) 50%,
+    rgba(26, 26, 46, 0.010) 72%,
+    transparent 100%);
+}
+
+.sec--blue {
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(65, 102, 245, 0.035) 15%,
+    rgba(65, 102, 245, 0.055) 50%,
+    rgba(65, 102, 245, 0.035) 85%,
+    transparent 100%);
+}
+
+.sec--orange {
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(255, 117, 24, 0.035) 15%,
+    rgba(255, 117, 24, 0.055) 50%,
+    rgba(255, 117, 24, 0.035) 85%,
+    transparent 100%);
+}
+
+/* Единственная жёсткая граница на странице. Работает именно потому,
+   что все остальные переходы мягкие. */
+.sec--dark {
+  background-color: var(--ink);
+  background-image: radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: rgba(255,255,255,.76);
+}
+.sec--dark h2, .sec--dark h3, .sec--dark h4 { color: var(--white); }
+.sec--dark .eyebrow, .sec--dark .eyebrow b { color: rgba(255,255,255,.5); }
+.sec--dark .sec-title::after { display: none; }
+
+/* Акцентная черта под заголовком секции — растворяется вправо,
+   как на англоязычной версии, а не обрывается прямоугольником. */
+.sec-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  margin-top: var(--sp-sm);
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--orange), transparent);
+  opacity: .6;
+}
+
+/* =============================================================================
    ДОСТУПНОСТЬ
    ============================================================================= */
 :focus-visible {
@@ -207,7 +254,7 @@ p { max-width: var(--max-text); }
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
-.on-dark :focus-visible, .on-orange :focus-visible { outline-color: var(--white); }
+.sec--dark :focus-visible { outline-color: var(--white); }
 
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -235,7 +282,7 @@ p { max-width: var(--max-text); }
 /* =============================================================================
    СТРАНИЦА ОТЧЁТА — общий компонент
    Используется дважды: уменьшенным в первом экране и в полный размер
-   в карусели «Пример результата». Поэтому масштабируется через --doc-scale,
+   в карусели «Пример результата». Масштабируется через --doc-scale,
    а не отдельными наборами кеглей.
    ============================================================================= */
 .doc-page {
@@ -259,7 +306,7 @@ p { max-width: var(--max-text); }
   margin-bottom: calc(14px * var(--doc-scale));
 }
 .doc-logo {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: calc(15px * var(--doc-scale));
   letter-spacing: -0.01em;
@@ -282,7 +329,7 @@ p { max-width: var(--max-text); }
   margin-bottom: calc(4px * var(--doc-scale));
 }
 .doc-title {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: calc(21px * var(--doc-scale));
   line-height: 1.15;
@@ -306,7 +353,7 @@ p { max-width: var(--max-text); }
   margin-bottom: calc(5px * var(--doc-scale));
 }
 .doc-callout-text {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: calc(13px * var(--doc-scale));
   line-height: 1.3;
@@ -341,7 +388,7 @@ p { max-width: var(--max-text); }
   margin-bottom: calc(4px * var(--doc-scale));
 }
 .doc-kpi-value {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: calc(15px * var(--doc-scale));
   line-height: 1.1;
@@ -350,7 +397,7 @@ p { max-width: var(--max-text); }
 .doc-kpi-unit { font-size: calc(8px * var(--doc-scale)); color: var(--ink-3); margin-top: 2px; }
 
 .doc-h {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: calc(12.5px * var(--doc-scale));
   margin-bottom: calc(8px * var(--doc-scale));
@@ -427,7 +474,6 @@ p { max-width: var(--max-text); }
   color: var(--ink-3);
 }
 
-/* --- Мини-графики страниц отчёта --- */
 .doc-chart { margin-bottom: calc(12px * var(--doc-scale)); }
 .doc-bars {
   display: flex; align-items: flex-end; justify-content: space-between;

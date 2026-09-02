@@ -15,12 +15,11 @@
   <meta property="og:locale" content="ru_RU">
   <meta property="og:url" content="https://dwelve.ru/">
   <!-- og:image подключается после того, как tools/build-og.mjs отрисует русскую
-       карточку в ru/og-image.png. Канадская сверстана на английском — русской
-       аудитории показывать её хуже, чем не показывать ничего. -->
+       карточку в ru/og-image.png. Канадская сверстана на английском. -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'%3E%3Cg transform='translate(100,100)'%3E%3Ccircle cx='0' cy='-65' r='8' fill='%231A1A2E'/%3E%3Ccircle cx='32.5' cy='-56.29' r='11' fill='%23FF7518'/%3E%3Ccircle cx='56.29' cy='-32.5' r='5' fill='%231A1A2E'/%3E%3Ccircle cx='65' cy='0' r='4.5' fill='%231A1A2E'/%3E%3Ccircle cx='56.29' cy='32.5' r='4' fill='%231A1A2E'/%3E%3Ccircle cx='32.5' cy='56.29' r='3.5' fill='%231A1A2E'/%3E%3Ccircle cx='0' cy='65' r='3' fill='%231A1A2E'/%3E%3Ccircle cx='-32.5' cy='56.29' r='2.8' fill='%231A1A2E'/%3E%3Ccircle cx='-56.29' cy='32.5' r='2.8' fill='%231A1A2E'/%3E%3Ccircle cx='-65' cy='0' r='3.8' fill='%231A1A2E'/%3E%3Ccircle cx='-56.29' cy='-32.5' r='5' fill='%231A1A2E'/%3E%3Ccircle cx='-32.5' cy='-56.29' r='6.5' fill='%231A1A2E'/%3E%3C/g%3E%3C/svg%3E">
 
@@ -43,57 +42,53 @@
 
   <style>
     /* =========================================================================
-       КОМПОНЕНТЫ. Токены, базовая типографика и компонент страницы отчёта —
-       в theme.css.
+       КОМПОНЕНТЫ. Токены, типографика, секции без краёв и компонент страницы
+       отчёта — в theme.css.
        ========================================================================= */
 
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 var(--sp-lg);
+    /* Зернистая плёнка поверх страницы — общий приём с англоязычной версией. */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
     }
 
-    section { position: relative; padding: var(--sp-3xl) 0; }
-    .sec--cream  { background: var(--cream); }
-    .sec--cream2 { background: var(--cream-2); }
-    .sec--white  { background: var(--white); }
+    .container {
+      position: relative; z-index: 2;
+      width: 100%; max-width: var(--max-width);
+      margin: 0 auto; padding: 0 var(--sp-lg);
+    }
 
     .sec-head { margin-bottom: var(--sp-2xl); }
     .sec-head .eyebrow { margin-bottom: var(--sp-md); }
     .sec-head h2 { margin-bottom: var(--sp-md); }
-    .sec-head p  { color: var(--ink-2); }
+    .sec-head p { color: var(--ink-2); }
+    .sec--dark .sec-head p { color: rgba(255,255,255,.7); }
 
-    /* Заголовок и вводный абзац рядом: заголовок крупный, абзац висит
-       справа на его базовой линии — приём из макетов. */
     @media (min-width: 900px) {
       .sec-head--split {
         display: grid;
-        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
         gap: var(--sp-2xl);
         align-items: end;
       }
       .sec-head--split .eyebrow { grid-column: 1 / -1; }
-      .sec-head--split p { padding-bottom: var(--sp-sm); }
+      .sec-head--split > *:last-child { padding-bottom: var(--sp-xs); }
     }
 
     /* ==============================
-       КНОПКИ
-       Синий = действие. На тёмной и оранжевой подложке действие
-       становится белым. Оранжевый кнопкой не бывает — см. theme.css.
+       КНОПКИ — синий = действие
        ============================== */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       gap: var(--sp-sm);
-      padding: 15px var(--sp-lg);
-      border-radius: var(--radius-pill);
+      padding: 14px var(--sp-lg);
+      border-radius: var(--radius-md);
       font-family: var(--font-body);
-      font-size: var(--text-caption);
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      font-size: var(--text-small);
+      font-weight: 700;
+      line-height: 1.25;
       text-align: center;
-      line-height: 1.2;
       transition: transform var(--dur-fast) var(--ease),
                   background-color var(--dur) var(--ease),
                   border-color var(--dur) var(--ease),
@@ -104,54 +99,51 @@
     .btn:disabled { opacity: .5; cursor: not-allowed; }
 
     .btn-primary { background: var(--blue); color: var(--white); }
-    .btn-primary:hover:not(:disabled) { background: var(--blue-hover); box-shadow: 0 8px 24px rgba(65,102,245,.28); }
+    .btn-primary:hover:not(:disabled) { background: var(--blue-hover); box-shadow: 0 8px 24px rgba(65,102,245,.26); }
 
-    .btn-outline { border: 1.5px solid var(--line); color: var(--ink); }
+    .btn-outline { border: 1.5px solid var(--line); color: var(--ink); background: rgba(255,255,255,.5); }
     .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
 
     .btn-light { background: var(--white); color: var(--blue-deep); }
-    .btn-light:hover { background: var(--cream); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    .btn-light:hover { background: var(--cream); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
 
     .btn-ghost-light { border: 1.5px solid var(--line-light); color: var(--white); }
-    .btn-ghost-light:hover { border-color: var(--white); background: rgba(255,255,255,.08); }
+    .btn-ghost-light:hover { border-color: var(--white); background: rgba(255,255,255,.09); }
 
     .btn-block { width: 100%; }
-    .btn-sm { padding: 11px 18px; font-size: var(--text-micro); }
+    .btn-sm { padding: 10px 18px; font-size: var(--text-caption); }
 
     /* ==============================
        ШАПКА
        ============================== */
     .nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(250, 248, 243, .85);
+      background: rgba(250, 248, 244, .86);
       backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid transparent;
       transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
     }
-    .nav.is-scrolled { border-bottom-color: var(--line); box-shadow: var(--shadow-sm); }
+    .nav.is-scrolled { border-bottom-color: var(--line-soft); box-shadow: var(--shadow-sm); }
 
     .nav-inner {
       display: flex; align-items: center; gap: var(--sp-lg);
-      height: 78px;
+      height: 76px;
       transition: height var(--dur) var(--ease);
     }
-    .nav.is-scrolled .nav-inner { height: 64px; }
+    .nav.is-scrolled .nav-inner { height: 62px; }
 
     .nav-logo {
       display: flex; align-items: center; gap: 9px;
-      font-family: var(--font-accent);
-      font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em;
-      flex: none;
+      font-family: var(--font-display); font-weight: 700; font-size: 1.4rem;
+      letter-spacing: -0.02em; flex: none;
     }
-    .nav-logo svg { width: 27px; height: 27px; transition: transform var(--dur-slow) var(--ease); }
+    .nav-logo svg { width: 26px; height: 26px; transition: transform var(--dur-slow) var(--ease); }
     .nav-logo:hover svg { transform: rotate(30deg); }
 
     .nav-links { display: none; align-items: center; gap: var(--sp-lg); margin-left: auto; }
     .nav-links a {
       position: relative;
-      font-size: var(--text-micro); font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--ink-2);
+      font-size: var(--text-small); font-weight: 500; color: var(--ink-2);
       padding: 6px 0;
       transition: color var(--dur) var(--ease);
     }
@@ -166,14 +158,11 @@
 
     .nav-mail {
       display: none;
-      font-family: var(--font-mono); font-size: var(--text-caption);
-      color: var(--ink-2);
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 2px;
+      font-family: var(--font-mono); font-size: var(--text-caption); color: var(--ink-2);
+      border-bottom: 1px solid var(--line); padding-bottom: 2px;
       transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
     }
     .nav-mail:hover { color: var(--blue); border-color: var(--blue); }
-
     .nav-cta { display: none; }
 
     .nav-burger {
@@ -189,8 +178,7 @@
     .nav-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     .nav-overlay {
-      position: fixed; inset: 0; z-index: 99;
-      background: rgba(26,26,46,.5);
+      position: fixed; inset: 0; z-index: 99; background: rgba(26,26,46,.5);
       opacity: 0; visibility: hidden;
       transition: opacity var(--dur) var(--ease), visibility var(--dur);
     }
@@ -203,21 +191,18 @@
       background: var(--cream);
       box-shadow: var(--shadow-xl);
       display: flex; flex-direction: column; gap: var(--sp-sm);
-      transform: translateX(100%);
-      visibility: hidden;
+      transform: translateX(100%); visibility: hidden;
       transition: transform 300ms var(--ease), visibility 300ms;
     }
     .nav-drawer.is-open { transform: none; visibility: visible; }
     .nav-drawer a:not(.btn) {
-      padding: var(--sp-md) 0;
-      font-size: var(--text-caption); font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: var(--sp-md) 0; font-size: 1.0625rem; font-weight: 600;
       border-bottom: 1px solid var(--line-soft);
     }
     .nav-drawer .btn { margin-top: var(--sp-md); }
-    .nav-drawer .nav-drawer-mail {
-      margin-top: auto; font-family: var(--font-mono); font-size: var(--text-caption);
-      color: var(--ink-2); text-transform: none; letter-spacing: 0; border: 0;
+    .nav-drawer-mail {
+      margin-top: auto; font-family: var(--font-mono);
+      font-size: var(--text-caption); color: var(--ink-2); border: 0 !important;
     }
 
     /* ==============================
@@ -225,24 +210,20 @@
        ============================== */
     .hero { padding: var(--sp-3xl) 0 var(--sp-4xl); overflow: hidden; }
     .hero-grid { display: grid; gap: var(--sp-2xl); align-items: center; }
-
     .hero h1 { margin: var(--sp-md) 0 var(--sp-lg); }
 
     .hero-sub {
-      font-size: var(--text-lead);
-      color: var(--ink-2);
-      margin-bottom: var(--sp-xl);
-      max-width: 620px;
+      font-size: var(--text-lead); color: var(--ink-2);
+      margin-bottom: var(--sp-xl); max-width: 600px;
     }
-    .hero-sub b { color: var(--ink); font-weight: 800; }
-    .hero-sub i { font-family: var(--font-accent); font-style: italic; }
+    .hero-sub b { color: var(--ink); font-weight: 700; }
 
-    .hero-buttons { display: flex; flex-wrap: wrap; gap: var(--sp-md); margin-bottom: var(--sp-xl); }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: var(--sp-md); }
 
     .hero-proof {
       display: flex; flex-wrap: wrap; gap: var(--sp-sm) var(--sp-md);
       padding-top: var(--sp-lg);
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--line-soft);
       font-size: var(--text-caption); color: var(--ink-3);
     }
     .hero-proof li { display: flex; align-items: center; gap: var(--sp-md); }
@@ -251,29 +232,25 @@
       background: var(--orange); opacity: .7;
     }
 
-    /* Мокап отчёта. Обрезается по правому краю — документ «уходит» за
-       границу экрана, что даёт ощущение объёма без коллажа. */
     .hero-doc { position: relative; display: none; }
     .hero-doc .doc-page { --doc-scale: .92; transform: rotate(-1.2deg); }
     .hero-doc::before {
       content: ''; position: absolute; z-index: -1;
       inset: -14% -18% -10% -12%;
-      background: radial-gradient(circle at 60% 40%, rgba(255,117,24,.16) 0%, rgba(65,102,245,.10) 42%, transparent 70%);
+      background: radial-gradient(circle at 60% 40%, rgba(255,117,24,.15) 0%, rgba(65,102,245,.09) 42%, transparent 70%);
     }
 
-    /* Бейдж свешивается с нижнего угла документа: любое положение внутри
-       страницы закрывает содержательный блок — заголовок, вывод, рычаги или
-       график, — а ради них документ и показан. */
+    /* Бейдж свешивается с нижнего угла: любое положение внутри страницы
+       закрывает содержательный блок, ради которого документ и показан. */
     .hero-badge {
       position: absolute; bottom: -5%; left: -7%;
-      background: var(--white);
-      border-radius: var(--radius-md);
+      background: var(--white); border-radius: var(--radius-md);
       box-shadow: var(--shadow-xl);
       padding: var(--sp-md) var(--sp-lg);
       transform: rotate(-2.5deg);
     }
     .hero-badge-v {
-      font-family: var(--font-accent); font-weight: 700; font-size: 1.5rem;
+      font-family: var(--font-display); font-weight: 700; font-size: 1.4rem;
       line-height: 1.1; white-space: nowrap;
     }
     .hero-badge-l { font-size: var(--text-caption); color: var(--ink-3); margin-top: 2px; }
@@ -283,25 +260,19 @@
        ============================== */
     .stamp {
       display: inline-block;
-      background: var(--orange);
-      color: var(--white);
-      font-size: var(--text-micro); font-weight: 800;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      line-height: 1.4;
-      padding: 10px 20px;
+      background: var(--orange); color: var(--white);
+      font-size: var(--text-caption); font-weight: 700;
+      line-height: 1.4; padding: 9px 18px;
       border-radius: var(--radius-pill);
-      transform: rotate(-2deg);
-      max-width: 320px;
+      transform: rotate(-1.5deg);
     }
 
-    /* Карусель. Одна механика на два блока: горизонтальный скролл со
-       snap плюс кнопки. На узком экране кнопки прячутся — там пальцем. */
+    /* Одна механика карусели на два блока: горизонтальный скролл со snap
+       плюс кнопки. На узком экране кнопки прячутся — там пальцем. */
     .rail-wrap { position: relative; }
     .rail {
       display: flex; gap: var(--sp-md);
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
+      overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
       padding-bottom: var(--sp-sm);
       scrollbar-width: none;
     }
@@ -310,7 +281,7 @@
 
     .rail-btn {
       position: absolute; top: 50%; z-index: 5;
-      width: 48px; height: 48px; border-radius: 50%;
+      width: 46px; height: 46px; border-radius: 50%;
       display: none; place-items: center;
       background: var(--white); color: var(--ink);
       box-shadow: var(--shadow-lg);
@@ -318,14 +289,14 @@
       transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), opacity var(--dur) var(--ease);
     }
     .rail-btn:hover { background: var(--blue); color: var(--white); }
-    .rail-btn[disabled] { opacity: .28; cursor: default; }
+    .rail-btn[disabled] { opacity: .25; cursor: default; }
     .rail-btn[disabled]:hover { background: var(--white); color: var(--ink); }
     .rail-btn--prev { left: -22px; }
     .rail-btn--next { right: -22px; }
     @media (min-width: 900px) { .rail-btn { display: grid; } }
 
     .pain {
-      width: min(320px, 78vw);
+      width: min(310px, 78vw);
       background: var(--white);
       border: 1px solid var(--line-soft);
       border-radius: var(--radius-lg);
@@ -336,15 +307,15 @@
     .pain:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
     .pain-n {
       display: inline-grid; place-items: center;
-      width: 34px; height: 34px; border-radius: 50%;
-      background: var(--blue-deep); color: var(--white);
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--blue-pale); color: var(--blue-dark);
       font-family: var(--font-mono); font-size: var(--text-micro);
       margin-bottom: var(--sp-md);
     }
     .pain h3 { margin-bottom: var(--sp-sm); }
     .pain p { font-size: var(--text-small); color: var(--ink-2); }
 
-    .pains-cta { margin-top: var(--sp-2xl); }
+    .block-cta { margin-top: var(--sp-2xl); }
 
     /* ==============================
        02 — УСЛУГИ И ЦЕНЫ
@@ -361,30 +332,30 @@
     }
     .tier--featured {
       background: var(--blue-deep);
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.8);
       border-color: var(--blue-deep);
       box-shadow: var(--shadow-xl);
     }
 
-    .tier-top { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-md); margin-bottom: var(--sp-lg); }
-    .tier-idx { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+    .tier-top { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-md); margin-bottom: var(--sp-md); }
+    .tier-idx { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
     .tier--featured .tier-idx { color: rgba(255,255,255,.55); }
 
     .tier-tag {
-      font-size: var(--text-micro); font-weight: 800;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: var(--radius-pill);
+      font-size: var(--text-micro); font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase;
+      padding: 5px 11px; border-radius: var(--radius-pill);
       background: var(--blue-pale); color: var(--blue-dark);
       white-space: nowrap;
     }
     .tier--featured .tier-tag { background: var(--orange); color: var(--white); }
 
-    /* Название тарифа — самое крупное в карточке: по ТЗ слоганы сняты,
-       вес перешёл на имя формата. */
+    /* Название тарифа — гротеском, как на англоязычной версии: антиква
+       на этом кегле спорит с ценой, которая тоже серифная. */
     .tier-name {
-      font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-      font-size: clamp(1.75rem, 1.3rem + 1.7vw, 2.5rem);
-      line-height: .98; letter-spacing: .005em;
+      font-family: var(--font-body);
+      font-size: 1.5rem; font-weight: 800; line-height: 1.2;
+      letter-spacing: -0.01em;
       margin-bottom: var(--sp-md);
     }
     .tier--featured .tier-name { color: var(--white); }
@@ -393,25 +364,24 @@
     .tier--featured .tier-for { color: rgba(255,255,255,.72); }
 
     .tier-price {
-      display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
-      font-family: var(--font-display); font-weight: 500;
-      font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.25rem);
-      line-height: 1;
-      font-variant-numeric: tabular-nums;
+      display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(2rem, 1.5rem + 1.9vw, 2.75rem);
+      line-height: 1; font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
       margin-bottom: var(--sp-lg);
       padding-bottom: var(--sp-lg);
       border-bottom: 1px solid var(--line-soft);
     }
     .tier--featured .tier-price { color: var(--white); border-bottom-color: var(--line-light); }
-    .tier-price-cur { font-size: .42em; font-weight: 500; color: var(--ink-3); }
+    .tier-price-cur { font-family: var(--font-body); font-size: .36em; font-weight: 600; color: var(--ink-3); }
     .tier--featured .tier-price-cur { color: rgba(255,255,255,.6); }
 
     .tier-list-label {
       font-family: var(--font-mono); font-size: var(--text-micro);
-      letter-spacing: 0.14em; text-transform: uppercase;
+      letter-spacing: .14em; text-transform: uppercase;
       color: var(--orange); margin-bottom: var(--sp-md);
     }
-    .tier--featured .tier-list-label { color: var(--orange); }
 
     .tier-list { display: grid; gap: 10px; margin-bottom: var(--sp-lg); }
     .tier-list li { display: flex; gap: 10px; font-size: var(--text-small); }
@@ -420,8 +390,7 @@
 
     .tier-facts {
       display: grid; gap: 8px;
-      padding: var(--sp-md) 0;
-      margin-bottom: var(--sp-lg);
+      padding: var(--sp-md) 0; margin-bottom: var(--sp-lg);
       border-top: 1px solid var(--line-soft);
       font-size: var(--text-caption);
     }
@@ -432,20 +401,20 @@
     .tier-fact dd { font-weight: 700; text-align: right; }
     .tier--featured .tier-fact dd { color: var(--white); }
 
-    .tier-actions { margin-top: auto; display: grid; gap: var(--sp-sm); }
-
-    /* Сноска стоит перед кнопкой — так кнопка везде последняя и три карточки
-       заканчиваются одинаково. Свободное место карточки забирает сноска,
-       поэтому у идущих за ней действий авто-отступ снимается: два auto
-       поделили бы промежуток пополам и увели сноску в середину. */
+    /* Сноска перед кнопкой — так кнопка везде последняя и три карточки
+       заканчиваются одинаково. Свободное место забирает сноска, поэтому
+       у идущих за ней действий авто-отступ снимается: два auto поделили бы
+       промежуток пополам и увели сноску в середину. */
     .tier-note {
       font-size: var(--text-caption); color: var(--ink-3);
-      margin-top: auto; padding-top: var(--sp-md);
-      margin-bottom: var(--sp-md); line-height: 1.5;
+      margin-top: auto; padding-top: var(--sp-md); margin-bottom: var(--sp-md);
+      line-height: 1.5;
     }
-    .tier-note + .tier-actions { margin-top: 0; }
     .tier--featured .tier-note { color: rgba(255,255,255,.6); }
     .tier-note b { color: var(--orange); font-weight: 700; }
+
+    .tier-actions { margin-top: auto; display: grid; gap: var(--sp-sm); }
+    .tier-note + .tier-actions { margin-top: 0; }
 
     .guarantee {
       display: flex; align-items: center; gap: var(--sp-md); flex-wrap: wrap;
@@ -461,49 +430,131 @@
       display: grid; place-items: center; font-weight: 800; font-size: 13px;
     }
     .guarantee p { max-width: none; }
-    .guarantee b { font-weight: 800; }
 
-    .after-tiers {
+    .after-block {
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: var(--sp-md);
-      margin-top: var(--sp-xl);
-      padding-top: var(--sp-xl);
-      border-top: 1px solid var(--line);
+      margin-top: var(--sp-xl); padding-top: var(--sp-xl);
+      border-top: 1px solid var(--line-soft);
     }
-    .after-tiers p { font-size: var(--text-small); color: var(--ink-2); }
+    .after-block p { font-size: var(--text-small); color: var(--ink-2); }
 
     /* ==============================
-       03 — ПРИМЕР РЕЗУЛЬТАТА
+       03 — ЧТО РАЗБИРАЮ
+       ============================== */
+    .topics { display: grid; gap: var(--sp-lg); }
+    .topic { display: flex; gap: var(--sp-md); }
+    .topic-ico {
+      flex: none; width: 40px; height: 40px; border-radius: var(--radius-md);
+      background: var(--white); color: var(--blue);
+      display: grid; place-items: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .topic-ico svg { width: 19px; height: 19px; }
+    .topic h4 { margin-bottom: 4px; }
+    .topic p { font-size: var(--text-small); color: var(--ink-2); }
+
+    /* ==============================
+       04 — ПРИМЕР РЕЗУЛЬТАТА
        ============================== */
     .strike {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: #FBE9E9; color: var(--coral);
-      border-radius: var(--radius-pill);
-      padding: 9px 18px;
+      display: inline-flex; align-items: flex-start; gap: 10px;
+      background: #FBEAEA; color: var(--coral);
+      border-radius: var(--radius-lg);
+      padding: 10px 18px;
       font-size: var(--text-small);
       margin-bottom: var(--sp-lg);
     }
     .strike s { text-decoration-thickness: 1.5px; }
 
     .doc-rail .doc-page { --doc-scale: 1; width: min(620px, 88vw); }
-    /* Подпись над страницей, а не под ней: страницы разной высоты, и снизу
-       подписи вставали бы вразнобой. Сверху они выстраиваются в строку. */
+    /* Подпись над страницей, а не под ней: страницы разной высоты, снизу
+       подписи вставали бы вразнобой. */
     .doc-slide-cap {
       width: min(620px, 88vw);
       margin-bottom: var(--sp-md);
-      font-size: var(--text-small); font-weight: 700;
-      color: var(--blue-deep);
+      font-size: var(--text-small); font-weight: 700; color: var(--blue-deep);
     }
 
     /* ==============================
-       04 — ПРОЦЕСС
+       ЦИТАТА-ПЕРЕДЫШКА
+       ============================== */
+    .breather { padding: var(--sp-4xl) 0; text-align: center; }
+    .breather p {
+      max-width: 720px; margin: 0 auto;
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+      line-height: 1.35; letter-spacing: -0.015em;
+    }
+    .breather em { font-style: italic; color: var(--orange-dark); }
+
+    /* ==============================
+       05 — ЭКОНОМИКА РАЗБОРА
+       ============================== */
+    .charts { display: grid; gap: var(--sp-lg); }
+    .chart-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-lg);
+      color: var(--ink);
+      display: flex; flex-direction: column;
+    }
+    .chart-label {
+      font-family: var(--font-mono); font-size: var(--text-micro);
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--ink-3); margin-bottom: var(--sp-lg);
+    }
+    .cmp-row { margin-bottom: var(--sp-lg); }
+    .cmp-name { font-size: var(--text-small); margin-bottom: 7px; }
+    .cmp-bar {
+      position: relative; height: 44px; border-radius: var(--radius-sm);
+      background: var(--cream-2);
+      display: flex; align-items: center;
+    }
+    .cmp-fill {
+      height: 100%; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: flex-end;
+      padding-right: var(--sp-md);
+      font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem;
+      color: var(--white); white-space: nowrap;
+    }
+    .cmp-fill--loss { background: var(--orange); width: 100%; }
+    /* Столбец пропорционален по-настоящему: 245 000 ₽ — это 3% от 8,0 млн ₽.
+       Раздуть его «чтобы было видно» значило бы соврать ровно в том месте,
+       где весь смысл в соотношении. min-width только чтобы полоса не исчезла. */
+    .cmp-fill--cost { background: var(--blue); width: 3%; min-width: 26px; }
+    .cmp-out {
+      padding-left: var(--sp-md);
+      font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem;
+      color: var(--blue-deep); white-space: nowrap;
+    }
+    /* Левая карточка на англоязычной версии наполовину пустая — здесь низ
+       занимает вывод, который считается из тех же двух чисел. */
+    .cmp-conclusion {
+      margin-top: auto; padding-top: var(--sp-lg);
+      border-top: 1px solid var(--line-soft);
+      font-size: var(--text-small); color: var(--ink-2);
+    }
+    .cmp-conclusion b { color: var(--ink); font-weight: 800; }
+
+    .chart-svg { width: 100%; height: auto; }
+
+    .compare-note {
+      margin-top: var(--sp-lg);
+      padding: var(--sp-md) var(--sp-lg);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-caption);
+      color: rgba(255,255,255,.62);
+      max-width: none;
+    }
+    .compare-note b { color: rgba(255,255,255,.9); font-weight: 700; }
+
+    /* ==============================
+       06 — ПРОЦЕСС
        ============================== */
     .steps { display: grid; gap: var(--sp-xl); }
-    .step-dot {
-      position: relative;
-      height: 2px; background: var(--line);
-      margin-bottom: var(--sp-md);
-    }
+    .step-dot { position: relative; height: 2px; background: var(--line-soft); margin-bottom: var(--sp-md); }
     .step-dot::before {
       content: ''; position: absolute; left: 0; top: 50%;
       width: 13px; height: 13px; border-radius: 50%;
@@ -513,71 +564,65 @@
     .step:first-child .step-dot::before { background: var(--blue-deep); }
     .step-n {
       font-family: var(--font-mono); font-size: var(--text-micro);
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--orange); margin-bottom: 6px;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 5px;
     }
     .step-name {
-      font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-      font-size: 1.5rem; line-height: 1; color: var(--blue-deep);
-      margin-bottom: var(--sp-sm);
+      font-family: var(--font-display); font-weight: 700; font-size: 1.375rem;
+      line-height: 1.15; letter-spacing: -0.015em;
+      color: var(--blue-deep); margin-bottom: var(--sp-sm);
     }
     .step p { font-size: var(--text-small); color: var(--ink-2); }
 
     /* ==============================
-       05 — ОБО МНЕ
+       07 — ОБО МНЕ
        ============================== */
-    .about {
-      background: var(--orange);
-      color: rgba(255,255,255,.9);
-      overflow: hidden;
-    }
-    .about .eyebrow, .about .eyebrow b { color: rgba(255,255,255,.7); }
-    .about h2 { color: var(--white); }
-    .about h2 .brand { color: var(--blue-deep); }
     .about-grid { display: grid; gap: var(--sp-2xl); align-items: center; }
-    .about-lead { font-size: var(--text-lead); color: var(--white); margin-bottom: var(--sp-lg); }
+    .about-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-xl);
+      box-shadow: var(--shadow-md);
+    }
+    .about-lead { font-size: var(--text-lead); margin-bottom: var(--sp-lg); }
     .about-lead b { font-weight: 800; }
-    .about-text p { margin-bottom: var(--sp-md); }
-    .about-text p:last-child { margin-bottom: 0; }
+    .about-card p:not(.about-lead) { font-size: var(--text-small); color: var(--ink-2); margin-bottom: var(--sp-md); }
+    .about-card p:last-child { margin-bottom: 0; }
 
-    /* Полароид: белая рамка с широким низом и подписью от руки. */
     .polaroid {
       position: relative;
-      width: min(340px, 84vw);
-      margin: 0 auto;
+      width: min(320px, 80vw); margin: 0 auto;
       background: var(--white);
-      padding: 14px 14px 0;
+      padding: 13px 13px 0;
       border-radius: 4px;
       box-shadow: var(--shadow-xl);
       transform: rotate(2deg);
     }
     .polaroid img {
       width: 100%; aspect-ratio: 4/5; object-fit: cover;
-      filter: grayscale(1) contrast(1.06);
+      filter: grayscale(1) contrast(1.05);
     }
     .polaroid-cap {
-      font-family: var(--font-accent); font-weight: 700; font-size: 1.5rem;
-      color: var(--blue-deep);
-      text-align: center;
-      padding: 16px 0 22px;
+      font-family: var(--font-display); font-weight: 700; font-size: 1.375rem;
+      color: var(--blue-deep); text-align: center; padding: 15px 0 20px;
     }
     .polaroid-badge {
-      position: absolute; left: -22px; bottom: 54px;
-      width: 92px; height: 92px; border-radius: 50%;
+      position: absolute; left: -20px; bottom: 48px;
+      width: 86px; height: 86px; border-radius: 50%;
       background: var(--blue-deep); color: var(--white);
       display: grid; place-content: center; text-align: center;
       transform: rotate(-4deg);
       box-shadow: var(--shadow-lg);
     }
-    .polaroid-badge b { font-family: var(--font-display); font-size: 1.75rem; line-height: 1; }
+    .polaroid-badge b { font-family: var(--font-display); font-size: 1.6rem; line-height: 1; }
     .polaroid-badge span { font-size: 9px; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
 
     /* ==============================
-       06 — FAQ
+       08 — FAQ
        ============================== */
     .faq-grid { display: grid; gap: var(--sp-2xl); }
-    .faq-list { border-top: 1px solid var(--line); }
-    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-list { border-top: 1px solid var(--line-soft); }
+    .faq-item { border-bottom: 1px solid var(--line-soft); }
     .faq-q {
       display: flex; align-items: flex-start; justify-content: space-between;
       gap: var(--sp-lg); width: 100%; text-align: left;
@@ -588,7 +633,7 @@
     .faq-q:hover { color: var(--orange-dark); }
     .faq-icon {
       position: relative; flex: none;
-      width: 30px; height: 30px; border-radius: 50%;
+      width: 28px; height: 28px; border-radius: 50%;
       border: 1.5px solid var(--line);
       transition: transform 300ms var(--ease-io), border-color var(--dur) var(--ease);
     }
@@ -597,8 +642,8 @@
       background: var(--blue-deep); border-radius: 2px;
       transform: translate(-50%, -50%);
     }
-    .faq-icon::before { width: 12px; height: 1.5px; }
-    .faq-icon::after  { width: 1.5px; height: 12px; transition: opacity var(--dur) var(--ease); }
+    .faq-icon::before { width: 11px; height: 1.5px; }
+    .faq-icon::after { width: 1.5px; height: 11px; transition: opacity var(--dur) var(--ease); }
     .faq-item.is-open .faq-icon { transform: rotate(180deg); border-color: var(--orange); }
     .faq-item.is-open .faq-icon::after { opacity: 0; }
 
@@ -616,13 +661,12 @@
     .faq-a-inner p + p { margin-top: var(--sp-md); }
 
     /* ==============================
-       07 — БЛОГ
+       09 — БЛОГ
        ============================== */
     .posts { display: grid; gap: var(--sp-lg); }
     .post {
       display: flex; flex-direction: column;
-      background: var(--white);
-      border-radius: var(--radius-lg);
+      background: var(--white); border-radius: var(--radius-lg);
       padding: var(--sp-lg);
       box-shadow: var(--shadow-sm);
       transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
@@ -635,46 +679,27 @@
     }
     .post h3 { color: var(--blue-deep); margin-bottom: var(--sp-sm); }
     .post p { font-size: var(--text-small); color: var(--ink-2); margin-bottom: var(--sp-lg); }
-    .post-link {
-      margin-top: auto;
-      font-size: var(--text-micro); font-weight: 800;
-      letter-spacing: .1em; text-transform: uppercase;
-      color: var(--blue);
-    }
-    .post-link span { transition: transform var(--dur) var(--ease); display: inline-block; }
+    .post-link { margin-top: auto; font-size: var(--text-caption); font-weight: 700; color: var(--blue); }
+    .post-link span { display: inline-block; transition: transform var(--dur) var(--ease); }
     .post:hover .post-link span { transform: translateX(4px); }
 
     /* ==============================
-       08 — ФОРМА
+       10 — ФОРМА
        ============================== */
-    .contact {
-      background: var(--blue-deep);
-      color: rgba(255,255,255,.78);
-      overflow: hidden;
-    }
-    .contact::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
-      background-size: 26px 26px;
-    }
+    .contact { overflow: hidden; }
     .contact::after {
       content: ''; position: absolute; right: -8%; top: -22%;
       width: 460px; height: 460px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,117,24,.4) 0%, transparent 66%);
+      background: radial-gradient(circle, rgba(255,117,24,.36) 0%, transparent 66%);
       pointer-events: none;
     }
-    .contact .container { position: relative; z-index: 2; }
-    .contact .eyebrow, .contact .eyebrow b { color: rgba(255,255,255,.5); }
-    .contact h2 { color: var(--white); }
-    .contact h2 .hl { color: var(--orange); }
     .contact-grid { display: grid; gap: var(--sp-2xl); align-items: start; }
+    .contact h2 .hl { color: var(--orange); }
     .contact .accent-line { color: rgba(255,255,255,.9); font-size: var(--text-lead); margin: var(--sp-lg) 0; }
     .contact-mail {
       display: inline-block; margin-top: var(--sp-lg);
-      font-family: var(--font-mono); font-size: var(--text-small);
-      color: var(--white);
-      border-bottom: 1px solid var(--line-light);
-      padding-bottom: 3px;
+      font-family: var(--font-mono); font-size: var(--text-small); color: var(--white);
+      border-bottom: 1px solid var(--line-light); padding-bottom: 3px;
     }
     .contact-mail:hover { border-color: var(--white); }
 
@@ -682,20 +707,17 @@
        ФОРМЫ
        ============================== */
     .form-card {
-      background: var(--white);
-      border-radius: var(--radius-xl);
-      padding: var(--sp-xl);
-      box-shadow: var(--shadow-xl);
+      background: var(--white); border-radius: var(--radius-xl);
+      padding: var(--sp-xl); box-shadow: var(--shadow-xl);
       color: var(--ink);
     }
     .form-row { display: grid; grid-template-columns: 1fr; gap: var(--sp-md); }
     .field { margin-bottom: var(--sp-md); }
     .field label {
-      display: block; margin-bottom: 7px;
-      font-family: var(--font-mono); font-size: var(--text-micro);
-      letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2);
+      display: block; margin-bottom: 6px;
+      font-size: var(--text-caption); font-weight: 700; color: var(--ink-2);
     }
-    .field label .opt { color: var(--ink-3); }
+    .field label .opt { font-weight: 400; color: var(--ink-3); }
     .field input, .field select, .field textarea {
       width: 100%; padding: 13px var(--sp-md);
       font: inherit; font-size: var(--text-small); color: var(--ink);
@@ -707,10 +729,9 @@
     .field textarea { min-height: 104px; resize: vertical; }
     .field input::placeholder, .field textarea::placeholder { color: var(--ink-3); }
     .field input:focus, .field select:focus, .field textarea:focus {
-      outline: none; border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(65,102,245,.13);
+      outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(65,102,245,.13);
     }
-    .field.is-shaking { animation: shake 400ms var(--ease-io); }
+    .field.is-shaking, .consent.is-shaking { animation: shake 400ms var(--ease-io); }
     @keyframes shake {
       0%,100% { transform: translateX(0); }
       20%,60% { transform: translateX(-5px); }
@@ -725,13 +746,11 @@
     }
     .consent input { flex: none; width: 17px; height: 17px; margin-top: 2px; accent-color: var(--blue); }
     .consent a { color: var(--blue); border-bottom: 1px solid rgba(65,102,245,.35); }
-    .consent.is-shaking { animation: shake 400ms var(--ease-io); }
 
     .form-status { margin-top: var(--sp-md); font-size: var(--text-small); line-height: 1.5; }
     .form-status:empty { margin: 0; }
     .form-status[data-state="error"] { color: var(--coral); }
     .form-status[data-state="success"] { color: var(--teal); font-weight: 700; }
-
     .form-note { margin-top: var(--sp-md); font-size: var(--text-caption); color: var(--ink-3); }
 
     .spinner {
@@ -742,32 +761,28 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ==============================
-       МОДАЛЬНЫЕ ОКНА
+       МОДАЛЬНОЕ ОКНО
        ============================== */
     .modal {
       position: fixed; inset: 0; z-index: 200;
-      display: grid; place-items: center;
-      padding: var(--sp-md);
+      display: grid; place-items: center; padding: var(--sp-md);
       background: rgba(26,26,46,.55);
       opacity: 0; visibility: hidden;
       transition: opacity var(--dur) var(--ease), visibility var(--dur);
     }
     .modal.is-open { opacity: 1; visibility: visible; }
     .modal-box {
-      width: min(560px, 100%);
-      max-height: 92dvh; overflow-y: auto;
-      background: var(--white);
-      border-radius: var(--radius-xl);
-      padding: var(--sp-xl);
-      box-shadow: var(--shadow-xl);
+      width: min(560px, 100%); max-height: 92dvh; overflow-y: auto;
+      background: var(--white); border-radius: var(--radius-xl);
+      padding: var(--sp-xl); box-shadow: var(--shadow-xl);
       transform: translateY(14px) scale(.98);
       transition: transform var(--dur) var(--ease);
     }
     .modal.is-open .modal-box { transform: none; }
     .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-md); margin-bottom: var(--sp-lg); }
     .modal-title {
-      font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-      font-size: 1.6rem; line-height: 1; color: var(--blue-deep);
+      font-family: var(--font-display); font-weight: 700; font-size: 1.6rem;
+      line-height: 1.15; letter-spacing: -0.015em; color: var(--blue-deep);
     }
     .modal-sub { font-size: var(--text-small); color: var(--ink-2); margin-top: var(--sp-sm); }
     .modal-close {
@@ -781,8 +796,7 @@
     .modal-tabs { display: flex; gap: 6px; padding: 5px; background: var(--cream-2); border-radius: var(--radius-pill); margin-bottom: var(--sp-lg); }
     .modal-tab {
       flex: 1; padding: 10px; border-radius: var(--radius-pill);
-      font-size: var(--text-micro); font-weight: 800;
-      letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2);
+      font-size: var(--text-caption); font-weight: 700; color: var(--ink-2);
       transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
     }
     .modal-tab[aria-selected="true"] { background: var(--white); color: var(--blue-deep); box-shadow: var(--shadow-sm); }
@@ -794,7 +808,7 @@
     }
     .pay-summary-name { font-weight: 800; }
     .pay-summary-price {
-      font-family: var(--font-display); font-weight: 500; font-size: 2rem;
+      font-family: var(--font-display); font-weight: 700; font-size: 1.75rem;
       line-height: 1; font-variant-numeric: tabular-nums; color: var(--blue-deep);
     }
 
@@ -802,6 +816,7 @@
        ФУТЕР
        ============================== */
     .footer {
+      position: relative; z-index: 2;
       background: var(--ink); color: rgba(255,255,255,.6);
       padding: var(--sp-3xl) 0 var(--sp-xl);
       font-size: var(--text-small);
@@ -809,7 +824,7 @@
     .footer-grid { display: grid; gap: var(--sp-xl); }
     .footer-logo {
       display: flex; align-items: center; gap: 9px;
-      font-family: var(--font-accent); font-weight: 700; font-size: 1.4rem;
+      font-family: var(--font-display); font-weight: 700; font-size: 1.4rem;
       color: var(--white); margin-bottom: var(--sp-md);
     }
     .footer h4 {
@@ -839,11 +854,10 @@
       position: fixed; left: var(--sp-md); right: var(--sp-md); bottom: var(--sp-md);
       z-index: 150;
       display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-md);
-      max-width: 900px; margin: 0 auto;
+      max-width: 880px; margin: 0 auto;
       padding: var(--sp-md) var(--sp-lg);
       background: var(--ink); color: rgba(255,255,255,.75);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-xl);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);
       font-size: var(--text-caption);
       transform: translateY(140%);
       transition: transform 420ms var(--ease);
@@ -869,28 +883,31 @@
     @media (min-width: 600px) {
       .form-row { grid-template-columns: 1fr 1fr; }
       .posts { grid-template-columns: repeat(2, 1fr); }
+      .topics { grid-template-columns: repeat(2, 1fr); gap: var(--sp-xl); }
     }
 
     @media (min-width: 768px) {
-      section { padding: var(--sp-4xl) 0; }
+      .sec { padding: var(--sp-4xl) 0; }
       .steps { grid-template-columns: repeat(5, 1fr); gap: var(--sp-lg); }
-      .about-grid { grid-template-columns: 1.1fr .9fr; }
+      .about-grid { grid-template-columns: 1.15fr .85fr; }
       .faq-grid { grid-template-columns: .8fr 1.2fr; }
       .contact-grid { grid-template-columns: 1fr 1.1fr; }
       .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
       .posts { grid-template-columns: repeat(3, 1fr); }
+      .charts { grid-template-columns: 1fr 1.15fr; }
     }
 
     @media (min-width: 900px) {
       .nav-links, .nav-mail, .nav-cta { display: flex; }
       .nav-burger, .nav-drawer, .nav-overlay { display: none; }
-      /* Строка доверия вынесена под обе колонки: в левой она не помещается
+      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 540px); gap: var(--sp-xl); }
+      /* Строка доверия под обеими колонками: в левой она не помещается
          в одну строку и оставляет висящий разделитель в конце первой. */
-      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 560px); gap: var(--sp-xl); }
       .hero-proof { grid-column: 1 / -1; margin-top: var(--sp-md); }
       .hero-doc { display: block; }
       .tiers { grid-template-columns: repeat(3, 1fr); }
       .tier--featured { transform: translateY(-16px); }
+      .topics { grid-template-columns: repeat(4, 1fr); }
     }
   </style>
 </head>
@@ -947,15 +964,13 @@
 <main id="main">
   <span id="top"></span>
 
-  <!-- =======================================================================
-       ПЕРВЫЙ ЭКРАН
-       ======================================================================= -->
-  <section class="hero sec--cream" aria-labelledby="hero-title">
+  <!-- ================= ПЕРВЫЙ ЭКРАН ================= -->
+  <section class="sec hero" aria-labelledby="hero-title">
     <div class="container hero-grid">
       <div>
         <p class="eyebrow reveal">Разбор бизнеса для собственников</p>
 
-        <h1 class="display reveal" id="hero-title" style="--rd: 90ms">
+        <h1 class="reveal" id="hero-title" style="--rd: 90ms">
           Нахожу, где бизнес теряет <span class="marker">деньги</span>.
         </h1>
 
@@ -969,7 +984,6 @@
           <a href="#contact" class="btn btn-primary">Обсудить мою задачу</a>
           <a href="#pricing" class="btn btn-outline">Услуги и цены</a>
         </div>
-
       </div>
 
       <div class="hero-doc reveal" style="--rd: 200ms" aria-hidden="true">
@@ -989,17 +1003,16 @@
     </div>
   </section>
 
-  <!-- =======================================================================
-       01 — КОМУ ПОДХОДИТ
-       ======================================================================= -->
-  <section class="sec--cream2" id="pains" aria-labelledby="pains-title">
+  <!-- ================= 01 — КОМУ ПОДХОДИТ ================= -->
+  <section class="sec sec--blue" id="pains" aria-labelledby="pains-title">
     <div class="container">
       <div class="sec-head sec-head--split">
         <p class="eyebrow reveal"><b>01</b> · Кому подходит</p>
-        <h2 class="display reveal" id="pains-title" style="--rd: 80ms">Узнали себя?</h2>
+        <h2 class="sec-title reveal" id="pains-title" style="--rd: 80ms">Узнали себя?</h2>
         <div class="reveal" style="--rd: 140ms">
           <p style="margin-bottom: var(--sp-lg)">
-            Если хотя бы два пункта знакомы — проблема, скорее всего, уже не в одном рекламном канале.
+            Если хотя бы два пункта знакомы — проблема, скорее всего, уже не в одном
+            рекламном канале.
           </p>
           <span class="stamp">Хватит бездумно тратить деньги на рекламу и акции</span>
         </div>
@@ -1048,20 +1061,18 @@
         </ul>
       </div>
 
-      <div class="pains-cta reveal">
+      <div class="block-cta reveal">
         <a href="#pricing" class="btn btn-primary">Да, это обо мне — нужна помощь</a>
       </div>
     </div>
   </section>
 
-  <!-- =======================================================================
-       02 — УСЛУГИ И ЦЕНЫ
-       ======================================================================= -->
-  <section class="sec--cream" id="pricing" aria-labelledby="pricing-title">
+  <!-- ================= 02 — УСЛУГИ И ЦЕНЫ ================= -->
+  <section class="sec sec--tint" id="pricing" aria-labelledby="pricing-title">
     <div class="container">
       <div class="sec-head sec-head--split">
         <p class="eyebrow reveal"><b>02</b> · Формат работы</p>
-        <h2 class="display reveal" id="pricing-title" style="--rd: 80ms">Услуги и цены</h2>
+        <h2 class="sec-title reveal" id="pricing-title" style="--rd: 80ms">Услуги и цены</h2>
         <p class="reveal" style="--rd: 140ms">
           Три формата: разобраться в одной проблеме, получить полную карту роста
           или довести изменения до результата.
@@ -1069,13 +1080,12 @@
       </div>
 
       <div class="tiers">
-
         <article class="tier reveal">
           <div class="tier-top">
             <span class="tier-idx">01 · Точка роста</span>
             <span class="tier-tag">Быстрый старт</span>
           </div>
-          <h3 class="tier-name">Точка<br>роста</h3>
+          <p class="tier-name">Точка роста</p>
           <p class="tier-for">
             Для ситуации, когда вопрос уже понятен: почему не растёт чек, почему не
             возвращаются клиенты, работает ли акция, куда уходит рекламный бюджет.
@@ -1111,7 +1121,7 @@
             <span class="tier-idx">02 · Карта роста</span>
             <span class="tier-tag">Максимум пользы</span>
           </div>
-          <h3 class="tier-name">Карта<br>роста</h3>
+          <p class="tier-name">Карта роста</p>
           <p class="tier-for">
             Когда симптомов много и непонятно, что является причиной: реклама, продукт,
             цены, клиентская база, продажи или всё сразу.
@@ -1143,9 +1153,9 @@
         <article class="tier reveal" style="--rd: 180ms">
           <div class="tier-top">
             <span class="tier-idx">03 · Рост под контролем</span>
-            <span class="tier-tag">Довести до результата</span>
+            <span class="tier-tag">До результата</span>
           </div>
-          <h3 class="tier-name">Рост под<br>контролем</h3>
+          <p class="tier-name">Рост под контролем</p>
           <p class="tier-for">
             Для тех, кто уже получил комплексный аудит и хочет довести рекомендации
             до результата силами своей команды, а также получать новые рекомендации.
@@ -1163,7 +1173,7 @@
 
           <dl class="tier-facts">
             <div class="tier-fact"><dt>Срок подготовки</dt><dd>Ежемесячно</dd></div>
-            <div class="tier-fact"><dt>Ответы на вопросы</dt><dd>Весь период сопровождения</dd></div>
+            <div class="tier-fact"><dt>Ответы на вопросы</dt><dd>Весь период</dd></div>
           </dl>
 
           <p class="tier-note">Доступно только после комплексного аудита «Карта роста».</p>
@@ -1173,7 +1183,6 @@
             </button>
           </div>
         </article>
-
       </div>
 
       <div class="guarantee reveal">
@@ -1181,21 +1190,92 @@
         <p><b>Гарантия ценности.</b> Если после работы вы не увидите полезных и применимых выводов для бизнеса — верну деньги.</p>
       </div>
 
-      <div class="after-tiers reveal">
+      <div class="after-block reveal">
         <p>Остались вопросы? Обсудим конкретно вашу ситуацию — и я скажу, какой формат подходит.</p>
         <a href="#contact" class="btn btn-outline">Обсудить мою ситуацию</a>
       </div>
     </div>
   </section>
 
-  <!-- =======================================================================
-       03 — ПРИМЕР РЕЗУЛЬТАТА
-       ======================================================================= -->
-  <section class="sec--cream2" id="report" aria-labelledby="report-title">
+  <!-- ================= 03 — ЧТО РАЗБИРАЮ ================= -->
+  <section class="sec sec--orange" aria-labelledby="topics-title">
     <div class="container">
       <div class="sec-head sec-head--split">
-        <p class="eyebrow reveal"><b>03</b> · Пример результата</p>
-        <h2 class="display reveal" id="report-title" style="--rd: 80ms">Вот так выглядит конкретика.</h2>
+        <p class="eyebrow reveal"><b>03</b> · Что входит в разбор</p>
+        <h2 class="sec-title reveal" id="topics-title" style="--rd: 80ms">Смотрю на бизнес целиком</h2>
+        <p class="reveal" style="--rd: 140ms">
+          Восемь направлений. Не шаблон — набор и глубина зависят от того,
+          где именно у вашего бизнеса теряются деньги.
+        </p>
+      </div>
+
+      <div class="topics">
+        <div class="topic reveal">
+          <span class="topic-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 5-5 2 2-5z"/></svg></span>
+          <div>
+            <h4>Рынок и конкуренты</h4>
+            <p>Где вы стоите относительно рынка и что снаружи влияет на спрос и рост.</p>
+          </div>
+        </div>
+        <div class="topic reveal" style="--rd: 60ms">
+          <span class="topic-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span>
+          <div>
+            <h4>Клиенты и сегменты</h4>
+            <p>Кто реально приносит прибыль, где вы их теряете и какие сегменты растут.</p>
+          </div>
+        </div>
+        <div class="topic reveal" style="--rd: 120ms">
+          <span class="topic-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h6"/></svg></span>
+          <div>
+            <h4>Продукт и ассортимент</h4>
+            <p>ABC-анализ продаж и структура ассортимента: что усиливать, а что убрать.</p>
+          </div>
+        </div>
+        <div class="topic reveal" style="--rd: 180ms">
+          <span class="topic-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V7H6a2 2 0 010-4h12v4M4 5v14a2 2 0 002 2h14v-5"/><path d="M18 12a2 2 0 000 4h4v-4z"/></svg></span>
+          <div>
+            <h4>Цены и акции</h4>
+            <p>Окупаются ли скидки, что происходит с маржой и где цена оставляет деньги на столе.</p>
+          </div>
+        </div>
+        <div class="topic reveal" style="--rd: 240ms">
+          <span class="topic-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8z"/></svg></span>
+          <div>
+            <h4>Каналы продвижения</h4>
+            <p>Какие каналы приводят покупателей, а какие расходуют бюджет впустую.</p>
+          </div>
+        </div>
+        <div class="topic reveal" style="--rd: 300ms">
+          <span class="topic-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+          <div>
+            <h4>Контент и коммуникация</h4>
+            <p>Насколько понятно вы объясняете ценность и превращаете интерес в продажу.</p>
+          </div>
+        </div>
+        <div class="topic reveal" style="--rd: 360ms">
+          <span class="topic-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+          <div>
+            <h4>Юнит-экономика</h4>
+            <p>Где утекает прибыль и как маркетинг влияет на реальный финансовый результат.</p>
+          </div>
+        </div>
+        <div class="topic reveal" style="--rd: 420ms">
+          <span class="topic-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></span>
+          <div>
+            <h4>План точек роста</h4>
+            <p>Приоритетные действия, которые быстрее всего увеличат выручку и прибыль.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 04 — ПРИМЕР РЕЗУЛЬТАТА ================= -->
+  <section class="sec sec--tint" id="report" aria-labelledby="report-title">
+    <div class="container">
+      <div class="sec-head sec-head--split">
+        <p class="eyebrow reveal"><b>04</b> · Пример результата</p>
+        <h2 class="sec-title reveal" id="report-title" style="--rd: 80ms">Вот так выглядит конкретика</h2>
         <div class="reveal" style="--rd: 140ms">
           <span class="strike">
             <span aria-hidden="true">✕</span>
@@ -1229,20 +1309,107 @@
         </ul>
       </div>
 
-      <div class="pains-cta reveal">
+      <div class="block-cta reveal">
         <button class="btn btn-primary" data-modal="report">Скачать пример отчёта</button>
       </div>
     </div>
   </section>
 
-  <!-- =======================================================================
-       04 — ПРОЦЕСС
-       ======================================================================= -->
-  <section class="sec--cream" aria-labelledby="process-title">
+  <!-- ================= ЦИТАТА-ПЕРЕДЫШКА ================= -->
+  <section class="sec breather">
+    <div class="container">
+      <p class="reveal">
+        Проблема почти никогда не в рекламе.<br>
+        <em>Она глубже.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= 05 — ЭКОНОМИКА РАЗБОРА ================= -->
+  <section class="sec sec--dark" aria-labelledby="econ-title">
     <div class="container">
       <div class="sec-head">
-        <p class="eyebrow reveal"><b>04</b> · Процесс</p>
-        <h2 class="display reveal" id="process-title" style="--rd: 80ms">Как устроена работа</h2>
+        <p class="eyebrow reveal"><b>05</b> · Экономика разбора</p>
+        <h2 class="sec-title reveal" id="econ-title" style="--rd: 80ms">Разбор — это вложение, а не расход</h2>
+        <p class="reveal" style="--rd: 140ms">
+          Он не добавляет расходов, а показывает, где они уже происходят,
+          и переводит тот же бюджет в прибыль.
+        </p>
+      </div>
+
+      <div class="charts">
+        <div class="chart-card reveal">
+          <p class="chart-label">Демо-бизнес: потери за год против цены разбора</p>
+
+          <div class="cmp-row">
+            <p class="cmp-name">Недополученная прибыль при текущей системе</p>
+            <div class="cmp-bar"><div class="cmp-fill cmp-fill--loss">8,0–10,1 млн&nbsp;₽</div></div>
+          </div>
+
+          <div class="cmp-row">
+            <p class="cmp-name">«Карта роста» — единоразово</p>
+            <div class="cmp-bar">
+              <div class="cmp-fill cmp-fill--cost"></div>
+              <span class="cmp-out">245 000&nbsp;₽</span>
+            </div>
+          </div>
+
+          <p class="cmp-conclusion">
+            Разбор окупается, если сработает <b>примерно 3%</b> плана: 245 000 ₽ — это 3,0%
+            от нижней границы годовых потерь. Остальные 97% — то, ради чего он и делается.
+          </p>
+        </div>
+
+        <div class="chart-card reveal" style="--rd: 100ms">
+          <p class="chart-label">Выручка демо-бизнеса за 12 месяцев</p>
+          <svg class="chart-svg" viewBox="0 0 620 300" role="img"
+               aria-label="Три траектории выручки за 12 месяцев: без плана — медленное снижение, после разбора — рост, с сопровождением — рост сильнее">
+            <!-- Сетка -->
+            <line x1="90" y1="90"  x2="470" y2="90"  stroke="#E4E6EE" stroke-width="1" stroke-dasharray="4 5"/>
+            <line x1="90" y1="190" x2="470" y2="190" stroke="#E4E6EE" stroke-width="1" stroke-dasharray="4 5"/>
+            <text x="80" y="94"  text-anchor="end" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">Выше</text>
+            <text x="80" y="194" text-anchor="end" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">Сейчас</text>
+
+            <!-- Линии. Три разных тона: две почти одинаковые синие на англоязычной
+                 версии не различаются, и подпись там лежит прямо на кривой. -->
+            <path d="M90 190 C 200 196, 350 210, 470 216" fill="none" stroke="#D94A4A" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"/>
+            <path d="M90 190 C 210 186, 350 152, 470 118" fill="none" stroke="#4166F5" stroke-width="3" stroke-linecap="round"/>
+            <path d="M90 190 C 220 180, 350 128, 470 68"  fill="none" stroke="#0EA5A5" stroke-width="3" stroke-linecap="round"/>
+
+            <circle cx="470" cy="216" r="4" fill="#D94A4A"/>
+            <circle cx="470" cy="118" r="4" fill="#4166F5"/>
+            <circle cx="470" cy="68"  r="4" fill="#0EA5A5"/>
+
+            <!-- Подписи справа от точек, а не на кривых -->
+            <text x="484" y="220" font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#D94A4A">Без плана</text>
+            <text x="484" y="122" font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#4166F5">Карта роста</text>
+            <text x="484" y="72"  font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#0EA5A5">Сопровождение</text>
+
+            <!-- Ось X -->
+            <text x="90"  y="248" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">Старт</text>
+            <text x="185" y="248" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">3 мес</text>
+            <text x="280" y="248" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">6 мес</text>
+            <text x="375" y="248" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">9 мес</text>
+            <text x="470" y="248" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">12 мес</text>
+          </svg>
+        </div>
+      </div>
+
+      <p class="compare-note reveal">
+        <b>Для сравнения, ориентиры рынка:</b> штатный маркетолог — 120–250 тыс. ₽ в месяц
+        плюс налоги и взносы; агентство — 150–400 тыс. ₽ за проект; часовая консультация —
+        8–15 тыс. ₽ и без документа на выходе. Цифры демо-бизнеса условные и приведены
+        как пример расчёта.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= 06 — ПРОЦЕСС ================= -->
+  <section class="sec sec--tint" aria-labelledby="process-title">
+    <div class="container">
+      <div class="sec-head">
+        <p class="eyebrow reveal"><b>06</b> · Процесс</p>
+        <h2 class="sec-title reveal" id="process-title" style="--rd: 80ms">Как устроена работа</h2>
       </div>
 
       <ol class="steps">
@@ -1256,7 +1423,7 @@
           <div class="step-dot" aria-hidden="true"></div>
           <p class="step-n">Шаг 02</p>
           <p class="step-name">Анализ</p>
-          <p>Я разбираю продажи, клиентов, продукт и каналы и считаю, где теряются деньги.</p>
+          <p>Разбираю продажи, клиентов, продукт и каналы и считаю, где теряются деньги.</p>
         </li>
         <li class="step reveal" style="--rd: 140ms">
           <div class="step-dot" aria-hidden="true"></div>
@@ -1268,7 +1435,7 @@
           <div class="step-dot" aria-hidden="true"></div>
           <p class="step-n">Шаг 04</p>
           <p class="step-name">Разбор</p>
-          <p>Проходим отчёт на звонке: отвечаю на вопросы и уточняю приоритеты под вашу команду.</p>
+          <p>Проходим отчёт на звонке: отвечаю на вопросы и уточняю приоритеты под команду.</p>
         </li>
         <li class="step reveal" style="--rd: 280ms">
           <div class="step-dot" aria-hidden="true"></div>
@@ -1280,17 +1447,16 @@
     </div>
   </section>
 
-  <!-- =======================================================================
-       05 — ОБО МНЕ
-       ======================================================================= -->
-  <section class="about on-orange" id="about" aria-labelledby="about-title">
-    <div class="container about-grid">
-      <div>
-        <p class="eyebrow reveal"><b>05</b> · Обо мне</p>
-        <h2 class="display reveal" id="about-title" style="--rd: 80ms">
-          Кто стоит за <span class="brand">Dwelve.</span>
-        </h2>
-        <div class="about-text reveal" style="--rd: 140ms">
+  <!-- ================= 07 — ОБО МНЕ ================= -->
+  <section class="sec sec--blue" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="sec-head">
+        <p class="eyebrow reveal"><b>07</b> · Обо мне</p>
+        <h2 class="sec-title reveal" id="about-title" style="--rd: 80ms">Кто стоит за Dwelve</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card reveal">
           <p class="about-lead">
             <b>Маркетинг — это не просто реклама, распродажа и соцсети.</b>
             Это комплексная система, которая должна приносить бизнесу деньги.
@@ -1310,29 +1476,25 @@
             что именно нужно изменить и как понять в цифрах, что это изменение сработало.
           </p>
         </div>
-      </div>
 
-      <div class="reveal" style="--rd: 200ms">
-        <figure class="polaroid">
-          <img src="photos/photo_2026-02-19_16-18-48.jpg" alt="Дарья Подгорная, основатель Dwelve" width="340" height="425" loading="lazy">
-          <figcaption class="polaroid-cap">Дарья</figcaption>
-          <div class="polaroid-badge" aria-hidden="true">
-            <b>12+</b><span>лет опыта</span>
-          </div>
-        </figure>
+        <div class="reveal" style="--rd: 140ms">
+          <figure class="polaroid">
+            <img src="photos/photo_2026-02-19_16-18-48.jpg" alt="Дарья Подгорная, основатель Dwelve" width="320" height="400" loading="lazy">
+            <figcaption class="polaroid-cap">Дарья</figcaption>
+            <div class="polaroid-badge" aria-hidden="true"><b>12+</b><span>лет опыта</span></div>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- =======================================================================
-       06 — FAQ
-       ======================================================================= -->
-  <section class="sec--cream" id="faq" aria-labelledby="faq-title">
+  <!-- ================= 08 — FAQ ================= -->
+  <section class="sec sec--tint" id="faq" aria-labelledby="faq-title">
     <div class="container faq-grid">
       <div>
-        <p class="eyebrow reveal"><b>06</b> · Частые вопросы</p>
-        <h2 class="display reveal" id="faq-title" style="--rd: 80ms">До старта всё должно быть понятно.</h2>
-        <p class="accent-line reveal" style="--rd: 140ms; font-size: var(--text-lead); margin-top: var(--sp-md)">
+        <p class="eyebrow reveal"><b>08</b> · Частые вопросы</p>
+        <h2 class="sec-title reveal" id="faq-title" style="--rd: 80ms; margin-top: var(--sp-md)">До старта всё должно быть понятно</h2>
+        <p class="accent-line reveal" style="--rd: 140ms; font-size: var(--text-lead); margin-top: var(--sp-lg)">
           Без мелкого шрифта и сюрпризов.
         </p>
       </div>
@@ -1415,14 +1577,12 @@
     </div>
   </section>
 
-  <!-- =======================================================================
-       07 — БЛОГ
-       ======================================================================= -->
-  <section class="sec--cream2" id="blog" aria-labelledby="blog-title">
+  <!-- ================= 09 — БЛОГ ================= -->
+  <section class="sec" id="blog" aria-labelledby="blog-title">
     <div class="container">
       <div class="sec-head sec-head--split">
-        <p class="eyebrow reveal"><b>07</b> · Блог</p>
-        <h2 class="display reveal" id="blog-title" style="--rd: 80ms">Полезные материалы</h2>
+        <p class="eyebrow reveal"><b>09</b> · Блог</p>
+        <h2 class="sec-title reveal" id="blog-title" style="--rd: 80ms">Полезные материалы</h2>
         <p class="reveal" style="--rd: 140ms">
           О продажах, клиентах, продукте, цене и рекламе — на языке собственника.
         </p>
@@ -1451,15 +1611,14 @@
     </div>
   </section>
 
-  <!-- =======================================================================
-       08 — ФОРМА
-       ======================================================================= -->
-  <section class="contact on-dark" id="contact" aria-labelledby="contact-title">
+  <!-- ================= 10 — ФОРМА ================= -->
+  <section class="sec sec--dark contact" id="contact" aria-labelledby="contact-title">
     <div class="container contact-grid">
       <div class="reveal">
-        <p class="eyebrow"><b>08</b> · Обсудить задачу</p>
-        <h2 class="display" id="contact-title" style="margin-top: var(--sp-md)">
-          Пока вы не знаете, где теряете деньги, <span class="hl">запуск рекламы и акций не решит проблему.</span>
+        <p class="eyebrow"><b>10</b> · Обсудить задачу</p>
+        <h2 id="contact-title" style="margin-top: var(--sp-md)">
+          Пока вы не знаете, где теряете деньги,
+          <span class="hl">запуск рекламы не решит проблему.</span>
         </h2>
         <p class="accent-line">Расскажите, что происходит. Я отвечу лично.</p>
         <p style="color: rgba(255,255,255,.72)">
@@ -1488,7 +1647,7 @@
           </div>
           <div class="field">
             <label for="f-company">Компания и сфера <span class="opt">— необязательно</span></label>
-            <input type="text" id="f-company" name="company" placeholder="Например: клиника, онлайн-магазин, сервис" autocomplete="organization">
+            <input type="text" id="f-company" name="company" placeholder="Клиника, магазин, сервис" autocomplete="organization">
           </div>
         </div>
 
@@ -1530,9 +1689,7 @@
 
 </main>
 
-<!-- =========================================================================
-     ФУТЕР
-     ========================================================================= -->
+<!-- ================= ФУТЕР ================= -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -1584,16 +1741,14 @@
   </div>
 </footer>
 
-<!-- =========================================================================
-     КУКИ-БАННЕР
-     ========================================================================= -->
+<!-- ================= КУКИ-БАННЕР ================= -->
 <div class="cookie" id="cookie" role="region" aria-label="Использование cookie" hidden>
   <p>
     Сайт использует cookie, чтобы работать корректно и понимать, какие материалы полезны.
     Подробности — в <a href="documents.html#privacy">Политике обработки персональных данных</a>.
   </p>
   <div class="cookie-actions">
-    <button class="btn btn-outline btn-sm" id="cookie-decline" style="border-color: rgba(255,255,255,.28); color: #fff">Только необходимые</button>
+    <button class="btn btn-sm" id="cookie-decline" style="border: 1.5px solid rgba(255,255,255,.28); color: #fff">Только необходимые</button>
     <button class="btn btn-primary btn-sm" id="cookie-accept">Принять</button>
   </div>
 </div>
@@ -1619,7 +1774,6 @@
       <button class="modal-tab" role="tab" id="tab-pay" aria-selected="false" aria-controls="pane-pay">Оплатить онлайн</button>
     </div>
 
-    <!-- Вопрос / заявка -->
     <form id="pane-ask" role="tabpanel" aria-labelledby="tab-ask" novalidate>
       <div class="field">
         <label for="m-name">Как вас зовут</label>
@@ -1649,12 +1803,9 @@
 
       <button type="submit" class="btn btn-primary btn-block" id="m-submit">Отправить</button>
       <p class="form-status" id="m-status" role="status" aria-live="polite"></p>
-      <p class="form-note" data-demo-note>
-        Демонстрационная версия формирует письмо в вашем почтовом приложении.
-      </p>
+      <p class="form-note" data-demo-note>Демонстрационная версия формирует письмо в вашем почтовом приложении.</p>
     </form>
 
-    <!-- Оплата -->
     <div id="pane-pay" role="tabpanel" aria-labelledby="tab-pay" hidden>
       <div class="pay-summary">
         <span class="pay-summary-name" id="pay-name">Карта роста</span>
@@ -1738,14 +1889,14 @@
   }, { passive: true });
 
   /* ---------------- Страницы отчёта ----------------
-     Разметка страниц собирается из данных, а не копируется трижды:
-     страница 1 нужна и в первом экране, и в карусели. Числа держатся
-     в одном месте — правка суммы не расходится между копиями. */
+     Разметка собирается из данных, а не копируется трижды: страница 1
+     нужна и в первом экране, и в карусели. Числа держатся в одном месте —
+     правка суммы не расходится между копиями. */
   var LEVERS = [
-    ['Остановить убыточные акции',            '+145–155 тыс. ₽'],
-    ['Пересобрать ассортимент и допродажи',   '+180–230 тыс. ₽'],
-    ['Вернуть клиентов на повторную покупку', '+160–200 тыс. ₽'],
-    ['Сместить фокус на более ценных клиентов','+140–180 тыс. ₽'],
+    ['Остановить убыточные акции',              '+145–155 тыс. ₽'],
+    ['Пересобрать ассортимент и допродажи',     '+180–230 тыс. ₽'],
+    ['Вернуть клиентов на повторную покупку',   '+160–200 тыс. ₽'],
+    ['Сместить фокус на более ценных клиентов', '+140–180 тыс. ₽'],
     ['Перераспределить тот же рекламный бюджет','+100–130 тыс. ₽']
   ];
   // Столбцы «финансового моста» — середины диапазонов выше; сумма за вычетом
@@ -1804,13 +1955,12 @@
 
   function docPage2() {
     // Шесть колонок на 620 px — заголовки и приоритеты держим короткими,
-    // иначе последняя колонка уезжает за край страницы, а .doc-page её
-    // молча обрезает по overflow: hidden.
+    // иначе последняя колонка уезжает за край, а .doc-page молча её срежет.
     var rows = [
-      ['Быстрый забег',   '34%', '1,6×',   '550 ₽', '3 500 ₽',  'Низкий', false],
-      ['Один посетитель', '22%', '2,4×',   '760 ₽', '10 900 ₽', 'Средний', false],
+      ['Быстрый забег',    '34%', '1,6×',   '550 ₽',  '3 500 ₽', 'Низкий', false],
+      ['Один посетитель',  '22%', '2,4×',   '760 ₽', '10 900 ₽', 'Средний', false],
       ['Встреча / общение','33%', '3,3×', '1 320 ₽', '39 200 ₽', 'Высокий', true],
-      ['Семья / выходные','11%', '2,8×', '1 850 ₽', '51 800 ₽', 'Макс.', true]
+      ['Семья / выходные', '11%', '2,8×', '1 850 ₽', '51 800 ₽', 'Макс.', true]
     ].map(function (r) {
       return '<tr' + (r[6] ? ' class="is-key"' : '') + '>' +
         r.slice(0, 6).map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>';
@@ -1834,11 +1984,11 @@
 
   function docPage3() {
     var rows = [
-      ['Латте',    '14,2%', 'Высокая', 'Защищать',       true],
-      ['Сэндвич',  '11,8%', 'Высокая', 'Масштабировать', true],
+      ['Латте',    '14,2%', 'Высокая', 'Защищать',             true],
+      ['Сэндвич',  '11,8%', 'Высокая', 'Масштабировать',       true],
       ['Круассан',  '9,4%', 'Средняя', 'Добавить в допродажу', false],
-      ['Салат',     '3,1%', 'Низкая',  'В сезонное меню', false],
-      ['Суп',       '2,4%', 'Низкая',  'Убрать',          false]
+      ['Салат',     '3,1%', 'Низкая',  'В сезонное меню',      false],
+      ['Суп',       '2,4%', 'Низкая',  'Убрать',               false]
     ].map(function (r) {
       return '<tr' + (r[4] ? ' class="is-key"' : '') + '>' +
         r.slice(0, 4).map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>';
@@ -1854,8 +2004,8 @@
     return docHead() +
       '<p class="doc-eyebrow">Разбор бизнеса · пример</p>' +
       '<h3 class="doc-title">Ассортимент: что усиливать, а что убрать</h3>' +
-      '<p class="doc-intro">6 сильных позиций дают 55% выручки. Ещё 9 занимают место ' +
-        'в меню и дают лишь 13,7% прибыли. Ниже — пять позиций из пятнадцати, по каждой ' +
+      '<p class="doc-intro">6 сильных позиций дают 55% выручки. Ещё 9 занимают место в меню ' +
+        'и дают лишь 13,7% прибыли. Ниже — пять позиций из пятнадцати, по каждой ' +
         'конкретное действие.</p>' +
       '<table class="doc-table"><thead><tr>' +
         '<th>Позиция</th><th>Доля выручки</th><th>Маржа</th><th>Действие</th>' +
@@ -1879,7 +2029,8 @@
     function step() {
       var first = rail.firstElementChild;
       if (!first) return rail.clientWidth;
-      var gap = parseFloat(getComputedStyle(rail).columnGap || getComputedStyle(rail).gap) || 16;
+      var cs = getComputedStyle(rail);
+      var gap = parseFloat(cs.columnGap || cs.gap) || 16;
       return first.getBoundingClientRect().width + gap;
     }
 
@@ -1997,9 +2148,7 @@
   $('#pay-to-ask').addEventListener('click', function () { selectTab('ask'); $('#m-name').focus(); });
 
   $$('[data-modal]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      openModal(b.dataset.modal, b.dataset.tier, b.dataset.price);
-    });
+    b.addEventListener('click', function () { openModal(b.dataset.modal, b.dataset.tier, b.dataset.price); });
   });
 
   $('#modal-close').addEventListener('click', closeModal);
@@ -2099,9 +2248,7 @@
     });
   }
 
-  wireForm($('#lead-form'), $('#lead-submit'), $('#lead-status'), function () {
-    return $('#f-tariff').value;
-  });
+  wireForm($('#lead-form'), $('#lead-submit'), $('#lead-status'), function () { return $('#f-tariff').value; });
   wireForm(paneAsk, $('#m-submit'), $('#m-status'), function () {
     return currentMode === 'report' ? 'Пример отчёта' : (currentTier || 'Вопрос с сайта');
   });
@@ -2132,6 +2279,10 @@
   function rememberCookie(v) {
     try { localStorage.setItem(COOKIE_KEY, v); } catch (e) { /* приватный режим — просто прячем */ }
   }
+  function hideCookie() {
+    cookie.classList.remove('is-shown');
+    setTimeout(function () { cookie.hidden = true; }, 440);
+  }
 
   if (!cookieChoice()) {
     cookie.hidden = false;
@@ -2139,10 +2290,6 @@
   }
   $('#cookie-accept').addEventListener('click', function () { rememberCookie('all'); hideCookie(); });
   $('#cookie-decline').addEventListener('click', function () { rememberCookie('necessary'); hideCookie(); });
-  function hideCookie() {
-    cookie.classList.remove('is-shown');
-    setTimeout(function () { cookie.hidden = true; }, 440);
-  }
 
   /* ---------------- Год ---------------- */
   $('#year').textContent = new Date().getFullYear();
