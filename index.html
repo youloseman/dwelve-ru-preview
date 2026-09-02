@@ -3,35 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dwelve — нахожу, где бизнес недополучает продажи</title>
-  <meta name="description" content="Разбираю маркетинг, продукт, продажи и работу с клиентами как единую систему. Показываю, где бизнес теряет деньги, что менять и какие показатели должны измениться. От 50 000 ₽.">
-  <meta name="keywords" content="аудит маркетинга, маркетинговый аудит, точки роста бизнеса, консультация по маркетингу, маркетинговая стратегия">
+  <title>Dwelve — нахожу, где бизнес теряет деньги</title>
+  <meta name="description" content="Разбор бизнеса для собственников: маркетинг, продукт, цены, продажи и клиентская база как единая система. Отчёт с точками роста, планом на 90 дней и расчётом денежного эффекта. От 50 000 ₽.">
+  <meta name="keywords" content="аудит маркетинга, разбор бизнеса, точки роста, маркетинговый консультант, план роста, unit-экономика">
   <link rel="canonical" href="https://dwelve.ru/">
 
-  <!-- Open Graph / Twitter.
-       og:image намеренно НЕ подключён: канадская карточка (og-image.png в корне
-       репозитория) сверстана на английском, и русской аудитории показывать её хуже,
-       чем не показывать ничего. Раскомментировать после того, как tools/build-og.mjs
-       отрисует русский вариант в ru/og-image.png. -->
   <meta property="og:site_name" content="Dwelve">
-  <meta property="og:title" content="Dwelve — нахожу, где бизнес недополучает продажи">
-  <meta property="og:description" content="Аудит маркетинга, продукта и продаж как единой системы. Отчёт с точками роста, планом действий и расчётом, сколько можно заработать.">
+  <meta property="og:title" content="Dwelve — нахожу, где бизнес теряет деньги">
+  <meta property="og:description" content="Разбираю маркетинг, продукт, цены, продажи и клиентскую базу как единую систему. Каждую проблему связываю с деньгами.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:url" content="https://dwelve.ru/">
-  <!--
-  <meta property="og:image" content="https://dwelve.ru/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://dwelve.ru/og-image.png">
-  -->
+  <!-- og:image подключается после того, как tools/build-og.mjs отрисует русскую
+       карточку в ru/og-image.png. Канадская сверстана на английском — русской
+       аудитории показывать её хуже, чем не показывать ничего. -->
 
-  <!-- Шрифты. Playfair Display общий с dwelve.ca и поддерживает кириллицу;
-       Manrope и JetBrains Mono заменяют DM Sans и DM Mono, у которых кириллицы нет. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'%3E%3Cg transform='translate(100,100)'%3E%3Ccircle cx='0' cy='-65' r='8' fill='%231A1A2E'/%3E%3Ccircle cx='32.5' cy='-56.29' r='11' fill='%23FF7518'/%3E%3Ccircle cx='56.29' cy='-32.5' r='5' fill='%231A1A2E'/%3E%3Ccircle cx='65' cy='0' r='4.5' fill='%231A1A2E'/%3E%3Ccircle cx='56.29' cy='32.5' r='4' fill='%231A1A2E'/%3E%3Ccircle cx='32.5' cy='56.29' r='3.5' fill='%231A1A2E'/%3E%3Ccircle cx='0' cy='65' r='3' fill='%231A1A2E'/%3E%3Ccircle cx='-32.5' cy='56.29' r='2.8' fill='%231A1A2E'/%3E%3Ccircle cx='-56.29' cy='32.5' r='2.8' fill='%231A1A2E'/%3E%3Ccircle cx='-65' cy='0' r='3.8' fill='%231A1A2E'/%3E%3Ccircle cx='-56.29' cy='-32.5' r='5' fill='%231A1A2E'/%3E%3Ccircle cx='-32.5' cy='-56.29' r='6.5' fill='%231A1A2E'/%3E%3C/g%3E%3C/svg%3E">
 
@@ -40,11 +29,12 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Dwelve",
-    "description": "Аудит маркетинга, продукта и продаж для бизнеса: точки роста, план действий и расчёт денежного эффекта",
+    "description": "Разбор бизнеса для собственников: где бизнес теряет деньги, что менять и какой результат это даст в цифрах",
     "url": "https://dwelve.ru",
     "areaServed": "RU",
-    "priceRange": "50000 ₽ - 197000 ₽",
+    "priceRange": "50000 ₽ - 245000 ₽",
     "inLanguage": "ru",
+    "email": "hello@dwelve.ru",
     "founder": { "@type": "Person", "name": "Дарья Подгорная" }
   }
   </script>
@@ -53,1942 +43,2111 @@
 
   <style>
     /* =========================================================================
-       КОМПОНЕНТЫ
-       Токены, сброс и базовая типографика живут в theme.css.
+       КОМПОНЕНТЫ. Токены, базовая типографика и компонент страницы отчёта —
+       в theme.css.
        ========================================================================= */
-
-    /* Зернистая плёнка поверх всей страницы — общий приём с канадской версией. */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    }
 
     .container {
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 var(--space-lg);
+      padding: 0 var(--sp-lg);
     }
 
-    section {
-      position: relative;
-      z-index: 2;
-      padding: var(--space-3xl) 0;
-    }
+    section { position: relative; padding: var(--sp-3xl) 0; }
+    .sec--cream  { background: var(--cream); }
+    .sec--cream2 { background: var(--cream-2); }
+    .sec--white  { background: var(--white); }
 
-    .section-num {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-text-light);
-      margin-bottom: var(--space-sm);
-    }
+    .sec-head { margin-bottom: var(--sp-2xl); }
+    .sec-head .eyebrow { margin-bottom: var(--sp-md); }
+    .sec-head h2 { margin-bottom: var(--sp-md); }
+    .sec-head p  { color: var(--ink-2); }
 
-    /* Акцентная черта под H2 — общая с канадской версией. */
-    .section-title {
-      position: relative;
-      padding-bottom: var(--space-md);
-      margin-bottom: var(--space-xl);
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 48px;
-      height: 3px;
-      background: var(--color-primary);
-      border-radius: var(--radius-full);
+    /* Заголовок и вводный абзац рядом: заголовок крупный, абзац висит
+       справа на его базовой линии — приём из макетов. */
+    @media (min-width: 900px) {
+      .sec-head--split {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: var(--sp-2xl);
+        align-items: end;
+      }
+      .sec-head--split .eyebrow { grid-column: 1 / -1; }
+      .sec-head--split p { padding-bottom: var(--sp-sm); }
     }
 
     /* ==============================
        КНОПКИ
+       Синий = действие. На тёмной и оранжевой подложке действие
+       становится белым. Оранжевый кнопкой не бывает — см. theme.css.
        ============================== */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-sm);
-      padding: 14px var(--space-lg);
-      border-radius: var(--radius-md);
-      font-weight: 600;
-      font-size: var(--text-body);
-      line-height: 1.2;
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: var(--sp-sm);
+      padding: 15px var(--sp-lg);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       text-align: center;
-      transition: transform var(--dur-fast) var(--ease-out),
-                  box-shadow var(--dur-base) var(--ease-out),
-                  background-color var(--dur-base) var(--ease-out),
-                  border-color var(--dur-base) var(--ease-out);
+      line-height: 1.2;
+      transition: transform var(--dur-fast) var(--ease),
+                  background-color var(--dur) var(--ease),
+                  border-color var(--dur) var(--ease),
+                  color var(--dur) var(--ease),
+                  box-shadow var(--dur) var(--ease);
     }
+    .btn:active { transform: scale(.975); }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
 
-    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-primary:hover:not(:disabled) { background: var(--blue-hover); box-shadow: 0 8px 24px rgba(65,102,245,.28); }
 
-    .btn-primary {
-      background: var(--color-cta);
-      color: var(--color-white);
-    }
+    .btn-outline { border: 1.5px solid var(--line); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
 
-    .btn-primary:hover {
-      background: var(--color-cta-hover);
-      box-shadow: var(--shadow-blue);
-    }
+    .btn-light { background: var(--white); color: var(--blue-deep); }
+    .btn-light:hover { background: var(--cream); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
 
-    .btn-accent {
-      background: var(--color-primary);
-      color: var(--color-white);
-    }
-
-    .btn-accent:hover {
-      background: var(--color-primary-light);
-      box-shadow: var(--shadow-orange);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--color-text);
-      border: 1px solid var(--color-border);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--color-cta);
-      color: var(--color-cta);
-    }
+    .btn-ghost-light { border: 1.5px solid var(--line-light); color: var(--white); }
+    .btn-ghost-light:hover { border-color: var(--white); background: rgba(255,255,255,.08); }
 
     .btn-block { width: 100%; }
+    .btn-sm { padding: 11px 18px; font-size: var(--text-micro); }
 
     /* ==============================
-       НАВИГАЦИЯ
+       ШАПКА
        ============================== */
     .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250, 248, 243, .85);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid transparent;
-      transition: border-color var(--dur-base) var(--ease-out),
-                  box-shadow var(--dur-base) var(--ease-out);
+      transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
     }
-
-    .nav.is-scrolled {
-      border-bottom-color: var(--color-border);
-      box-shadow: var(--shadow-sm);
-    }
+    .nav.is-scrolled { border-bottom-color: var(--line); box-shadow: var(--shadow-sm); }
 
     .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-lg);
-      height: 76px;
-      transition: height var(--dur-base) var(--ease-out);
+      display: flex; align-items: center; gap: var(--sp-lg);
+      height: 78px;
+      transition: height var(--dur) var(--ease);
     }
-
     .nav.is-scrolled .nav-inner { height: 64px; }
 
     .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.35rem;
-      letter-spacing: -0.02em;
-      flex-shrink: 0;
+      display: flex; align-items: center; gap: 9px;
+      font-family: var(--font-accent);
+      font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em;
+      flex: none;
     }
+    .nav-logo svg { width: 27px; height: 27px; transition: transform var(--dur-slow) var(--ease); }
+    .nav-logo:hover svg { transform: rotate(30deg); }
 
-    .nav-links {
-      display: none;
-      align-items: center;
-      gap: var(--space-lg);
-    }
-
+    .nav-links { display: none; align-items: center; gap: var(--sp-lg); margin-left: auto; }
     .nav-links a {
       position: relative;
-      font-size: var(--text-small);
-      font-weight: 500;
-      color: var(--color-text-muted);
-      padding: var(--space-xs) 0;
-      transition: color var(--dur-base) var(--ease-out);
+      font-size: var(--text-micro); font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-2);
+      padding: 6px 0;
+      transition: color var(--dur) var(--ease);
     }
-
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--color-primary);
-      border-radius: var(--radius-full);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 200ms var(--ease-out);
+      content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
+      background: var(--orange); border-radius: var(--radius-pill);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 200ms var(--ease);
     }
-
-    .nav-links a:hover { color: var(--color-text); }
+    .nav-links a:hover { color: var(--ink); }
     .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-mail {
+      display: none;
+      font-family: var(--font-mono); font-size: var(--text-caption);
+      color: var(--ink-2);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+      transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .nav-mail:hover { color: var(--blue); border-color: var(--blue); }
 
     .nav-cta { display: none; }
 
     .nav-burger {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 44px;
-      height: 44px;
-      padding: 10px;
-      margin-right: -10px;
+      display: flex; flex-direction: column; justify-content: center; gap: 5px;
+      width: 44px; height: 44px; padding: 10px; margin-left: auto; margin-right: -10px;
     }
-
     .nav-burger span {
-      display: block;
-      height: 2px;
-      background: var(--color-text);
-      border-radius: var(--radius-full);
-      transition: transform var(--dur-base) var(--ease-out),
-                  opacity var(--dur-fast) var(--ease-out);
+      display: block; height: 2px; background: var(--ink); border-radius: var(--radius-pill);
+      transition: transform var(--dur) var(--ease), opacity var(--dur-fast) var(--ease);
     }
-
     .nav-burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-burger.is-open span:nth-child(2) { opacity: 0; }
     .nav-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     .nav-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 99;
-      background: rgba(26, 26, 46, 0.45);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity var(--dur-base) var(--ease-out), visibility var(--dur-base);
+      position: fixed; inset: 0; z-index: 99;
+      background: rgba(26,26,46,.5);
+      opacity: 0; visibility: hidden;
+      transition: opacity var(--dur) var(--ease), visibility var(--dur);
     }
-
     .nav-overlay.is-open { opacity: 1; visibility: visible; }
 
     .nav-drawer {
-      position: fixed;
-      top: 0;
-      right: 0;
-      z-index: 101;
-      width: min(320px, 84vw);
-      height: 100dvh;
-      padding: var(--space-xl) var(--space-lg);
-      background: var(--color-white);
+      position: fixed; top: 0; right: 0; z-index: 101;
+      width: min(330px, 86vw); height: 100dvh;
+      padding: var(--sp-xl) var(--sp-lg);
+      background: var(--cream);
       box-shadow: var(--shadow-xl);
+      display: flex; flex-direction: column; gap: var(--sp-sm);
       transform: translateX(100%);
-      /* Скрытая шторка обязана быть visibility: hidden, а не просто уехавшей за
-         край: иначе она удлиняет документ по горизонтали и её ссылки остаются
-         достижимы по Tab при закрытом меню. Переход visibility дискретный —
-         элемент доживает видимым до конца выездной анимации. */
       visibility: hidden;
-      transition: transform 300ms var(--ease-out), visibility 300ms;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
+      transition: transform 300ms var(--ease), visibility 300ms;
     }
-
-    .nav-drawer.is-open {
-      transform: translateX(0);
-      visibility: visible;
+    .nav-drawer.is-open { transform: none; visibility: visible; }
+    .nav-drawer a:not(.btn) {
+      padding: var(--sp-md) 0;
+      font-size: var(--text-caption); font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border-bottom: 1px solid var(--line-soft);
     }
-
-    .nav-drawer a {
-      padding: var(--space-md) 0;
-      font-size: 1.0625rem;
-      font-weight: 500;
-      border-bottom: 1px solid var(--color-border-light);
+    .nav-drawer .btn { margin-top: var(--sp-md); }
+    .nav-drawer .nav-drawer-mail {
+      margin-top: auto; font-family: var(--font-mono); font-size: var(--text-caption);
+      color: var(--ink-2); text-transform: none; letter-spacing: 0; border: 0;
     }
-
-    .nav-drawer .btn { margin-top: var(--space-md); }
 
     /* ==============================
-       БЛОК 1 — ХИРО
+       ПЕРВЫЙ ЭКРАН
        ============================== */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: var(--space-3xl) 0 var(--space-2xl);
-    }
+    .hero { padding: var(--sp-3xl) 0 var(--sp-4xl); overflow: hidden; }
+    .hero-grid { display: grid; gap: var(--sp-2xl); align-items: center; }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      right: -10%;
-      width: 640px;
-      height: 640px;
-      border-radius: 50%;
-      background: radial-gradient(circle,
-                  rgba(255, 117, 24, 0.13) 0%,
-                  rgba(65, 102, 245, 0.07) 45%,
-                  transparent 70%);
-      pointer-events: none;
-      animation: glow 8s ease-in-out infinite;
-    }
-
-    @keyframes glow {
-      0%, 100% { transform: scale(1);    opacity: 0.5; }
-      50%      { transform: scale(1.06); opacity: 0.75; }
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 860px;
-    }
-
-    .hero h1 { margin-bottom: var(--space-lg); }
-
-    .hero h1 .accent {
-      background: linear-gradient(180deg, transparent 62%, rgba(255, 117, 24, 0.28) 62%);
-    }
+    .hero h1 { margin: var(--sp-md) 0 var(--sp-lg); }
 
     .hero-sub {
-      font-size: 1.0625rem;
-      color: var(--color-text-muted);
-      max-width: var(--max-text);
-      margin-bottom: var(--space-xl);
+      font-size: var(--text-lead);
+      color: var(--ink-2);
+      margin-bottom: var(--sp-xl);
+      max-width: 620px;
     }
+    .hero-sub b { color: var(--ink); font-weight: 800; }
+    .hero-sub i { font-family: var(--font-accent); font-style: italic; }
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-      margin-bottom: var(--space-xl);
-    }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: var(--sp-md); margin-bottom: var(--sp-xl); }
 
-    /* Строка доверия. Разделители — псевдоэлементы, чтобы при переносе
-       на мобильном не оставалось висящей точки в начале строки. */
     .hero-proof {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm) var(--space-md);
-      font-size: var(--text-small);
-      color: var(--color-text-light);
+      display: flex; flex-wrap: wrap; gap: var(--sp-sm) var(--sp-md);
+      padding-top: var(--sp-lg);
+      border-top: 1px solid var(--line);
+      font-size: var(--text-caption); color: var(--ink-3);
     }
-
-    .hero-proof li {
-      display: flex;
-      align-items: center;
-      gap: var(--space-md);
-    }
-
+    .hero-proof li { display: flex; align-items: center; gap: var(--sp-md); }
     .hero-proof li:not(:last-child)::after {
-      content: '';
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      opacity: 0.6;
+      content: ''; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--orange); opacity: .7;
     }
+
+    /* Мокап отчёта. Обрезается по правому краю — документ «уходит» за
+       границу экрана, что даёт ощущение объёма без коллажа. */
+    .hero-doc { position: relative; display: none; }
+    .hero-doc .doc-page { --doc-scale: .92; transform: rotate(-1.2deg); }
+    .hero-doc::before {
+      content: ''; position: absolute; z-index: -1;
+      inset: -14% -18% -10% -12%;
+      background: radial-gradient(circle at 60% 40%, rgba(255,117,24,.16) 0%, rgba(65,102,245,.10) 42%, transparent 70%);
+    }
+
+    /* Бейдж свешивается с нижнего угла документа: любое положение внутри
+       страницы закрывает содержательный блок — заголовок, вывод, рычаги или
+       график, — а ради них документ и показан. */
+    .hero-badge {
+      position: absolute; bottom: -5%; left: -7%;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-xl);
+      padding: var(--sp-md) var(--sp-lg);
+      transform: rotate(-2.5deg);
+    }
+    .hero-badge-v {
+      font-family: var(--font-accent); font-weight: 700; font-size: 1.5rem;
+      line-height: 1.1; white-space: nowrap;
+    }
+    .hero-badge-l { font-size: var(--text-caption); color: var(--ink-3); margin-top: 2px; }
 
     /* ==============================
-       БЛОК 2 — БОЛИ И ЦЕННОСТЬ
+       01 — КОМУ ПОДХОДИТ
        ============================== */
-    .pains { background: var(--color-base-dark); }
-
-    .pains-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-md);
-      margin-bottom: var(--space-3xl);
+    .stamp {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: var(--text-micro); font-weight: 800;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      line-height: 1.4;
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      transform: rotate(-2deg);
+      max-width: 320px;
     }
+
+    /* Карусель. Одна механика на два блока: горизонтальный скролл со
+       snap плюс кнопки. На узком экране кнопки прячутся — там пальцем. */
+    .rail-wrap { position: relative; }
+    .rail {
+      display: flex; gap: var(--sp-md);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: var(--sp-sm);
+      scrollbar-width: none;
+    }
+    .rail::-webkit-scrollbar { display: none; }
+    .rail > * { scroll-snap-align: start; flex: none; }
+
+    .rail-btn {
+      position: absolute; top: 50%; z-index: 5;
+      width: 48px; height: 48px; border-radius: 50%;
+      display: none; place-items: center;
+      background: var(--white); color: var(--ink);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-50%);
+      transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), opacity var(--dur) var(--ease);
+    }
+    .rail-btn:hover { background: var(--blue); color: var(--white); }
+    .rail-btn[disabled] { opacity: .28; cursor: default; }
+    .rail-btn[disabled]:hover { background: var(--white); color: var(--ink); }
+    .rail-btn--prev { left: -22px; }
+    .rail-btn--next { right: -22px; }
+    @media (min-width: 900px) { .rail-btn { display: grid; } }
 
     .pain {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-md);
-      padding: var(--space-lg);
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
+      width: min(320px, 78vw);
+      background: var(--white);
+      border: 1px solid var(--line-soft);
       border-radius: var(--radius-lg);
-      font-weight: 500;
+      padding: var(--sp-lg);
       box-shadow: var(--shadow-sm);
-      transition: transform var(--dur-base) var(--ease-out),
-                  box-shadow var(--dur-base) var(--ease-out),
-                  border-color var(--dur-base) var(--ease-out);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
     }
-
-    .pain:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(255, 107, 107, 0.4);
+    .pain:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .pain-n {
+      display: inline-grid; place-items: center;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--blue-deep); color: var(--white);
+      font-family: var(--font-mono); font-size: var(--text-micro);
+      margin-bottom: var(--sp-md);
     }
+    .pain h3 { margin-bottom: var(--sp-sm); }
+    .pain p { font-size: var(--text-small); color: var(--ink-2); }
 
-    .pain-mark {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      margin-top: 2px;
-      border-radius: 50%;
-      background: var(--color-coral-pale);
-      color: var(--color-coral);
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 22px;
-      text-align: center;
-    }
-
-    /* Ценность: «вода» против денег */
-    .value {
-      max-width: 880px;
-      padding: var(--space-xl);
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-top: 3px solid var(--color-cta);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-md);
-    }
-
-    .value > p { margin-bottom: var(--space-lg); }
-    .value > p:last-child { margin-bottom: 0; }
-
-    .compare {
-      display: grid;
-      gap: var(--space-md);
-      margin-bottom: var(--space-lg);
-      padding: var(--space-lg);
-      background: var(--color-base-dark);
-      border-radius: var(--radius-lg);
-    }
-
-    .compare-row {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-md);
-      font-size: var(--text-small);
-    }
-
-    .compare-mark {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 20px;
-      text-align: center;
-    }
-
-    .compare-row--no .compare-mark { background: var(--color-coral-pale); color: var(--color-coral); }
-    .compare-row--no  { color: var(--color-text-light); text-decoration: line-through; text-decoration-color: rgba(138,138,154,0.5); }
-    .compare-row--yes .compare-mark { background: var(--color-teal-pale); color: var(--color-teal); }
-    .compare-row--yes { color: var(--color-text); font-weight: 600; }
-
-    .compare-arrow {
-      justify-self: start;
-      margin-left: 36px;
-      width: 40px;
-      height: 2px;
-      background: var(--color-primary);
-      border-radius: var(--radius-full);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 400ms var(--ease-out) 150ms;
-    }
-
-    .is-visible .compare-arrow { transform: scaleX(1); }
+    .pains-cta { margin-top: var(--sp-2xl); }
 
     /* ==============================
-       БЛОК 3 — ТАРИФЫ
+       02 — УСЛУГИ И ЦЕНЫ
        ============================== */
-    .pricing-grid {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-lg);
-    }
+    .tiers { display: grid; gap: var(--sp-lg); align-items: stretch; }
 
-    .pricing-labels { display: none; }
-
-    .pricing-col {
-      display: flex;
-      flex-direction: column;
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
+    .tier {
+      display: flex; flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--line-soft);
       border-radius: var(--radius-xl);
-      overflow: hidden;
+      padding: var(--sp-xl);
       box-shadow: var(--shadow-sm);
     }
-
-    .pricing-col--featured {
-      border-color: var(--color-cta);
-      box-shadow: var(--shadow-lg);
+    .tier--featured {
+      background: var(--blue-deep);
+      color: rgba(255,255,255,.82);
+      border-color: var(--blue-deep);
+      box-shadow: var(--shadow-xl);
     }
 
-    .pricing-cell {
-      padding: var(--space-md) var(--space-lg);
-      font-size: var(--text-small);
-      color: var(--color-text-muted);
-      border-bottom: 1px solid var(--color-border-light);
+    .tier-top { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-md); margin-bottom: var(--sp-lg); }
+    .tier-idx { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+    .tier--featured .tier-idx { color: rgba(255,255,255,.55); }
+
+    .tier-tag {
+      font-size: var(--text-micro); font-weight: 800;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: var(--radius-pill);
+      background: var(--blue-pale); color: var(--blue-dark);
+      white-space: nowrap;
     }
+    .tier--featured .tier-tag { background: var(--orange); color: var(--white); }
 
-    .pricing-cell:last-child { border-bottom: none; }
+    /* Название тарифа — самое крупное в карточке: по ТЗ слоганы сняты,
+       вес перешёл на имя формата. */
+    .tier-name {
+      font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+      font-size: clamp(1.75rem, 1.3rem + 1.7vw, 2.5rem);
+      line-height: .98; letter-spacing: .005em;
+      margin-bottom: var(--sp-md);
+    }
+    .tier--featured .tier-name { color: var(--white); }
 
-    .pricing-cell-label {
-      display: block;
-      margin-bottom: var(--space-xs);
-      font-family: var(--font-mono);
+    .tier-for { font-size: var(--text-small); color: var(--ink-2); margin-bottom: var(--sp-lg); }
+    .tier--featured .tier-for { color: rgba(255,255,255,.72); }
+
+    .tier-price {
+      display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
+      font-family: var(--font-display); font-weight: 500;
+      font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.25rem);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: var(--sp-lg);
+      padding-bottom: var(--sp-lg);
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .tier--featured .tier-price { color: var(--white); border-bottom-color: var(--line-light); }
+    .tier-price-cur { font-size: .42em; font-weight: 500; color: var(--ink-3); }
+    .tier--featured .tier-price-cur { color: rgba(255,255,255,.6); }
+
+    .tier-list-label {
+      font-family: var(--font-mono); font-size: var(--text-micro);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: var(--sp-md);
+    }
+    .tier--featured .tier-list-label { color: var(--orange); }
+
+    .tier-list { display: grid; gap: 10px; margin-bottom: var(--sp-lg); }
+    .tier-list li { display: flex; gap: 10px; font-size: var(--text-small); }
+    .tier-list li::before { content: '✓'; color: var(--teal); font-weight: 800; flex: none; }
+    .tier--featured .tier-list li::before { color: var(--orange); }
+
+    .tier-facts {
+      display: grid; gap: 8px;
+      padding: var(--sp-md) 0;
+      margin-bottom: var(--sp-lg);
+      border-top: 1px solid var(--line-soft);
       font-size: var(--text-caption);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-text-light);
     }
+    .tier--featured .tier-facts { border-top-color: var(--line-light); }
+    .tier-fact { display: flex; justify-content: space-between; gap: var(--sp-md); }
+    .tier-fact dt { color: var(--ink-3); }
+    .tier--featured .tier-fact dt { color: rgba(255,255,255,.55); }
+    .tier-fact dd { font-weight: 700; text-align: right; }
+    .tier--featured .tier-fact dd { color: var(--white); }
 
-    .pricing-cell--head {
-      padding-top: var(--space-lg);
-      background: var(--color-base-dark);
+    .tier-actions { margin-top: auto; display: grid; gap: var(--sp-sm); }
+
+    /* Сноска стоит перед кнопкой — так кнопка везде последняя и три карточки
+       заканчиваются одинаково. Свободное место карточки забирает сноска,
+       поэтому у идущих за ней действий авто-отступ снимается: два auto
+       поделили бы промежуток пополам и увели сноску в середину. */
+    .tier-note {
+      font-size: var(--text-caption); color: var(--ink-3);
+      margin-top: auto; padding-top: var(--sp-md);
+      margin-bottom: var(--sp-md); line-height: 1.5;
     }
+    .tier-note + .tier-actions { margin-top: 0; }
+    .tier--featured .tier-note { color: rgba(255,255,255,.6); }
+    .tier-note b { color: var(--orange); font-weight: 700; }
 
-    .pricing-col--featured .pricing-cell--head {
-      background: var(--color-blue-pale);
-    }
-
-    .pricing-name {
-      font-family: var(--font-body);
-      font-size: 1.0625rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--color-text);
-      line-height: 1.3;
-    }
-
-    .pricing-badge {
-      display: inline-block;
-      margin-top: var(--space-sm);
-      padding: 3px 10px;
-      border-radius: var(--radius-full);
-      background: var(--color-cta);
-      color: var(--color-white);
-      font-size: var(--text-caption);
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .pricing-price {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--color-text);
-      line-height: 1.1;
-    }
-
-    .pricing-period {
-      display: block;
-      margin-top: var(--space-xs);
-      font-family: var(--font-body);
-      font-size: var(--text-small);
-      font-weight: 500;
-      color: var(--color-text-light);
-      letter-spacing: 0;
-    }
-
-    .pricing-note { color: var(--color-text-light); }
-
-    .pricing-note a {
-      color: var(--color-cta);
-      font-weight: 600;
-      border-bottom: 1px solid rgba(65, 102, 245, 0.35);
-      transition: border-color var(--dur-base) var(--ease-out);
-    }
-
-    .pricing-note a:hover { border-bottom-color: var(--color-cta); }
-
-    .pricing-cell--cta { padding-bottom: var(--space-lg); }
-
-    .pricing-guarantee {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-md);
-      max-width: 640px;
-      margin-top: var(--space-xl);
-      padding: var(--space-lg);
-      background: var(--color-teal-pale);
-      border-radius: var(--radius-lg);
+    .guarantee {
+      display: flex; align-items: center; gap: var(--sp-md); flex-wrap: wrap;
+      margin-top: var(--sp-xl);
+      padding: var(--sp-md) var(--sp-lg);
+      background: var(--teal-pale);
+      border-radius: var(--radius-pill);
       font-size: var(--text-small);
     }
+    .guarantee-mark {
+      flex: none; width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(14,165,165,.2); color: var(--teal);
+      display: grid; place-items: center; font-weight: 800; font-size: 13px;
+    }
+    .guarantee p { max-width: none; }
+    .guarantee b { font-weight: 800; }
 
-    .pricing-guarantee strong { color: var(--color-text); }
+    .after-tiers {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: var(--sp-md);
+      margin-top: var(--sp-xl);
+      padding-top: var(--sp-xl);
+      border-top: 1px solid var(--line);
+    }
+    .after-tiers p { font-size: var(--text-small); color: var(--ink-2); }
 
     /* ==============================
-       БЛОК 4 — ОБО МНЕ
+       03 — ПРИМЕР РЕЗУЛЬТАТА
        ============================== */
-    .about { background: var(--color-base-dark); }
+    .strike {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FBE9E9; color: var(--coral);
+      border-radius: var(--radius-pill);
+      padding: 9px 18px;
+      font-size: var(--text-small);
+      margin-bottom: var(--sp-lg);
+    }
+    .strike s { text-decoration-thickness: 1.5px; }
 
-    .about-inner {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-xl);
-      align-items: start;
+    .doc-rail .doc-page { --doc-scale: 1; width: min(620px, 88vw); }
+    /* Подпись над страницей, а не под ней: страницы разной высоты, и снизу
+       подписи вставали бы вразнобой. Сверху они выстраиваются в строку. */
+    .doc-slide-cap {
+      width: min(620px, 88vw);
+      margin-bottom: var(--sp-md);
+      font-size: var(--text-small); font-weight: 700;
+      color: var(--blue-deep);
     }
 
-    .about-photo {
+    /* ==============================
+       04 — ПРОЦЕСС
+       ============================== */
+    .steps { display: grid; gap: var(--sp-xl); }
+    .step-dot {
       position: relative;
-      max-width: 280px;
+      height: 2px; background: var(--line);
+      margin-bottom: var(--sp-md);
     }
-
-    .about-photo img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-md);
+    .step-dot::before {
+      content: ''; position: absolute; left: 0; top: 50%;
+      width: 13px; height: 13px; border-radius: 50%;
+      border: 2px solid var(--blue-deep); background: var(--cream);
+      transform: translateY(-50%);
     }
-
-    /* Разомкнутая рамка — приём с канадской версии. */
-    .about-photo::after {
-      content: '';
-      position: absolute;
-      right: -12px;
-      bottom: -12px;
-      width: 60%;
-      height: 60%;
-      border-right: 2px solid var(--color-primary);
-      border-bottom: 2px solid var(--color-primary);
-      border-radius: 0 0 var(--radius-xl) 0;
-      pointer-events: none;
+    .step:first-child .step-dot::before { background: var(--blue-deep); }
+    .step-n {
+      font-family: var(--font-mono); font-size: var(--text-micro);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 6px;
     }
-
-    .about-name {
-      margin-top: var(--space-lg);
-      font-family: var(--font-display);
-      font-size: 1.375rem;
-      font-weight: 700;
+    .step-name {
+      font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+      font-size: 1.5rem; line-height: 1; color: var(--blue-deep);
+      margin-bottom: var(--sp-sm);
     }
+    .step p { font-size: var(--text-small); color: var(--ink-2); }
 
-    .about-role {
-      font-size: var(--text-small);
-      color: var(--color-text-light);
-      margin-bottom: var(--space-md);
+    /* ==============================
+       05 — ОБО МНЕ
+       ============================== */
+    .about {
+      background: var(--orange);
+      color: rgba(255,255,255,.9);
+      overflow: hidden;
     }
-
-    .about-socials {
-      display: flex;
-      gap: var(--space-sm);
-    }
-
-    .about-socials a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      background: var(--color-card);
-      color: var(--color-text-muted);
-      font-size: var(--text-small);
-      font-weight: 600;
-      transition: border-color var(--dur-base) var(--ease-out),
-                  color var(--dur-base) var(--ease-out),
-                  transform var(--dur-base) var(--ease-out);
-    }
-
-    .about-socials a:hover {
-      border-color: var(--color-cta);
-      color: var(--color-cta);
-      transform: translateY(-2px);
-    }
-
-    /* Селектор .todo ниже проигрывает .about-socials a по специфичности,
-       а незаполненная ссылка обязана быть заметна — иначе уедет в продакшн. */
-    .about-socials a.todo {
-      color: var(--color-primary);
-      border-style: dashed;
-      border-color: rgba(255, 117, 24, 0.7);
-    }
-
-    .about-text p { margin-bottom: var(--space-md); }
+    .about .eyebrow, .about .eyebrow b { color: rgba(255,255,255,.7); }
+    .about h2 { color: var(--white); }
+    .about h2 .brand { color: var(--blue-deep); }
+    .about-grid { display: grid; gap: var(--sp-2xl); align-items: center; }
+    .about-lead { font-size: var(--text-lead); color: var(--white); margin-bottom: var(--sp-lg); }
+    .about-lead b { font-weight: 800; }
+    .about-text p { margin-bottom: var(--sp-md); }
     .about-text p:last-child { margin-bottom: 0; }
 
-    .about-lead {
-      font-family: var(--font-display);
-      font-size: 1.375rem;
-      line-height: 1.4;
-      color: var(--color-text);
+    /* Полароид: белая рамка с широким низом и подписью от руки. */
+    .polaroid {
+      position: relative;
+      width: min(340px, 84vw);
+      margin: 0 auto;
+      background: var(--white);
+      padding: 14px 14px 0;
+      border-radius: 4px;
+      box-shadow: var(--shadow-xl);
+      transform: rotate(2deg);
     }
+    .polaroid img {
+      width: 100%; aspect-ratio: 4/5; object-fit: cover;
+      filter: grayscale(1) contrast(1.06);
+    }
+    .polaroid-cap {
+      font-family: var(--font-accent); font-weight: 700; font-size: 1.5rem;
+      color: var(--blue-deep);
+      text-align: center;
+      padding: 16px 0 22px;
+    }
+    .polaroid-badge {
+      position: absolute; left: -22px; bottom: 54px;
+      width: 92px; height: 92px; border-radius: 50%;
+      background: var(--blue-deep); color: var(--white);
+      display: grid; place-content: center; text-align: center;
+      transform: rotate(-4deg);
+      box-shadow: var(--shadow-lg);
+    }
+    .polaroid-badge b { font-family: var(--font-display); font-size: 1.75rem; line-height: 1; }
+    .polaroid-badge span { font-size: 9px; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
 
     /* ==============================
-       БЛОК 5 — FAQ
+       06 — FAQ
        ============================== */
-    .faq-list {
-      max-width: 860px;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .faq-item { border-bottom: 1px solid var(--color-border); }
-
+    .faq-grid { display: grid; gap: var(--sp-2xl); }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
     .faq-q {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: var(--space-lg);
-      width: 100%;
-      padding: var(--space-lg) 0;
-      text-align: left;
-      font-size: 1.0625rem;
-      font-weight: 600;
-      color: var(--color-text);
-      transition: color var(--dur-base) var(--ease-out);
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: var(--sp-lg); width: 100%; text-align: left;
+      padding: var(--sp-lg) 0;
+      font-size: 1.0625rem; font-weight: 700; color: var(--blue-deep);
+      transition: color var(--dur) var(--ease);
     }
-
-    .faq-q:hover { color: var(--color-cta); }
-
+    .faq-q:hover { color: var(--orange-dark); }
     .faq-icon {
-      position: relative;
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      margin-top: 2px;
-      transition: transform 300ms var(--ease-in-out);
+      position: relative; flex: none;
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1.5px solid var(--line);
+      transition: transform 300ms var(--ease-io), border-color var(--dur) var(--ease);
     }
-
-    .faq-icon::before,
-    .faq-icon::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      background: var(--color-primary);
-      border-radius: var(--radius-full);
+    .faq-icon::before, .faq-icon::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      background: var(--blue-deep); border-radius: 2px;
       transform: translate(-50%, -50%);
     }
-
-    .faq-icon::before { width: 14px; height: 2px; }
-    .faq-icon::after  { width: 2px; height: 14px; }
-
-    .faq-item.is-open .faq-icon { transform: rotate(45deg); }
+    .faq-icon::before { width: 12px; height: 1.5px; }
+    .faq-icon::after  { width: 1.5px; height: 12px; transition: opacity var(--dur) var(--ease); }
+    .faq-item.is-open .faq-icon { transform: rotate(180deg); border-color: var(--orange); }
+    .faq-item.is-open .faq-icon::after { opacity: 0; }
 
     .faq-a {
-      display: grid;
-      grid-template-rows: 0fr;
-      opacity: 0;
-      transition: grid-template-rows 250ms var(--ease-in-out),
-                  opacity 200ms var(--ease-in-out);
+      display: grid; grid-template-rows: 0fr; opacity: 0;
+      transition: grid-template-rows 250ms var(--ease-io), opacity 200ms var(--ease-io);
     }
-
     .faq-item.is-open .faq-a {
-      grid-template-rows: 1fr;
-      opacity: 1;
-      transition: grid-template-rows 300ms var(--ease-in-out),
-                  opacity 300ms var(--ease-in-out) 80ms;
+      grid-template-rows: 1fr; opacity: 1;
+      transition: grid-template-rows 300ms var(--ease-io), opacity 300ms var(--ease-io) 80ms;
     }
-
-    .faq-a-inner {
-      overflow: hidden;
-      color: var(--color-text-muted);
-      font-size: var(--text-small);
-    }
-
-    .faq-a-inner > div { padding-bottom: var(--space-lg); }
-    .faq-a-inner p + p { margin-top: var(--space-md); }
+    .faq-a-inner { overflow: hidden; }
+    .faq-a-inner > div { padding-bottom: var(--sp-lg); }
+    .faq-a-inner p { font-size: var(--text-small); color: var(--ink-2); }
+    .faq-a-inner p + p { margin-top: var(--sp-md); }
 
     /* ==============================
-       БЛОК 6 — ФОРМА
+       07 — БЛОГ
+       ============================== */
+    .posts { display: grid; gap: var(--sp-lg); }
+    .post {
+      display: flex; flex-direction: column;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-lg);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .post:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .post-meta {
+      font-family: var(--font-mono); font-size: var(--text-micro);
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: var(--sp-md);
+    }
+    .post h3 { color: var(--blue-deep); margin-bottom: var(--sp-sm); }
+    .post p { font-size: var(--text-small); color: var(--ink-2); margin-bottom: var(--sp-lg); }
+    .post-link {
+      margin-top: auto;
+      font-size: var(--text-micro); font-weight: 800;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--blue);
+    }
+    .post-link span { transition: transform var(--dur) var(--ease); display: inline-block; }
+    .post:hover .post-link span { transform: translateX(4px); }
+
+    /* ==============================
+       08 — ФОРМА
        ============================== */
     .contact {
-      position: relative;
+      background: var(--blue-deep);
+      color: rgba(255,255,255,.78);
       overflow: hidden;
-      background: var(--color-dark);
-      color: rgba(255, 255, 255, 0.82);
     }
-
     .contact::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-      background-size: 24px 24px;
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 26px 26px;
     }
-
     .contact::after {
-      content: '';
-      position: absolute;
-      left: -10%;
-      bottom: -40%;
-      width: 560px;
-      height: 560px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 117, 24, 0.16) 0%, transparent 68%);
+      content: ''; position: absolute; right: -8%; top: -22%;
+      width: 460px; height: 460px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,117,24,.4) 0%, transparent 66%);
       pointer-events: none;
     }
-
     .contact .container { position: relative; z-index: 2; }
-    .contact h2 { color: var(--color-white); }
-    .contact .section-num { color: rgba(255, 255, 255, 0.45); }
-
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-2xl);
-      align-items: start;
+    .contact .eyebrow, .contact .eyebrow b { color: rgba(255,255,255,.5); }
+    .contact h2 { color: var(--white); }
+    .contact h2 .hl { color: var(--orange); }
+    .contact-grid { display: grid; gap: var(--sp-2xl); align-items: start; }
+    .contact .accent-line { color: rgba(255,255,255,.9); font-size: var(--text-lead); margin: var(--sp-lg) 0; }
+    .contact-mail {
+      display: inline-block; margin-top: var(--sp-lg);
+      font-family: var(--font-mono); font-size: var(--text-small);
+      color: var(--white);
+      border-bottom: 1px solid var(--line-light);
+      padding-bottom: 3px;
     }
+    .contact-mail:hover { border-color: var(--white); }
 
-    .contact-lead {
-      font-size: 1.0625rem;
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: var(--space-lg);
-    }
-
-    .contact-facts {
-      display: grid;
-      gap: var(--space-md);
-      font-size: var(--text-small);
-    }
-
-    .contact-fact {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-md);
-      color: rgba(255, 255, 255, 0.72);
-    }
-
-    .contact-fact-mark {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(14, 165, 165, 0.22);
-      color: #5FE3E3;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 20px;
-      text-align: center;
-    }
-
-    .form {
-      padding: var(--space-xl);
-      background: var(--color-white);
+    /* ==============================
+       ФОРМЫ
+       ============================== */
+    .form-card {
+      background: var(--white);
       border-radius: var(--radius-xl);
+      padding: var(--sp-xl);
       box-shadow: var(--shadow-xl);
-      color: var(--color-text);
+      color: var(--ink);
     }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-md);
-    }
-
-    .field { margin-bottom: var(--space-md); }
-
+    .form-row { display: grid; grid-template-columns: 1fr; gap: var(--sp-md); }
+    .field { margin-bottom: var(--sp-md); }
     .field label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: var(--text-small);
-      font-weight: 600;
+      display: block; margin-bottom: 7px;
+      font-family: var(--font-mono); font-size: var(--text-micro);
+      letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2);
     }
-
-    .field .opt {
-      font-weight: 400;
-      color: var(--color-text-light);
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      padding: 12px var(--space-md);
-      font: inherit;
-      font-size: var(--text-small);
-      color: var(--color-text);
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
+    .field label .opt { color: var(--ink-3); }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 13px var(--sp-md);
+      font: inherit; font-size: var(--text-small); color: var(--ink);
+      background: var(--white);
+      border: 1.5px solid var(--line);
       border-radius: var(--radius-md);
-      transition: border-color var(--dur-base) var(--ease-out),
-                  box-shadow var(--dur-base) var(--ease-out);
+      transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
     }
-
-    .field textarea { min-height: 108px; resize: vertical; }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      outline: none;
-      border-color: var(--color-cta);
-      box-shadow: 0 0 0 3px rgba(65, 102, 245, 0.12);
+    .field textarea { min-height: 104px; resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: var(--ink-3); }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(65,102,245,.13);
     }
-
-    .field input:user-invalid,
-    .field textarea:user-invalid {
-      border-color: var(--color-error);
-    }
-
-    .field.is-shaking { animation: shake 400ms var(--ease-in-out); }
-
+    .field.is-shaking { animation: shake 400ms var(--ease-io); }
     @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-5px); }
-      40%, 80% { transform: translateX(5px); }
+      0%,100% { transform: translateX(0); }
+      20%,60% { transform: translateX(-5px); }
+      40%,80% { transform: translateX(5px); }
     }
 
     .consent {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-lg);
-      font-size: var(--text-caption);
-      line-height: 1.5;
-      color: var(--color-text-muted);
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-bottom: var(--sp-md);
+      font-size: var(--text-caption); line-height: 1.5; color: var(--ink-2);
       cursor: pointer;
     }
+    .consent input { flex: none; width: 17px; height: 17px; margin-top: 2px; accent-color: var(--blue); }
+    .consent a { color: var(--blue); border-bottom: 1px solid rgba(65,102,245,.35); }
+    .consent.is-shaking { animation: shake 400ms var(--ease-io); }
 
-    .consent input {
-      flex-shrink: 0;
-      width: 16px;
-      height: 16px;
-      margin-top: 2px;
-      accent-color: var(--color-cta);
-    }
+    .form-status { margin-top: var(--sp-md); font-size: var(--text-small); line-height: 1.5; }
+    .form-status:empty { margin: 0; }
+    .form-status[data-state="error"] { color: var(--coral); }
+    .form-status[data-state="success"] { color: var(--teal); font-weight: 700; }
 
-    .consent a {
-      color: var(--color-cta);
-      border-bottom: 1px solid rgba(65, 102, 245, 0.35);
-    }
-
-    .form-status {
-      margin-top: var(--space-md);
-      font-size: var(--text-small);
-      line-height: 1.5;
-    }
-
-    .form-status:empty { margin-top: 0; }
-    .form-status[data-state="error"]   { color: var(--color-error); }
-    .form-status[data-state="success"] { color: var(--color-teal); font-weight: 600; }
+    .form-note { margin-top: var(--sp-md); font-size: var(--text-caption); color: var(--ink-3); }
 
     .spinner {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      border-top-color: var(--color-white);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
+      display: inline-block; width: 15px; height: 15px;
+      border: 2px solid rgba(255,255,255,.4); border-top-color: var(--white);
+      border-radius: 50%; animation: spin 1s linear infinite;
     }
-
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ==============================
+       МОДАЛЬНЫЕ ОКНА
+       ============================== */
+    .modal {
+      position: fixed; inset: 0; z-index: 200;
+      display: grid; place-items: center;
+      padding: var(--sp-md);
+      background: rgba(26,26,46,.55);
+      opacity: 0; visibility: hidden;
+      transition: opacity var(--dur) var(--ease), visibility var(--dur);
+    }
+    .modal.is-open { opacity: 1; visibility: visible; }
+    .modal-box {
+      width: min(560px, 100%);
+      max-height: 92dvh; overflow-y: auto;
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-xl);
+      box-shadow: var(--shadow-xl);
+      transform: translateY(14px) scale(.98);
+      transition: transform var(--dur) var(--ease);
+    }
+    .modal.is-open .modal-box { transform: none; }
+    .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-md); margin-bottom: var(--sp-lg); }
+    .modal-title {
+      font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+      font-size: 1.6rem; line-height: 1; color: var(--blue-deep);
+    }
+    .modal-sub { font-size: var(--text-small); color: var(--ink-2); margin-top: var(--sp-sm); }
+    .modal-close {
+      flex: none; width: 38px; height: 38px; border-radius: 50%;
+      display: grid; place-items: center;
+      border: 1.5px solid var(--line); color: var(--ink-2);
+      transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .modal-close:hover { border-color: var(--coral); color: var(--coral); }
+
+    .modal-tabs { display: flex; gap: 6px; padding: 5px; background: var(--cream-2); border-radius: var(--radius-pill); margin-bottom: var(--sp-lg); }
+    .modal-tab {
+      flex: 1; padding: 10px; border-radius: var(--radius-pill);
+      font-size: var(--text-micro); font-weight: 800;
+      letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2);
+      transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .modal-tab[aria-selected="true"] { background: var(--white); color: var(--blue-deep); box-shadow: var(--shadow-sm); }
+
+    .pay-summary {
+      display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-md);
+      padding: var(--sp-lg); margin-bottom: var(--sp-lg);
+      background: var(--cream-2); border-radius: var(--radius-lg);
+    }
+    .pay-summary-name { font-weight: 800; }
+    .pay-summary-price {
+      font-family: var(--font-display); font-weight: 500; font-size: 2rem;
+      line-height: 1; font-variant-numeric: tabular-nums; color: var(--blue-deep);
+    }
 
     /* ==============================
        ФУТЕР
        ============================== */
     .footer {
-      padding: var(--space-2xl) 0;
-      background: var(--color-dark);
-      color: rgba(255, 255, 255, 0.6);
+      background: var(--ink); color: rgba(255,255,255,.6);
+      padding: var(--sp-3xl) 0 var(--sp-xl);
       font-size: var(--text-small);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
-
-    .footer-inner {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-xl);
-    }
-
+    .footer-grid { display: grid; gap: var(--sp-xl); }
     .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--color-white);
-      margin-bottom: var(--space-sm);
+      display: flex; align-items: center; gap: 9px;
+      font-family: var(--font-accent); font-weight: 700; font-size: 1.4rem;
+      color: var(--white); margin-bottom: var(--sp-md);
     }
-
     .footer h4 {
-      color: var(--color-white);
-      font-size: var(--text-small);
-      margin-bottom: var(--space-md);
+      color: var(--white); font-family: var(--font-mono);
+      font-size: var(--text-micro); letter-spacing: .14em; text-transform: uppercase;
+      font-weight: 500; margin-bottom: var(--sp-md);
     }
-
-    .footer a { transition: color var(--dur-base) var(--ease-out); }
-    .footer a:hover { color: var(--color-white); }
-
-    .footer-list li { margin-bottom: var(--space-sm); }
-
-    .footer-bottom {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm) var(--space-lg);
+    .footer-list { display: grid; gap: 10px; font-size: var(--text-caption); }
+    .footer a { transition: color var(--dur) var(--ease); }
+    .footer a:hover { color: var(--white); }
+    .footer-req {
+      margin-top: var(--sp-2xl); padding-top: var(--sp-lg);
+      border-top: 1px solid rgba(255,255,255,.1);
+      display: flex; flex-wrap: wrap; gap: var(--sp-sm) var(--sp-lg);
       justify-content: space-between;
-      margin-top: var(--space-xl);
-      padding-top: var(--space-lg);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: var(--text-caption);
-      color: rgba(255, 255, 255, 0.45);
+      font-family: var(--font-mono); font-size: var(--text-micro);
+      color: rgba(255,255,255,.42);
     }
 
-    /* Незаполненные реквизиты видны и в вёрстке, и глазом — чтобы такой
-       плейсхолдер не уехал в продакшн незамеченным. */
-    .todo {
-      border-bottom: 1px dashed rgba(255, 117, 24, 0.7);
-      color: var(--color-primary-light);
-    }
+    /* Незакрытый плейсхолдер обязан быть заметен — иначе уедет в продакшн. */
+    .todo { color: var(--orange); border-bottom: 1px dashed rgba(255,117,24,.65); }
 
     /* ==============================
-       ВОДЯНЫЕ ЗНАКИ
+       КУКИ-БАННЕР
        ============================== */
-    .watermark {
-      position: absolute;
-      z-index: 0;
-      font-family: var(--font-display);
-      font-size: clamp(5rem, 16vw, 13rem);
-      font-weight: 700;
-      line-height: 1;
-      color: var(--color-text);
-      opacity: 0.028;
-      pointer-events: none;
-      user-select: none;
-      white-space: nowrap;
-      transform: translateY(var(--parallax-y, 0));
+    .cookie {
+      position: fixed; left: var(--sp-md); right: var(--sp-md); bottom: var(--sp-md);
+      z-index: 150;
+      display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-md);
+      max-width: 900px; margin: 0 auto;
+      padding: var(--sp-md) var(--sp-lg);
+      background: var(--ink); color: rgba(255,255,255,.75);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      font-size: var(--text-caption);
+      transform: translateY(140%);
+      transition: transform 420ms var(--ease);
     }
-
-    .watermark--pains   { top: 8%;  right: -3%; }
-    .watermark--pricing { bottom: 4%; left: -3%; }
-
-    /* Знаки намеренно заходят за края секции, и правый из них удлиняет документ
-       по горизонтали — на мобильном это даёт боковую прокрутку всей страницы.
-       Клип на секции: переполнение остаётся визуальным приёмом, а не багом. */
-    .pains,
-    #pricing { overflow: hidden; }
+    .cookie.is-shown { transform: none; }
+    .cookie p { flex: 1 1 320px; max-width: none; }
+    .cookie a { color: var(--orange); border-bottom: 1px solid rgba(255,117,24,.4); }
+    .cookie-actions { display: flex; gap: var(--sp-sm); }
 
     /* ==============================
        ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ
        ============================== */
     .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity var(--dur-slow) var(--ease-out),
-                  transform var(--dur-slow) var(--ease-out);
-      transition-delay: var(--reveal-delay, 0ms);
+      opacity: 0; transform: translateY(22px);
+      transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+      transition-delay: var(--rd, 0ms);
     }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: none;
-    }
+    .reveal.is-visible { opacity: 1; transform: none; }
 
     /* ==============================
        АДАПТИВ
        ============================== */
-    @media (min-width: 560px) {
-      .pains-grid { grid-template-columns: repeat(2, 1fr); }
-      .form-row   { grid-template-columns: 1fr 1fr; }
+    @media (min-width: 600px) {
+      .form-row { grid-template-columns: 1fr 1fr; }
+      .posts { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 768px) {
-      .about-inner  { grid-template-columns: 280px 1fr; gap: var(--space-2xl); }
-      .contact-inner{ grid-template-columns: 1fr 1.15fr; }
-      .footer-inner { grid-template-columns: 1.4fr 1fr 1fr; }
-      .pains-grid   { grid-template-columns: repeat(3, 1fr); }
+      section { padding: var(--sp-4xl) 0; }
+      .steps { grid-template-columns: repeat(5, 1fr); gap: var(--sp-lg); }
+      .about-grid { grid-template-columns: 1.1fr .9fr; }
+      .faq-grid { grid-template-columns: .8fr 1.2fr; }
+      .contact-grid { grid-template-columns: 1fr 1.1fr; }
+      .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+      .posts { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (min-width: 900px) {
-      .nav-links,
-      .nav-cta      { display: flex; }
-      .nav-burger   { display: none; }
-      .nav-drawer,
-      .nav-overlay  { display: none; }
-
-      /* Тарифы становятся таблицей сравнения. Колонки — .pricing-col со
-         `display: contents`: их ячейки раскладываются напрямую в сетку,
-         а `grid-auto-flow: column` при семи заданных строках заполняет
-         сетку по столбцам. Так строки «Формат» и «Цена» стоят на одной
-         горизонтали во всех трёх тарифах — ради чего таблица и выбрана
-         вместо трёх независимых карточек. Разметка при этом остаётся
-         одна: на мобильном те же элементы собираются в карточки. */
-      .pricing-grid {
-        display: grid;
-        grid-template-columns: minmax(140px, 0.7fr) repeat(3, 1fr);
-        grid-template-rows: repeat(7, auto);
-        grid-auto-flow: column;
-        gap: 0;
-        align-items: stretch;
-      }
-
-      .pricing-labels,
-      .pricing-col { display: contents; }
-
-      .pricing-cell-label { display: none; }
-
-      .pricing-label {
-        display: flex;
-        align-items: flex-start;
-        padding: var(--space-md) var(--space-md) var(--space-md) 0;
-        font-family: var(--font-mono);
-        font-size: var(--text-caption);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--color-text-light);
-        border-bottom: 1px solid var(--color-border-light);
-      }
-
-      .pricing-label--head,
-      .pricing-label--cta { border-bottom: none; }
-
-      .pricing-cell {
-        border: 1px solid var(--color-border);
-        border-top: none;
-        border-left: none;
-        background: var(--color-card);
-      }
-
-      .pricing-col > .pricing-cell:first-child {
-        border-top: 1px solid var(--color-border);
-        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-      }
-
-      .pricing-col > .pricing-cell:last-child {
-        border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-      }
-
-      .pricing-col:first-of-type > .pricing-cell { border-left: 1px solid var(--color-border); }
-
-      /* Выделенный тариф приподнят целиком: `display: contents` не даёт
-         сдвинуть колонку одним трансформом, поэтому сдвигаются все её
-         ячейки на одну и ту же величину — визуально это то же самое. */
-      .pricing-col--featured > .pricing-cell {
-        transform: translateY(-12px);
-        border-left: 1px solid var(--color-cta);
-        border-right: 1px solid var(--color-cta);
-        border-bottom-color: rgba(65, 102, 245, 0.25);
-        box-shadow: 0 0 0 0 transparent;
-      }
-
-      .pricing-col--featured > .pricing-cell:first-child {
-        border-top: 1px solid var(--color-cta);
-        box-shadow: 0 -6px 24px rgba(65, 102, 245, 0.10);
-      }
-
-      .pricing-col--featured > .pricing-cell:last-child {
-        box-shadow: 0 12px 32px rgba(65, 102, 245, 0.14);
-      }
-
-      /* Подсветка строки при наведении — то, ради чего таблица нужна:
-         глаз сравнивает три тарифа по одному параметру. Соседние ячейки
-         строки одним CSS не достать, класс вешает JS. */
-      .pricing-cell.is-row-hover { background: var(--color-band); }
-      .pricing-label.is-row-hover { color: var(--color-text-muted); }
-
-      .pricing-price { font-size: 2rem; }
-    }
-
-    @media (min-width: 1024px) {
-      .hero { padding-top: 96px; }
+      .nav-links, .nav-mail, .nav-cta { display: flex; }
+      .nav-burger, .nav-drawer, .nav-overlay { display: none; }
+      /* Строка доверия вынесена под обе колонки: в левой она не помещается
+         в одну строку и оставляет висящий разделитель в конце первой. */
+      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 560px); gap: var(--sp-xl); }
+      .hero-proof { grid-column: 1 / -1; margin-top: var(--sp-md); }
+      .hero-doc { display: block; }
+      .tiers { grid-template-columns: repeat(3, 1fr); }
+      .tier--featured { transform: translateY(-16px); }
     }
   </style>
 </head>
 <body>
 
-  <!-- ==============================
-       НАВИГАЦИЯ
-       ============================== -->
-  <header class="nav" id="nav">
-    <div class="container nav-inner">
-      <a href="#top" class="nav-logo" aria-label="Dwelve — на главную">
-        <svg width="28" height="28" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-          <g transform="translate(100,100)">
-            <circle cx="0" cy="-65" r="8" fill="#1A1A2E"/>
-            <circle cx="32.5" cy="-56.29" r="11" fill="#FF7518"/>
-            <circle cx="56.29" cy="-32.5" r="5" fill="#1A1A2E"/>
-            <circle cx="65" cy="0" r="4.5" fill="#1A1A2E"/>
-            <circle cx="56.29" cy="32.5" r="4" fill="#1A1A2E"/>
-            <circle cx="32.5" cy="56.29" r="3.5" fill="#1A1A2E"/>
-            <circle cx="0" cy="65" r="3" fill="#1A1A2E"/>
-            <circle cx="-32.5" cy="56.29" r="2.8" fill="#1A1A2E"/>
-            <circle cx="-56.29" cy="32.5" r="2.8" fill="#1A1A2E"/>
-            <circle cx="-65" cy="0" r="3.8" fill="#1A1A2E"/>
-            <circle cx="-56.29" cy="-32.5" r="5" fill="#1A1A2E"/>
-            <circle cx="-32.5" cy="-56.29" r="6.5" fill="#1A1A2E"/>
-          </g>
-        </svg>
-        Dwelve
-      </a>
+<a class="skip-link" href="#main">К содержанию</a>
 
-      <nav class="nav-links" aria-label="Основная навигация">
-        <a href="#pains">Кому подходит</a>
-        <a href="#pricing">Услуги и цены</a>
-        <a href="#about">Обо мне</a>
-        <a href="#faq">FAQ</a>
-      </nav>
+<!-- =========================================================================
+     ШАПКА
+     ========================================================================= -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Dwelve — на главную">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(100,100)">
+          <circle cx="0" cy="-65" r="8" fill="#1A1A2E"/><circle cx="32.5" cy="-56.29" r="11" fill="#FF7518"/>
+          <circle cx="56.29" cy="-32.5" r="5" fill="#1A1A2E"/><circle cx="65" cy="0" r="4.5" fill="#1A1A2E"/>
+          <circle cx="56.29" cy="32.5" r="4" fill="#1A1A2E"/><circle cx="32.5" cy="56.29" r="3.5" fill="#1A1A2E"/>
+          <circle cx="0" cy="65" r="3" fill="#1A1A2E"/><circle cx="-32.5" cy="56.29" r="2.8" fill="#1A1A2E"/>
+          <circle cx="-56.29" cy="32.5" r="2.8" fill="#1A1A2E"/><circle cx="-65" cy="0" r="3.8" fill="#1A1A2E"/>
+          <circle cx="-56.29" cy="-32.5" r="5" fill="#1A1A2E"/><circle cx="-32.5" cy="-56.29" r="6.5" fill="#1A1A2E"/>
+        </g>
+      </svg>
+      Dwelve
+    </a>
 
-      <a href="#contact" class="btn btn-primary nav-cta" data-tariff="">Обсудить задачу</a>
+    <nav class="nav-links" aria-label="Основная навигация">
+      <a href="#pains">Для кого</a>
+      <a href="#pricing">Услуги и цены</a>
+      <a href="#report">Пример отчёта</a>
+      <a href="#about">Обо мне</a>
+    </nav>
 
-      <button class="nav-burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="drawer">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+    <a href="mailto:hello@dwelve.ru" class="nav-mail">hello@dwelve.ru</a>
+    <a href="#contact" class="btn btn-primary btn-sm nav-cta">Обсудить задачу</a>
 
-  <div class="nav-overlay" id="overlay" hidden></div>
+    <button class="nav-burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  <aside class="nav-drawer" id="drawer" aria-label="Меню" aria-hidden="true">
-    <a href="#pains">Кому подходит</a>
-    <a href="#pricing">Услуги и цены</a>
-    <a href="#about">Обо мне</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact" class="btn btn-primary btn-block">Обсудить задачу</a>
-  </aside>
+<div class="nav-overlay" id="overlay"></div>
 
-  <main id="top">
+<aside class="nav-drawer" id="drawer" aria-label="Меню" aria-hidden="true">
+  <a href="#pains">Для кого</a>
+  <a href="#pricing">Услуги и цены</a>
+  <a href="#report">Пример отчёта</a>
+  <a href="#about">Обо мне</a>
+  <a href="#contact" class="btn btn-primary btn-block">Обсудить задачу</a>
+  <a href="mailto:hello@dwelve.ru" class="nav-drawer-mail">hello@dwelve.ru</a>
+</aside>
 
-    <!-- ==============================
-         БЛОК 1 — ОСНОВНОЙ ЭКРАН
-         ============================== -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-inner">
-        <h1 id="hero-title" class="reveal">
-          Нахожу, где бизнес <span class="accent">недополучает продажи</span> — и что именно нужно изменить для роста
+<main id="main">
+  <span id="top"></span>
+
+  <!-- =======================================================================
+       ПЕРВЫЙ ЭКРАН
+       ======================================================================= -->
+  <section class="hero sec--cream" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow reveal">Разбор бизнеса для собственников</p>
+
+        <h1 class="display reveal" id="hero-title" style="--rd: 90ms">
+          Нахожу, где бизнес теряет <span class="marker">деньги</span>.
         </h1>
 
-        <p class="hero-sub reveal" style="--reveal-delay: 120ms">
-          Разбираю маркетинг, продукт, продажи и работу с клиентами как единую систему.
-          Показываю, где бизнес теряет деньги и возможности роста, что именно стоит менять,
-          как это сделать и какие показатели должны измениться в результате.
+        <p class="hero-sub reveal" style="--rd: 180ms">
+          Разбираю <b>маркетинг, продукт, цены, продажи и клиентскую базу</b> как единую систему.
+          Каждую проблему связываю с деньгами: сколько она стоит бизнесу, что менять первым
+          и какой результат можно получить.
         </p>
 
-        <div class="hero-buttons reveal" style="--reveal-delay: 240ms">
-          <a href="#contact" class="btn btn-primary" data-tariff="">Обсудить мою задачу</a>
-          <a href="#pricing" class="btn btn-ghost">Услуги и цены</a>
+        <div class="hero-buttons reveal" style="--rd: 270ms">
+          <a href="#contact" class="btn btn-primary">Обсудить мою задачу</a>
+          <a href="#pricing" class="btn btn-outline">Услуги и цены</a>
         </div>
 
-        <ul class="hero-proof reveal" style="--reveal-delay: 360ms">
-          <li>NDA</li>
-          <li>Не увидите ценности — верну деньги</li>
-          <li>Каждый проект веду лично</li>
-          <li>10+ лет опыта</li>
+      </div>
+
+      <div class="hero-doc reveal" style="--rd: 200ms" aria-hidden="true">
+        <div class="doc-page" data-doc="1"></div>
+        <div class="hero-badge">
+          <div class="hero-badge-v">+670–840 тыс. ₽</div>
+          <div class="hero-badge-l">потенциал доп. прибыли / месяц</div>
+        </div>
+      </div>
+
+      <ul class="hero-proof reveal" style="--rd: 360ms">
+        <li>NDA</li>
+        <li>Верну деньги, если не увидите ценности</li>
+        <li>Готовый отчёт в течение 30 дней</li>
+        <li>12+ лет опыта</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       01 — КОМУ ПОДХОДИТ
+       ======================================================================= -->
+  <section class="sec--cream2" id="pains" aria-labelledby="pains-title">
+    <div class="container">
+      <div class="sec-head sec-head--split">
+        <p class="eyebrow reveal"><b>01</b> · Кому подходит</p>
+        <h2 class="display reveal" id="pains-title" style="--rd: 80ms">Узнали себя?</h2>
+        <div class="reveal" style="--rd: 140ms">
+          <p style="margin-bottom: var(--sp-lg)">
+            Если хотя бы два пункта знакомы — проблема, скорее всего, уже не в одном рекламном канале.
+          </p>
+          <span class="stamp">Хватит бездумно тратить деньги на рекламу и акции</span>
+        </div>
+      </div>
+
+      <div class="rail-wrap reveal">
+        <button class="rail-btn rail-btn--prev" data-rail="pains" data-dir="-1" aria-label="Предыдущие карточки">←</button>
+        <button class="rail-btn rail-btn--next" data-rail="pains" data-dir="1" aria-label="Следующие карточки">→</button>
+
+        <ul class="rail" id="rail-pains" tabindex="0" aria-label="Ситуации, в которых нужен разбор">
+          <li class="pain">
+            <span class="pain-n">01</span>
+            <h3>Нет новых клиентов</h3>
+            <p>Поток заявок нестабильный, а привычные каналы приводят всё меньше людей за те же деньги.</p>
+          </li>
+          <li class="pain">
+            <span class="pain-n">02</span>
+            <h3>Клиенты не возвращаются</h3>
+            <p>Первую покупку делают, второй почти нет. Каждый месяц приходится покупать аудиторию заново.</p>
+          </li>
+          <li class="pain">
+            <span class="pain-n">03</span>
+            <h3>Средний чек не растёт</h3>
+            <p>Ассортимент расширяется, а сумма покупки стоит на месте — допродажи не работают.</p>
+          </li>
+          <li class="pain">
+            <span class="pain-n">04</span>
+            <h3>Акции и скидки не окупились</h3>
+            <p>Продажи в акцию выросли, прибыль — нет. Непонятно, купили вы новое поведение или просто отдали маржу.</p>
+          </li>
+          <li class="pain">
+            <span class="pain-n">05</span>
+            <h3>Реклама «работает», а денег нет</h3>
+            <p>Отчёты показывают клики и заявки, но вы не понимаете, сколько это реально принесло прибыли.</p>
+          </li>
+          <li class="pain">
+            <span class="pain-n">06</span>
+            <h3>Непонятно, что чинить первым</h3>
+            <p>Идей много: сайт, реклама, цены, продукт, база. Но нет приоритетов и понятной последовательности.</p>
+          </li>
+          <li class="pain">
+            <span class="pain-n">07</span>
+            <h3>Есть команда, но непонятна её ценность</h3>
+            <p>Есть маркетологи, специалисты по соцсетям и продавцы, но вы не можете объективно оценить, кто и какую пользу приносит бизнесу.</p>
+          </li>
         </ul>
       </div>
-    </section>
 
-    <!-- ==============================
-         БЛОК 2 — КОМУ ПОДХОДИТ
-         ============================== -->
-    <section class="pains" id="pains" aria-labelledby="pains-title">
-      <span class="watermark watermark--pains" aria-hidden="true" data-parallax="0.06">Рост</span>
-
-      <div class="container">
-        <p class="section-num reveal">02 / Кому подходит</p>
-        <h2 class="section-title reveal" id="pains-title">Узнали себя?</h2>
-
-        <div class="pains-grid">
-          <div class="pain reveal"><span class="pain-mark" aria-hidden="true">✕</span>Нет новых клиентов</div>
-          <div class="pain reveal" style="--reveal-delay: 70ms"><span class="pain-mark" aria-hidden="true">✕</span>Старые клиенты не возвращаются</div>
-          <div class="pain reveal" style="--reveal-delay: 140ms"><span class="pain-mark" aria-hidden="true">✕</span>Средний чек не растёт</div>
-          <div class="pain reveal" style="--reveal-delay: 210ms"><span class="pain-mark" aria-hidden="true">✕</span>Акции и скидки не работают</div>
-          <div class="pain reveal" style="--reveal-delay: 280ms"><span class="pain-mark" aria-hidden="true">✕</span>Прибыль и продажи не растут</div>
-          <div class="pain reveal" style="--reveal-delay: 350ms"><span class="pain-mark" aria-hidden="true">✕</span>Появились мысли о закрытии бизнеса</div>
-        </div>
-
-        <div class="value reveal">
-          <p>
-            Даю чёткие рекомендации, основанные на денежных KPI, а не маркетинговую воду.
-          </p>
-
-          <div class="compare">
-            <div class="compare-row compare-row--no">
-              <span class="compare-mark" aria-hidden="true">✕</span>
-              <span>охваты · клики · узнаваемость · вовлечённость</span>
-            </div>
-            <span class="compare-arrow" aria-hidden="true"></span>
-            <div class="compare-row compare-row--yes">
-              <span class="compare-mark" aria-hidden="true">✓</span>
-              <span>выручка · валовая прибыль · средний чек · частота покупок · LTV · CAC</span>
-            </div>
-          </div>
-
-          <p>
-            Никакой воды — чёткие измеримые метрики, которые сразу отражают изменения в прибыли.
-          </p>
-          <p>
-            Вы получаете документ, где понятно, сколько конкретно денег можно заработать,
-            если устранить текущие проблемы и найти точки роста.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==============================
-         БЛОК 3 — ФОРМАТ РАБОТЫ И ЦЕНЫ
-         ============================== -->
-    <section id="pricing" aria-labelledby="pricing-title">
-      <span class="watermark watermark--pricing" aria-hidden="true" data-parallax="-0.05">Прибыль</span>
-
-      <div class="container">
-        <p class="section-num reveal">03 / Формат работы</p>
-        <h2 class="section-title reveal" id="pricing-title">Услуги и цены</h2>
-
-        <div class="pricing-grid reveal" id="pricing-grid">
-
-          <!-- Колонка подписей строк. На мобильном скрыта: там каждая ячейка
-               несёт собственную подпись в .pricing-cell-label. -->
-          <div class="pricing-labels" aria-hidden="true">
-            <div class="pricing-label pricing-label--head"></div>
-            <div class="pricing-label" data-row="when">Когда подходит</div>
-            <div class="pricing-label" data-row="what">Что получите</div>
-            <div class="pricing-label" data-row="format">Формат</div>
-            <div class="pricing-label" data-row="price">Цена</div>
-            <div class="pricing-label" data-row="note">Важно</div>
-            <div class="pricing-label pricing-label--cta"></div>
-          </div>
-
-          <div class="pricing-col">
-            <div class="pricing-cell pricing-cell--head">
-              <span class="pricing-name">Точка роста</span>
-            </div>
-            <div class="pricing-cell" data-row="when">
-              <span class="pricing-cell-label">Когда подходит</span>
-              Есть конкретная проблема и нужно понять, что делать
-            </div>
-            <div class="pricing-cell" data-row="what">
-              <span class="pricing-cell-label">Что получите</span>
-              Анализ одной проблемы и конкретный план действий по ней
-            </div>
-            <div class="pricing-cell" data-row="format">
-              <span class="pricing-cell-label">Формат</span>
-              Бриф + видеозвонок
-            </div>
-            <div class="pricing-cell" data-row="price">
-              <span class="pricing-cell-label">Цена</span>
-              <span class="pricing-price num" data-count="50000">50&nbsp;000&nbsp;₽</span>
-            </div>
-            <div class="pricing-cell pricing-note" data-row="note">
-              <span class="pricing-cell-label">Важно</span>
-              Закажете аудит в течение 7 дней — стоимость консультации зачтётся в цену аудита
-            </div>
-            <div class="pricing-cell pricing-cell--cta">
-              <a href="#contact" class="btn btn-ghost btn-block" data-tariff="Точка роста">Заказать</a>
-            </div>
-          </div>
-
-          <div class="pricing-col pricing-col--featured">
-            <div class="pricing-cell pricing-cell--head">
-              <span class="pricing-name">Карта роста</span>
-              <span class="pricing-badge">Основной формат</span>
-            </div>
-            <div class="pricing-cell" data-row="when">
-              <span class="pricing-cell-label">Когда подходит</span>
-              Непонятно, где именно бизнес теряет деньги и что мешает расти
-            </div>
-            <div class="pricing-cell" data-row="what">
-              <span class="pricing-cell-label">Что получите</span>
-              Комплексный аудит бизнеса: отчёт с проблемами, точками роста, планом действий
-              и расчётом, сколько вы сможете заработать, если устраните проблемы
-            </div>
-            <div class="pricing-cell" data-row="format">
-              <span class="pricing-cell-label">Формат</span>
-              Бриф + детальный отчёт (аудит) + видеозвонок
-            </div>
-            <div class="pricing-cell" data-row="price">
-              <span class="pricing-cell-label">Цена</span>
-              <span class="pricing-price num" data-count="197000">197&nbsp;000&nbsp;₽</span>
-            </div>
-            <div class="pricing-cell pricing-note" data-row="note">
-              <span class="pricing-cell-label">Важно</span>
-              <a href="#contact" data-tariff="Пример отчёта">Скачать пример отчёта</a>
-            </div>
-            <div class="pricing-cell pricing-cell--cta">
-              <a href="#contact" class="btn btn-primary btn-block" data-tariff="Карта роста">Заказать</a>
-            </div>
-          </div>
-
-          <div class="pricing-col">
-            <div class="pricing-cell pricing-cell--head">
-              <span class="pricing-name">Рост под контролем</span>
-            </div>
-            <div class="pricing-cell" data-row="when">
-              <span class="pricing-cell-label">Когда подходит</span>
-              План уже есть — нужно довести изменения до результата
-            </div>
-            <div class="pricing-cell" data-row="what">
-              <span class="pricing-cell-label">Что получите</span>
-              Контроль над внедрением инициатив из аудита и предложение новых идей по тому,
-              что ещё можно улучшить для роста
-            </div>
-            <div class="pricing-cell" data-row="format">
-              <span class="pricing-cell-label">Формат</span>
-              Еженедельный статус в почте + звонок по результатам месяца
-            </div>
-            <div class="pricing-cell" data-row="price">
-              <span class="pricing-cell-label">Цена</span>
-              <span class="pricing-price num" data-count="84000">84&nbsp;000&nbsp;₽</span>
-              <span class="pricing-period">в месяц</span>
-            </div>
-            <div class="pricing-cell pricing-note" data-row="note">
-              <span class="pricing-cell-label">Важно</span>
-              Доступно только для клиентов, заказавших аудит
-            </div>
-            <div class="pricing-cell pricing-cell--cta">
-              <a href="#contact" class="btn btn-ghost btn-block" data-tariff="Рост под контролем">Заказать</a>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="pricing-guarantee reveal">
-          <span class="compare-mark" aria-hidden="true" style="background: rgba(14,165,165,.18); color: var(--color-teal);">✓</span>
-          <p>
-            <strong>Не увидите ценности — верну деньги.</strong>
-            Гарантия действует на все три формата работы.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==============================
-         БЛОК 4 — КТО СТОИТ ЗА ПРОЕКТОМ
-         ============================== -->
-    <section class="about" id="about" aria-labelledby="about-title">
-      <div class="container">
-        <p class="section-num reveal">04 / Обо мне</p>
-        <h2 class="section-title reveal" id="about-title">Кто стоит за проектом Dwelve</h2>
-
-        <div class="about-inner">
-          <div class="reveal">
-            <div class="about-photo">
-              <img src="photos/photo_2026-02-19_16-18-48.jpg"
-                   alt="Дарья Подгорная, основатель Dwelve"
-                   width="280" height="350" loading="lazy">
-            </div>
-            <p class="about-name">Дарья Подгорная</p>
-            <p class="about-role">Основатель Dwelve · маркетинг и рост</p>
-            <div class="about-socials">
-              <!-- TODO: подставить реальные ссылки, когда придут -->
-              <a href="#" class="todo" aria-label="Telegram" title="Ссылка ещё не задана">TG</a>
-              <a href="#" class="todo" aria-label="VC.ru" title="Ссылка ещё не задана">VC</a>
-              <a href="#" class="todo" aria-label="LinkedIn" title="Ссылка ещё не задана">In</a>
-            </div>
-          </div>
-
-          <div class="about-text reveal" style="--reveal-delay: 120ms">
-            <p class="about-lead">
-              Маркетинг для меня — это не реклама. Это комплексная система,
-              которая должна приносить бизнесу деньги.
-            </p>
-            <p>
-              12 лет я работаю с маркетингом компаний разного масштаба — от небольших
-              локальных проектов до международных корпораций.
-            </p>
-            <p>
-              За это время я видела очень разные бизнес-модели, рынки, команды и проблемы
-              роста. Сейчас живу в Канаде и работаю одновременно с российскими и
-              североамериканскими клиентами, поэтому могу смотреть на бизнес шире локального
-              рынка и использовать подходы, которые работают в разных странах и категориях.
-            </p>
-            <p>
-              Моя задача — не выдать клиенту красивую стратегию и теорию. Моя задача —
-              показать, что именно нужно изменить и как понять в цифрах, что это
-              изменение сработало.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==============================
-         БЛОК 5 — FAQ
-         ============================== -->
-    <section id="faq" aria-labelledby="faq-title">
-      <div class="container">
-        <p class="section-num reveal">05 / Вопросы</p>
-        <h2 class="section-title reveal" id="faq-title">Частые вопросы</h2>
-
-        <div class="faq-list reveal">
-
-          <div class="faq-item is-open">
-            <button class="faq-q" aria-expanded="true" aria-controls="faq-a-1">
-              У меня уже есть маркетолог, отдел маркетинга или агентство. Зачем мне вы?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-a" id="faq-a-1" role="region">
-              <div class="faq-a-inner"><div>
-                <p>
-                  Я не заменяю вашу команду. Моя задача — независимо посмотреть на бизнес целиком
-                  и понять, что именно сейчас мешает росту и куда команде стоит направить усилия.
-                </p>
-                <p>
-                  Часто проблема находится не только в рекламе, а в продукте, ценах, клиентской
-                  базе, ассортименте, retention или продажах. После аудита у команды появляется
-                  понятный список приоритетов и KPI.
-                </p>
-              </div></div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false" aria-controls="faq-a-2">
-              Какие данные нужно будет предоставить?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-a" id="faq-a-2" role="region">
-              <div class="faq-a-inner"><div>
-                <p>
-                  Зависит от бизнеса. Обычно это данные о продажах, клиентах, маркетинговых
-                  расходах, продуктах или услугах, CRM и текущих активностях.
-                </p>
-                <p>
-                  Не обязательно иметь идеальную аналитику. Сначала я смотрю, какие данные уже
-                  есть, и использую максимум из доступного.
-                </p>
-              </div></div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false" aria-controls="faq-a-3">
-              Как проходит оплата?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-a" id="faq-a-3" role="region">
-              <div class="faq-a-inner"><div>
-                <p>
-                  Оплатить услуги можно банковской картой или по счёту для компании.
-                </p>
-                <p>
-                  Если вы выбираете тариф «Карта роста», то оплачиваете 50% до старта работ
-                  и 50% после получения отчёта. Для остальных форматов предусмотрена предоплата.
-                </p>
-              </div></div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false" aria-controls="faq-a-4">
-              Вы работаете официально?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-a" id="faq-a-4" role="region">
-              <div class="faq-a-inner"><div>
-                <p>
-                  Да, вся работа ведётся по договору в соответствии с законодательством
-                  Российской Федерации.
-                </p>
-              </div></div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false" aria-controls="faq-a-5">
-              Есть ли у вас NDA?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-a" id="faq-a-5" role="region">
-              <div class="faq-a-inner"><div>
-                <p>
-                  Да, при необходимости подписываем NDA до передачи данных.
-                </p>
-              </div></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==============================
-         БЛОК 6 — ФОРМА
-         ============================== -->
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="contact-inner">
-
-          <div class="reveal">
-            <p class="section-num">06 / Связаться</p>
-            <h2 class="section-title" id="contact-title">Обсудим вашу задачу</h2>
-            <p class="contact-lead">
-              Расскажите, что происходит с бизнесом. Отвечу и предложу формат,
-              который подходит именно вашей ситуации — или скажу, что мой формат вам сейчас
-              не нужен.
-            </p>
-
-            <div class="contact-facts">
-              <div class="contact-fact">
-                <span class="contact-fact-mark" aria-hidden="true">✓</span>
-                <span>Отвечаю лично в течение одного рабочего дня</span>
-              </div>
-              <div class="contact-fact">
-                <span class="contact-fact-mark" aria-hidden="true">✓</span>
-                <span>NDA подписываем до передачи любых данных</span>
-              </div>
-              <div class="contact-fact">
-                <span class="contact-fact-mark" aria-hidden="true">✓</span>
-                <span>Не увидите ценности — верну деньги</span>
-              </div>
-            </div>
-          </div>
-
-          <form class="form reveal" id="lead-form" novalidate style="--reveal-delay: 120ms">
-            <div class="form-row">
-              <div class="field">
-                <label for="f-name">Как вас зовут</label>
-                <input type="text" id="f-name" name="name" autocomplete="name" required>
-              </div>
-              <div class="field">
-                <label for="f-email">Email</label>
-                <input type="email" id="f-email" name="email" autocomplete="email" required>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="field">
-                <label for="f-contact">Телефон или мессенджер <span class="opt">— необязательно</span></label>
-                <input type="text" id="f-contact" name="messenger" autocomplete="tel">
-              </div>
-              <div class="field">
-                <label for="f-company">Компания и сфера <span class="opt">— необязательно</span></label>
-                <input type="text" id="f-company" name="company" autocomplete="organization">
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="f-tariff">Что вас интересует</label>
-              <select id="f-tariff" name="tariff">
-                <option>Пока не знаю — нужен совет</option>
-                <option>Точка роста</option>
-                <option>Карта роста</option>
-                <option>Рост под контролем</option>
-                <option>Пример отчёта</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="f-message">Что происходит с бизнесом</label>
-              <textarea id="f-message" name="message" required
-                placeholder="Например: выручка стоит третий квартал, реклама работает, но повторных покупок почти нет"></textarea>
-            </div>
-
-            <label class="consent" for="f-consent">
-              <input type="checkbox" id="f-consent" name="consent" required>
-              <span>
-                Я согласен на обработку персональных данных в соответствии с
-                <a href="documents.html#privacy">политикой обработки персональных данных</a>.
-              </span>
-            </label>
-
-            <button type="submit" class="btn btn-accent btn-block" id="submit-btn">Отправить</button>
-
-            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-          </form>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ==============================
-       ФУТЕР
-       ============================== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-
-        <div>
-          <div class="footer-logo">
-            <svg width="26" height="26" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-              <g transform="translate(100,100)">
-                <circle cx="0" cy="-65" r="8" fill="#FFFFFF"/>
-                <circle cx="32.5" cy="-56.29" r="11" fill="#FF7518"/>
-                <circle cx="56.29" cy="-32.5" r="5" fill="#FFFFFF"/>
-                <circle cx="65" cy="0" r="4.5" fill="#FFFFFF"/>
-                <circle cx="56.29" cy="32.5" r="4" fill="#FFFFFF"/>
-                <circle cx="32.5" cy="56.29" r="3.5" fill="#FFFFFF"/>
-                <circle cx="0" cy="65" r="3" fill="#FFFFFF"/>
-                <circle cx="-32.5" cy="56.29" r="2.8" fill="#FFFFFF"/>
-                <circle cx="-56.29" cy="32.5" r="2.8" fill="#FFFFFF"/>
-                <circle cx="-65" cy="0" r="3.8" fill="#FFFFFF"/>
-                <circle cx="-56.29" cy="-32.5" r="5" fill="#FFFFFF"/>
-                <circle cx="-32.5" cy="-56.29" r="6.5" fill="#FFFFFF"/>
-              </g>
-            </svg>
-            Dwelve
-          </div>
-          <p style="max-width: 320px;">
-            Аудит маркетинга, продукта и продаж как единой системы.
-            Рекомендации на денежных KPI, а не на охватах.
-          </p>
-        </div>
-
-        <div>
-          <h4>Контакты</h4>
-          <ul class="footer-list">
-            <li><a href="mailto:hello@dwelve.ru" class="todo">hello@dwelve.ru</a></li>
-            <li><a href="#" class="todo">Telegram</a></li>
-            <li><a href="#" class="todo">VC.ru</a></li>
-            <li><a href="#contact">Написать через форму</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Документы</h4>
-          <ul class="footer-list">
-            <li><a href="documents.html#offer">Публичная оферта</a></li>
-            <li><a href="documents.html#privacy">Обработка персональных данных</a></li>
-            <li><a href="documents.html#refund">Условия возврата</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <span>© <span id="year">2026</span> Dwelve</span>
-        <span class="todo">ИП / ООО, ИНН — реквизиты уточняются</span>
+      <div class="pains-cta reveal">
+        <a href="#pricing" class="btn btn-primary">Да, это обо мне — нужна помощь</a>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-  (function () {
-    'use strict';
+  <!-- =======================================================================
+       02 — УСЛУГИ И ЦЕНЫ
+       ======================================================================= -->
+  <section class="sec--cream" id="pricing" aria-labelledby="pricing-title">
+    <div class="container">
+      <div class="sec-head sec-head--split">
+        <p class="eyebrow reveal"><b>02</b> · Формат работы</p>
+        <h2 class="display reveal" id="pricing-title" style="--rd: 80ms">Услуги и цены</h2>
+        <p class="reveal" style="--rd: 140ms">
+          Три формата: разобраться в одной проблеме, получить полную карту роста
+          или довести изменения до результата.
+        </p>
+      </div>
 
-    /* =====================================================================
-       ОТПРАВКА ФОРМЫ
-       Сайт статический, бэкенда нет. Пока адрес обработчика не задан, форма
-       собирает письмо и открывает почтовый клиент — лид не теряется, но и
-       иллюзии, что заявка ушла на сервер, не создаётся.
+      <div class="tiers">
 
-       Обработчик выбирать под российскую аудиторию: Formspree и подобные
-       зарубежные сервисы у части посетителей не открываются без VPN, что
-       ровно та причина, по которой на сайте форма, а не ссылка на Telegram.
-       ===================================================================== */
-    var FORM_ENDPOINT = '';           // ← URL обработчика
-    var FALLBACK_EMAIL = 'hello@dwelve.ru';
+        <article class="tier reveal">
+          <div class="tier-top">
+            <span class="tier-idx">01 · Точка роста</span>
+            <span class="tier-tag">Быстрый старт</span>
+          </div>
+          <h3 class="tier-name">Точка<br>роста</h3>
+          <p class="tier-for">
+            Для ситуации, когда вопрос уже понятен: почему не растёт чек, почему не
+            возвращаются клиенты, работает ли акция, куда уходит рекламный бюджет.
+          </p>
+          <p class="tier-price"><span>50 000</span><span class="tier-price-cur">₽</span></p>
 
-    var $  = function (s, c) { return (c || document).querySelector(s); };
-    var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+          <p class="tier-list-label">Что получите</p>
+          <ul class="tier-list">
+            <li>Причину проблемы на ваших данных</li>
+            <li>Конкретное решение</li>
+            <li>План действий и прогноз эффекта</li>
+            <li>Разбор на звонке со мной, 60–90 минут</li>
+          </ul>
 
-    /* ---------- Мобильное меню ---------- */
-    var burger  = $('#burger');
-    var drawer  = $('#drawer');
-    var overlay = $('#overlay');
+          <dl class="tier-facts">
+            <div class="tier-fact"><dt>Срок подготовки</dt><dd>До 7 дней</dd></div>
+            <div class="tier-fact"><dt>Ответы на вопросы</dt><dd>В течение 3 дней</dd></div>
+          </dl>
 
-    function setMenu(open) {
-      burger.classList.toggle('is-open', open);
-      drawer.classList.toggle('is-open', open);
-      overlay.classList.toggle('is-open', open);
-      overlay.hidden = !open;
-      burger.setAttribute('aria-expanded', String(open));
-      drawer.setAttribute('aria-hidden', String(!open));
-      document.body.style.overflow = open ? 'hidden' : '';
+          <p class="tier-note">
+            <b>Засчитывается в «Карту роста».</b> Если в течение 30 дней после разбора
+            закажете комплексный аудит, стоимость этой работы вычитается из его цены.
+          </p>
+          <div class="tier-actions">
+            <button class="btn btn-primary btn-block" data-modal="order" data-tier="Точка роста" data-price="50 000 ₽">
+              Разобрать проблему →
+            </button>
+          </div>
+        </article>
+
+        <article class="tier tier--featured reveal" style="--rd: 90ms">
+          <div class="tier-top">
+            <span class="tier-idx">02 · Карта роста</span>
+            <span class="tier-tag">Максимум пользы</span>
+          </div>
+          <h3 class="tier-name">Карта<br>роста</h3>
+          <p class="tier-for">
+            Когда симптомов много и непонятно, что является причиной: реклама, продукт,
+            цены, клиентская база, продажи или всё сразу.
+          </p>
+          <p class="tier-price"><span>245 000</span><span class="tier-price-cur">₽</span></p>
+
+          <p class="tier-list-label">Что получите</p>
+          <ul class="tier-list">
+            <li>Где бизнес теряет деньги и недополучает выручку</li>
+            <li>Какие точки роста дадут максимальный эффект</li>
+            <li>Что делать в первую очередь</li>
+            <li>План на 90 дней с KPI и ожидаемым результатом</li>
+            <li>Детальный разбор со мной на звонке</li>
+          </ul>
+
+          <dl class="tier-facts">
+            <div class="tier-fact"><dt>Срок подготовки</dt><dd>До 30 дней</dd></div>
+            <div class="tier-fact"><dt>Ответы на вопросы</dt><dd>В течение 7 дней</dd></div>
+          </dl>
+
+          <div class="tier-actions">
+            <button class="btn btn-light btn-block" data-modal="order" data-tier="Карта роста" data-price="245 000 ₽">
+              Найти точки роста →
+            </button>
+            <a href="#report" class="btn btn-ghost-light btn-block">Посмотреть пример отчёта</a>
+          </div>
+        </article>
+
+        <article class="tier reveal" style="--rd: 180ms">
+          <div class="tier-top">
+            <span class="tier-idx">03 · Рост под контролем</span>
+            <span class="tier-tag">Довести до результата</span>
+          </div>
+          <h3 class="tier-name">Рост под<br>контролем</h3>
+          <p class="tier-for">
+            Для тех, кто уже получил комплексный аудит и хочет довести рекомендации
+            до результата силами своей команды, а также получать новые рекомендации.
+          </p>
+          <p class="tier-price"><span>95 000</span><span class="tier-price-cur">₽ / мес</span></p>
+
+          <p class="tier-list-label">Каждый месяц</p>
+          <ul class="tier-list">
+            <li>Контроль внедрения плана</li>
+            <li>Разбор результатов и KPI</li>
+            <li>Корректировка решений</li>
+            <li>Новые гипотезы по мере появления данных</li>
+            <li>Чат и созвон каждые две недели</li>
+          </ul>
+
+          <dl class="tier-facts">
+            <div class="tier-fact"><dt>Срок подготовки</dt><dd>Ежемесячно</dd></div>
+            <div class="tier-fact"><dt>Ответы на вопросы</dt><dd>Весь период сопровождения</dd></div>
+          </dl>
+
+          <p class="tier-note">Доступно только после комплексного аудита «Карта роста».</p>
+          <div class="tier-actions">
+            <button class="btn btn-primary btn-block" data-modal="advisory" data-tier="Рост под контролем" data-price="95 000 ₽ / мес">
+              Обсудить сопровождение →
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="guarantee reveal">
+        <span class="guarantee-mark" aria-hidden="true">✓</span>
+        <p><b>Гарантия ценности.</b> Если после работы вы не увидите полезных и применимых выводов для бизнеса — верну деньги.</p>
+      </div>
+
+      <div class="after-tiers reveal">
+        <p>Остались вопросы? Обсудим конкретно вашу ситуацию — и я скажу, какой формат подходит.</p>
+        <a href="#contact" class="btn btn-outline">Обсудить мою ситуацию</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       03 — ПРИМЕР РЕЗУЛЬТАТА
+       ======================================================================= -->
+  <section class="sec--cream2" id="report" aria-labelledby="report-title">
+    <div class="container">
+      <div class="sec-head sec-head--split">
+        <p class="eyebrow reveal"><b>03</b> · Пример результата</p>
+        <h2 class="display reveal" id="report-title" style="--rd: 80ms">Вот так выглядит конкретика.</h2>
+        <div class="reveal" style="--rd: 140ms">
+          <span class="strike">
+            <span aria-hidden="true">✕</span>
+            <s>Хаотично запускать рекламу. Затыкать дыры. Фонтан идей без привязки к окупаемости.</s>
+          </span>
+          <p>
+            Комплексный анализ бизнеса и факторов, влияющих на прибыль: выявление ключевых
+            проблем, оценка того, сколько денег из-за них теряет бизнес, и конкретный план
+            по их устранению.
+          </p>
+        </div>
+      </div>
+
+      <div class="rail-wrap reveal">
+        <button class="rail-btn rail-btn--prev" data-rail="docs" data-dir="-1" aria-label="Предыдущая страница отчёта">←</button>
+        <button class="rail-btn rail-btn--next" data-rail="docs" data-dir="1" aria-label="Следующая страница отчёта">→</button>
+
+        <ul class="rail doc-rail" id="rail-docs" tabindex="0" aria-label="Страницы примера отчёта">
+          <li>
+            <p class="doc-slide-cap">Какие действия и сколько денег могут принести</p>
+            <div class="doc-page" data-doc="1"></div>
+          </li>
+          <li>
+            <p class="doc-slide-cap">Какие клиенты действительно создают деньги</p>
+            <div class="doc-page" data-doc="2"></div>
+          </li>
+          <li>
+            <p class="doc-slide-cap">Какие позиции усиливать, а какие убрать</p>
+            <div class="doc-page" data-doc="3"></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pains-cta reveal">
+        <button class="btn btn-primary" data-modal="report">Скачать пример отчёта</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       04 — ПРОЦЕСС
+       ======================================================================= -->
+  <section class="sec--cream" aria-labelledby="process-title">
+    <div class="container">
+      <div class="sec-head">
+        <p class="eyebrow reveal"><b>04</b> · Процесс</p>
+        <h2 class="display reveal" id="process-title" style="--rd: 80ms">Как устроена работа</h2>
+      </div>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <div class="step-dot" aria-hidden="true"></div>
+          <p class="step-n">Шаг 01</p>
+          <p class="step-name">Бриф</p>
+          <p>Заполняете короткую анкету о бизнесе и присылаете данные, которые уже есть.</p>
+        </li>
+        <li class="step reveal" style="--rd: 70ms">
+          <div class="step-dot" aria-hidden="true"></div>
+          <p class="step-n">Шаг 02</p>
+          <p class="step-name">Анализ</p>
+          <p>Я разбираю продажи, клиентов, продукт и каналы и считаю, где теряются деньги.</p>
+        </li>
+        <li class="step reveal" style="--rd: 140ms">
+          <div class="step-dot" aria-hidden="true"></div>
+          <p class="step-n">Шаг 03</p>
+          <p class="step-name">Отчёт</p>
+          <p>Вы получаете документ с выводами, планом действий и прогнозом в деньгах.</p>
+        </li>
+        <li class="step reveal" style="--rd: 210ms">
+          <div class="step-dot" aria-hidden="true"></div>
+          <p class="step-n">Шаг 04</p>
+          <p class="step-name">Разбор</p>
+          <p>Проходим отчёт на звонке: отвечаю на вопросы и уточняю приоритеты под вашу команду.</p>
+        </li>
+        <li class="step reveal" style="--rd: 280ms">
+          <div class="step-dot" aria-hidden="true"></div>
+          <p class="step-n">Шаг 05</p>
+          <p class="step-name">Рост</p>
+          <p>Внедряете план сами — или подключаете ежемесячное сопровождение.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       05 — ОБО МНЕ
+       ======================================================================= -->
+  <section class="about on-orange" id="about" aria-labelledby="about-title">
+    <div class="container about-grid">
+      <div>
+        <p class="eyebrow reveal"><b>05</b> · Обо мне</p>
+        <h2 class="display reveal" id="about-title" style="--rd: 80ms">
+          Кто стоит за <span class="brand">Dwelve.</span>
+        </h2>
+        <div class="about-text reveal" style="--rd: 140ms">
+          <p class="about-lead">
+            <b>Маркетинг — это не просто реклама, распродажа и соцсети.</b>
+            Это комплексная система, которая должна приносить бизнесу деньги.
+          </p>
+          <p>
+            12 лет я работаю с маркетингом компаний разного масштаба — от небольших
+            локальных проектов до международных корпораций.
+          </p>
+          <p>
+            За это время я видела очень разные бизнес-модели, рынки, команды и проблемы роста.
+            Сейчас живу в Канаде и работаю одновременно с российскими и североамериканскими
+            клиентами, поэтому могу смотреть на бизнес шире локального рынка и использовать
+            подходы, которые работают в разных странах и категориях.
+          </p>
+          <p>
+            Моя задача — не выдать клиенту красивую презентацию. Моя задача — показать,
+            что именно нужно изменить и как понять в цифрах, что это изменение сработало.
+          </p>
+        </div>
+      </div>
+
+      <div class="reveal" style="--rd: 200ms">
+        <figure class="polaroid">
+          <img src="photos/photo_2026-02-19_16-18-48.jpg" alt="Дарья Подгорная, основатель Dwelve" width="340" height="425" loading="lazy">
+          <figcaption class="polaroid-cap">Дарья</figcaption>
+          <div class="polaroid-badge" aria-hidden="true">
+            <b>12+</b><span>лет опыта</span>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       06 — FAQ
+       ======================================================================= -->
+  <section class="sec--cream" id="faq" aria-labelledby="faq-title">
+    <div class="container faq-grid">
+      <div>
+        <p class="eyebrow reveal"><b>06</b> · Частые вопросы</p>
+        <h2 class="display reveal" id="faq-title" style="--rd: 80ms">До старта всё должно быть понятно.</h2>
+        <p class="accent-line reveal" style="--rd: 140ms; font-size: var(--text-lead); margin-top: var(--sp-md)">
+          Без мелкого шрифта и сюрпризов.
+        </p>
+      </div>
+
+      <div class="faq-list reveal">
+        <div class="faq-item is-open">
+          <button class="faq-q" aria-expanded="true" aria-controls="fa1">
+            У меня уже есть маркетолог или агентство. Зачем мне Dwelve?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="fa1" role="region"><div class="faq-a-inner"><div>
+            <p>Я не заменяю вашу команду. Я независимо смотрю на бизнес целиком и помогаю понять, что именно мешает росту и куда стоит направить усилия.</p>
+            <p>Часто причина находится не в рекламе, а в продукте, ценах, клиентской базе, ассортименте, повторных покупках или продажах. После разбора у команды появляется понятный список приоритетов и KPI.</p>
+          </div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="fa2">
+            Какие данные понадобятся?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="fa2" role="region"><div class="faq-a-inner"><div>
+            <p>Зависит от бизнеса. Обычно это данные о продажах, клиентах, маркетинговых расходах, продуктах или услугах, CRM и текущих активностях.</p>
+            <p>Идеальная аналитика не нужна. Сначала я смотрю, какие данные уже есть, и использую максимум из доступного.</p>
+          </div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="fa3">
+            Сколько времени занимает «Карта роста»?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="fa3" role="region"><div class="faq-a-inner"><div>
+            <p>До 30 дней с момента получения данных. «Точка роста» — до 7 дней.</p>
+            <p>Точный срок называю после брифа: он зависит от того, в каком виде у вас лежат данные.</p>
+          </div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="fa4">
+            Как проходит оплата?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="fa4" role="region"><div class="faq-a-inner"><div>
+            <p>Банковской картой на сайте или по счёту для компании.</p>
+            <p>Для «Карты роста» — 50% до старта работ и 50% после получения отчёта. Для остальных форматов предусмотрена предоплата.</p>
+          </div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="fa5">
+            Вы работаете официально?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="fa5" role="region"><div class="faq-a-inner"><div>
+            <p>Да. Работа ведётся по договору в соответствии с законодательством Российской Федерации, с закрывающими документами.</p>
+          </div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="fa6">
+            Можно ли подписать NDA?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="fa6" role="region"><div class="faq-a-inner"><div>
+            <p>Да, при необходимости подписываем NDA до передачи любых данных.</p>
+          </div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="fa7">
+            Что если я не увижу ценности в работе?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" id="fa7" role="region"><div class="faq-a-inner"><div>
+            <p>Верну деньги. Гарантия действует на все три формата: если после работы вы не увидите полезных и применимых выводов для бизнеса, я возвращаю оплату.</p>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       07 — БЛОГ
+       ======================================================================= -->
+  <section class="sec--cream2" id="blog" aria-labelledby="blog-title">
+    <div class="container">
+      <div class="sec-head sec-head--split">
+        <p class="eyebrow reveal"><b>07</b> · Блог</p>
+        <h2 class="display reveal" id="blog-title" style="--rd: 80ms">Полезные материалы</h2>
+        <p class="reveal" style="--rd: 140ms">
+          О продажах, клиентах, продукте, цене и рекламе — на языке собственника.
+        </p>
+      </div>
+
+      <div class="posts">
+        <article class="post reveal">
+          <p class="post-meta">Статья · 7 мин</p>
+          <h3>Почему продажи не растут, несмотря на рекламу, скидки и контент</h3>
+          <p>Семь ситуаций, когда проблема находится глубже рекламного канала — в клиенте, продукте или самой экономике покупки.</p>
+          <a href="#contact" class="post-link todo">Скоро <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="post reveal" style="--rd: 80ms">
+          <p class="post-meta">Статья · 6 мин</p>
+          <h3>Каких клиентов действительно нужно привлекать</h3>
+          <p>Почему самые массовые клиенты не всегда самые выгодные и как смотреть на ценность сегмента, а не только на его размер.</p>
+          <a href="#contact" class="post-link todo">Скоро <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="post reveal" style="--rd: 160ms">
+          <p class="post-meta">Статья · 8 мин</p>
+          <h3>Когда скидка увеличивает продажи, но уменьшает прибыль</h3>
+          <p>Как посчитать точку безубыточности акции и понять, покупаете вы новое поведение или просто отдаёте маржу.</p>
+          <a href="#contact" class="post-link todo">Скоро <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       08 — ФОРМА
+       ======================================================================= -->
+  <section class="contact on-dark" id="contact" aria-labelledby="contact-title">
+    <div class="container contact-grid">
+      <div class="reveal">
+        <p class="eyebrow"><b>08</b> · Обсудить задачу</p>
+        <h2 class="display" id="contact-title" style="margin-top: var(--sp-md)">
+          Пока вы не знаете, где теряете деньги, <span class="hl">запуск рекламы и акций не решит проблему.</span>
+        </h2>
+        <p class="accent-line">Расскажите, что происходит. Я отвечу лично.</p>
+        <p style="color: rgba(255,255,255,.72)">
+          Опишите задачу в двух-трёх предложениях. Я предложу подходящий формат — или честно
+          скажу, если сейчас вам нужен другой специалист.
+        </p>
+        <a href="mailto:hello@dwelve.ru" class="contact-mail">hello@dwelve.ru →</a>
+      </div>
+
+      <form class="form-card reveal" id="lead-form" style="--rd: 100ms" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-name">Как вас зовут</label>
+            <input type="text" id="f-name" name="name" placeholder="Имя" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Электронная почта</label>
+            <input type="email" id="f-email" name="email" placeholder="name@company.ru" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="f-phone">Телефон / мессенджер <span class="opt">— необязательно</span></label>
+            <input type="text" id="f-phone" name="messenger" placeholder="Необязательно" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="f-company">Компания и сфера <span class="opt">— необязательно</span></label>
+            <input type="text" id="f-company" name="company" placeholder="Например: клиника, онлайн-магазин, сервис" autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-tariff">Что вас интересует</label>
+          <select id="f-tariff" name="tariff">
+            <option>Пока не знаю — нужен совет</option>
+            <option>Точка роста — 50 000 ₽</option>
+            <option>Карта роста — 245 000 ₽</option>
+            <option>Рост под контролем — 95 000 ₽ / мес</option>
+            <option>Пример отчёта</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-message">Что происходит с бизнесом</label>
+          <textarea id="f-message" name="message" required placeholder="Коротко опишите задачу"></textarea>
+        </div>
+
+        <label class="consent" for="f-consent">
+          <input type="checkbox" id="f-consent" name="consent" required>
+          <span>Я даю <a href="documents.html#consent">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="documents.html#privacy">Политикой обработки персональных данных</a>.</span>
+        </label>
+
+        <label class="consent" for="f-marketing">
+          <input type="checkbox" id="f-marketing" name="marketing">
+          <span>Я согласен(на) получать информационные и рекламные письма Dwelve. <a href="documents.html#marketing">Условия согласия</a>.</span>
+        </label>
+
+        <button type="submit" class="btn btn-primary btn-block" id="lead-submit">Отправить заявку</button>
+        <p class="form-status" id="lead-status" role="status" aria-live="polite"></p>
+        <p class="form-note" data-demo-note>
+          Демонстрационная версия формирует письмо в вашем почтовом приложении.
+          Перед публикацией подключите форму к выбранной системе обработки заявок.
+        </p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================================================
+     ФУТЕР
+     ========================================================================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <svg width="26" height="26" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+            <g transform="translate(100,100)">
+              <circle cx="0" cy="-65" r="8" fill="#FFFFFF"/><circle cx="32.5" cy="-56.29" r="11" fill="#FF7518"/>
+              <circle cx="56.29" cy="-32.5" r="5" fill="#FFFFFF"/><circle cx="65" cy="0" r="4.5" fill="#FFFFFF"/>
+              <circle cx="56.29" cy="32.5" r="4" fill="#FFFFFF"/><circle cx="32.5" cy="56.29" r="3.5" fill="#FFFFFF"/>
+              <circle cx="0" cy="65" r="3" fill="#FFFFFF"/><circle cx="-32.5" cy="56.29" r="2.8" fill="#FFFFFF"/>
+              <circle cx="-56.29" cy="32.5" r="2.8" fill="#FFFFFF"/><circle cx="-65" cy="0" r="3.8" fill="#FFFFFF"/>
+              <circle cx="-56.29" cy="-32.5" r="5" fill="#FFFFFF"/><circle cx="-32.5" cy="-56.29" r="6.5" fill="#FFFFFF"/>
+            </g>
+          </svg>
+          Dwelve
+        </div>
+        <p style="max-width: 340px; font-size: var(--text-caption)">
+          Разбор бизнеса для собственников: где теряются деньги, что менять первым
+          и как понять в цифрах, что изменение сработало.
+        </p>
+      </div>
+
+      <div>
+        <h4>Контакты</h4>
+        <ul class="footer-list">
+          <li><a href="mailto:hello@dwelve.ru">hello@dwelve.ru</a></li>
+          <li><a href="#" class="todo">Telegram</a></li>
+          <li><a href="#contact">Написать через форму</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Документы</h4>
+        <ul class="footer-list">
+          <li><a href="documents.html#privacy">Политика обработки персональных данных</a></li>
+          <li><a href="documents.html#consent">Согласие на обработку персональных данных</a></li>
+          <li><a href="documents.html#terms">Условия оказания услуг</a></li>
+          <li><a href="documents.html#offer">Договор оферты</a></li>
+          <li><a href="documents.html#refund">Условия возврата денег</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-req">
+      <span>© <span id="year">2026</span> Dwelve</span>
+      <span class="todo">ФИО · ИНН · плательщик НПД · e-mail — реквизиты уточняются</span>
+    </div>
+  </div>
+</footer>
+
+<!-- =========================================================================
+     КУКИ-БАННЕР
+     ========================================================================= -->
+<div class="cookie" id="cookie" role="region" aria-label="Использование cookie" hidden>
+  <p>
+    Сайт использует cookie, чтобы работать корректно и понимать, какие материалы полезны.
+    Подробности — в <a href="documents.html#privacy">Политике обработки персональных данных</a>.
+  </p>
+  <div class="cookie-actions">
+    <button class="btn btn-outline btn-sm" id="cookie-decline" style="border-color: rgba(255,255,255,.28); color: #fff">Только необходимые</button>
+    <button class="btn btn-primary btn-sm" id="cookie-accept">Принять</button>
+  </div>
+</div>
+
+<!-- =========================================================================
+     МОДАЛЬНОЕ ОКНО
+     Одна оболочка на три сценария: заказ тарифа (вопрос + оплата),
+     сопровождение и скачивание примера отчёта. Содержимое переключает JS —
+     три отдельных окна означали бы три копии одной формы.
+     ========================================================================= -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <p class="modal-title" id="modal-title">Оставить заявку</p>
+        <p class="modal-sub" id="modal-sub"></p>
+      </div>
+      <button class="modal-close" id="modal-close" aria-label="Закрыть">✕</button>
+    </div>
+
+    <div class="modal-tabs" id="modal-tabs" role="tablist" hidden>
+      <button class="modal-tab" role="tab" id="tab-ask" aria-selected="true" aria-controls="pane-ask">Задать вопрос</button>
+      <button class="modal-tab" role="tab" id="tab-pay" aria-selected="false" aria-controls="pane-pay">Оплатить онлайн</button>
+    </div>
+
+    <!-- Вопрос / заявка -->
+    <form id="pane-ask" role="tabpanel" aria-labelledby="tab-ask" novalidate>
+      <div class="field">
+        <label for="m-name">Как вас зовут</label>
+        <input type="text" id="m-name" name="name" placeholder="Имя" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="m-email">Электронная почта</label>
+        <input type="email" id="m-email" name="email" placeholder="name@company.ru" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="m-phone">Телефон / мессенджер <span class="opt">— необязательно</span></label>
+        <input type="text" id="m-phone" name="messenger" placeholder="Необязательно" autocomplete="tel">
+      </div>
+      <div class="field" id="m-message-field">
+        <label for="m-message">Вопрос или задача</label>
+        <textarea id="m-message" name="message" placeholder="Коротко опишите ситуацию"></textarea>
+      </div>
+
+      <label class="consent" for="m-consent">
+        <input type="checkbox" id="m-consent" name="consent" required>
+        <span>Я даю <a href="documents.html#consent" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="documents.html#privacy" target="_blank" rel="noopener">Политикой</a>.</span>
+      </label>
+      <label class="consent" for="m-marketing">
+        <input type="checkbox" id="m-marketing" name="marketing">
+        <span>Согласен(на) получать информационные и рекламные письма Dwelve.</span>
+      </label>
+
+      <button type="submit" class="btn btn-primary btn-block" id="m-submit">Отправить</button>
+      <p class="form-status" id="m-status" role="status" aria-live="polite"></p>
+      <p class="form-note" data-demo-note>
+        Демонстрационная версия формирует письмо в вашем почтовом приложении.
+      </p>
+    </form>
+
+    <!-- Оплата -->
+    <div id="pane-pay" role="tabpanel" aria-labelledby="tab-pay" hidden>
+      <div class="pay-summary">
+        <span class="pay-summary-name" id="pay-name">Карта роста</span>
+        <span class="pay-summary-price" id="pay-price">245 000 ₽</span>
+      </div>
+      <p style="font-size: var(--text-small); color: var(--ink-2); margin-bottom: var(--sp-lg)">
+        Для «Карты роста» оплата делится: 50% до старта работ и 50% после получения отчёта.
+        Для остальных форматов — предоплата. Оплатить можно картой или по счёту для компании.
+      </p>
+      <button class="btn btn-primary btn-block" id="pay-btn" disabled>Перейти к оплате</button>
+      <p class="form-note">
+        Приём платежей ещё не подключён. Чтобы кнопка заработала, нужен договор
+        с эквайрингом (ЮKassa, Т-Бизнес или аналог) и обработчик на стороне сервера —
+        статическая страница принять оплату не может.
+      </p>
+      <p class="form-note">
+        Пока можно <button type="button" class="post-link" id="pay-to-ask" style="color: var(--blue)">запросить счёт</button> — отвечу в течение рабочего дня.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =====================================================================
+     ОТПРАВКА ЗАЯВОК
+     Сайт статический. Пока адрес обработчика не задан, формы собирают
+     письмо и открывают почтовый клиент: заявка не теряется, но и ложного
+     «отправлено» не показывается.
+
+     Обработчик выбирать под российскую аудиторию — Formspree и подобные
+     зарубежные сервисы у части посетителей не открываются без VPN, что
+     ровно та причина, по которой на сайте форма, а не ссылка на Telegram.
+     ===================================================================== */
+  var FORM_ENDPOINT = '';           // ← URL обработчика заявок
+  var MAIL = 'hello@dwelve.ru';
+
+  var $  = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- Мобильное меню ---------------- */
+  var burger = $('#burger'), drawer = $('#drawer'), overlay = $('#overlay');
+
+  function setMenu(open) {
+    burger.classList.toggle('is-open', open);
+    drawer.classList.toggle('is-open', open);
+    overlay.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    drawer.setAttribute('aria-hidden', String(!open));
+    lockScroll(open);
+  }
+  burger.addEventListener('click', function () { setMenu(!drawer.classList.contains('is-open')); });
+  overlay.addEventListener('click', function () { setMenu(false); });
+  $$('#drawer a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+  // Один счётчик на меню и модальное окно: иначе закрытие одного снимало бы
+  // блокировку прокрутки, пока второе ещё открыто.
+  var locks = 0;
+  function lockScroll(on) {
+    locks = Math.max(0, locks + (on ? 1 : -1));
+    document.body.style.overflow = locks ? 'hidden' : '';
+  }
+
+  var desktop = window.matchMedia('(min-width: 900px)');
+  (desktop.addEventListener ? desktop.addEventListener.bind(desktop, 'change')
+                            : desktop.addListener.bind(desktop))(function (e) {
+    if (e.matches && drawer.classList.contains('is-open')) setMenu(false);
+  });
+
+  /* ---------------- Шапка при скролле ---------------- */
+  var nav = $('#nav'), ticking = false;
+  function onScroll() { nav.classList.toggle('is-scrolled', window.scrollY > 40); }
+  onScroll();
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { onScroll(); ticking = false; });
+  }, { passive: true });
+
+  /* ---------------- Страницы отчёта ----------------
+     Разметка страниц собирается из данных, а не копируется трижды:
+     страница 1 нужна и в первом экране, и в карусели. Числа держатся
+     в одном месте — правка суммы не расходится между копиями. */
+  var LEVERS = [
+    ['Остановить убыточные акции',            '+145–155 тыс. ₽'],
+    ['Пересобрать ассортимент и допродажи',   '+180–230 тыс. ₽'],
+    ['Вернуть клиентов на повторную покупку', '+160–200 тыс. ₽'],
+    ['Сместить фокус на более ценных клиентов','+140–180 тыс. ₽'],
+    ['Перераспределить тот же рекламный бюджет','+100–130 тыс. ₽']
+  ];
+  // Столбцы «финансового моста» — середины диапазонов выше; сумма за вычетом
+  // пересечения даёт итог: 150+205+180+160+115−55 = 755.
+  var BRIDGE = [
+    ['Акции', 150, ''], ['Ассортимент', 205, 'alt'], ['Возврат', 180, ''],
+    ['Фокус ЦА', 160, 'alt'], ['Каналы', 115, ''], ['Пересечение', -55, 'neg'],
+    ['Итого', 755, 'total']
+  ];
+
+  function docHead() {
+    return '<div class="doc-head"><span class="doc-logo">Dwelve<span>.</span></span>' +
+           '<span class="doc-head-right">Пример отчёта Dwelve</span></div>';
+  }
+  function docFoot(n) {
+    return '<div class="doc-foot"><span>Dwelve · демонстрационный пример · цифры условные</span>' +
+           '<span>стр. ' + n + '</span></div>';
+  }
+
+  function docPage1() {
+    var levers = LEVERS.map(function (l, i) {
+      return '<li class="doc-lever"><span class="doc-lever-n">' + (i + 1) + '</span>' +
+             '<span class="doc-lever-text">' + l[0] + '</span>' +
+             '<span class="doc-lever-sum">' + l[1] + '</span></li>';
+    }).join('');
+
+    var max = 755;
+    var bars = BRIDGE.map(function (b) {
+      var h = Math.max(4, Math.round(Math.abs(b[1]) / max * 100));
+      var cls = b[2] ? ' doc-bar--' + b[2] : '';
+      return '<div class="doc-bar' + cls + '">' +
+             '<span class="doc-bar-v">' + (b[1] > 0 ? '+' : '') + b[1] + '</span>' +
+             '<span class="doc-bar-fill" style="height:' + h + '%"></span>' +
+             '<span class="doc-bar-l">' + b[0] + '</span></div>';
+    }).join('');
+
+    return docHead() +
+      '<p class="doc-eyebrow">Разбор бизнеса · пример</p>' +
+      '<h3 class="doc-title">Где бизнес недозарабатывает</h3>' +
+      '<div class="doc-callout">' +
+        '<p class="doc-callout-label">Главный вывод</p>' +
+        '<p class="doc-callout-text">Рост есть не в «больше рекламы», а в пяти конкретных рычагах.</p>' +
+        '<p class="doc-callout-note">Каждый рычаг посчитан в деньгах и поставлен в правильную очередь.</p>' +
+      '</div>' +
+      '<div class="doc-kpis">' +
+        '<div class="doc-kpi"><p class="doc-kpi-label">Выручка сейчас</p><p class="doc-kpi-value">6,36 млн ₽</p><p class="doc-kpi-unit">в месяц</p></div>' +
+        '<div class="doc-kpi doc-kpi--goal"><p class="doc-kpi-label">Цель на 90 дней</p><p class="doc-kpi-value">7,38–7,63 млн ₽</p><p class="doc-kpi-unit">в месяц</p></div>' +
+        '<div class="doc-kpi doc-kpi--gain"><p class="doc-kpi-label">Доп. прибыль</p><p class="doc-kpi-value">+670–840 тыс. ₽</p><p class="doc-kpi-unit">в месяц</p></div>' +
+      '</div>' +
+      '<p class="doc-h">Что именно даёт деньги</p>' +
+      '<ul class="doc-levers">' + levers + '</ul>' +
+      '<p class="doc-h">Финансовый мост: реалистичная цель, тыс. ₽ / мес</p>' +
+      '<div class="doc-chart"><div class="doc-bars">' + bars + '</div></div>' +
+      docFoot(1);
+  }
+
+  function docPage2() {
+    // Шесть колонок на 620 px — заголовки и приоритеты держим короткими,
+    // иначе последняя колонка уезжает за край страницы, а .doc-page её
+    // молча обрезает по overflow: hidden.
+    var rows = [
+      ['Быстрый забег',   '34%', '1,6×',   '550 ₽', '3 500 ₽',  'Низкий', false],
+      ['Один посетитель', '22%', '2,4×',   '760 ₽', '10 900 ₽', 'Средний', false],
+      ['Встреча / общение','33%', '3,3×', '1 320 ₽', '39 200 ₽', 'Высокий', true],
+      ['Семья / выходные','11%', '2,8×', '1 850 ₽', '51 800 ₽', 'Макс.', true]
+    ].map(function (r) {
+      return '<tr' + (r[6] ? ' class="is-key"' : '') + '>' +
+        r.slice(0, 6).map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>';
+    }).join('');
+
+    return docHead() +
+      '<p class="doc-eyebrow">Разбор бизнеса · пример</p>' +
+      '<h3 class="doc-title">Какие клиенты приносят деньги</h3>' +
+      '<p class="doc-intro">44% клиентской базы создают 84% выручки. Поэтому важна не численность, ' +
+        'а ценность сегмента. Рост строится вокруг клиентов, которые чаще покупают, дольше ' +
+        'остаются и дают более высокий чек.</p>' +
+      '<table class="doc-table"><thead><tr>' +
+        '<th>Сегмент</th><th>Доля базы</th><th>Частота</th><th>Чек</th>' +
+        '<th>Выручка за год</th><th>Приоритет</th>' +
+      '</tr></thead><tbody>' + rows + '</tbody></table>' +
+      '<div class="doc-solution"><p class="doc-solution-label">Решение</p>' +
+        '<p>Позиционирование, продукт и продвижение строятся вокруг сегментов с высокой ' +
+        'ценностью, а не вокруг самой большой по численности группы.</p></div>' +
+      docFoot(2);
+  }
+
+  function docPage3() {
+    var rows = [
+      ['Латте',    '14,2%', 'Высокая', 'Защищать',       true],
+      ['Сэндвич',  '11,8%', 'Высокая', 'Масштабировать', true],
+      ['Круассан',  '9,4%', 'Средняя', 'Добавить в допродажу', false],
+      ['Салат',     '3,1%', 'Низкая',  'В сезонное меню', false],
+      ['Суп',       '2,4%', 'Низкая',  'Убрать',          false]
+    ].map(function (r) {
+      return '<tr' + (r[4] ? ' class="is-key"' : '') + '>' +
+        r.slice(0, 4).map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>';
+    }).join('');
+
+    var shares = [14.2, 11.8, 9.4, 7.6, 6.4, 5.6, 4.1, 3.4, 3.1, 2.9, 2.4];
+    var bars = shares.map(function (s, i) {
+      return '<div class="doc-bar' + (i < 6 ? '' : ' doc-bar--alt') + '">' +
+             '<span class="doc-bar-fill" style="height:' + Math.round(s / 14.2 * 100) + '%"></span>' +
+             '</div>';
+    }).join('');
+
+    return docHead() +
+      '<p class="doc-eyebrow">Разбор бизнеса · пример</p>' +
+      '<h3 class="doc-title">Ассортимент: что усиливать, а что убрать</h3>' +
+      '<p class="doc-intro">6 сильных позиций дают 55% выручки. Ещё 9 занимают место ' +
+        'в меню и дают лишь 13,7% прибыли. Ниже — пять позиций из пятнадцати, по каждой ' +
+        'конкретное действие.</p>' +
+      '<table class="doc-table"><thead><tr>' +
+        '<th>Позиция</th><th>Доля выручки</th><th>Маржа</th><th>Действие</th>' +
+      '</tr></thead><tbody>' + rows + '</tbody></table>' +
+      '<p class="doc-h">Где концентрируется выручка</p>' +
+      '<div class="doc-chart"><div class="doc-bars">' + bars + '</div></div>' +
+      '<div class="doc-solution doc-action"><p class="doc-solution-label">Конкретное действие</p>' +
+        '<p>6 сильных позиций защищаем и масштабируем, 9 слабых переводим в сезонное ' +
+        'предложение или убираем из постоянного ассортимента.</p></div>' +
+      docFoot(3);
+  }
+
+  var PAGES = { '1': docPage1, '2': docPage2, '3': docPage3 };
+  $$('[data-doc]').forEach(function (el) { el.innerHTML = PAGES[el.dataset.doc](); });
+
+  /* ---------------- Карусели ---------------- */
+  $$('.rail').forEach(function (rail) {
+    var key = rail.id.replace('rail-', '');
+    var btns = $$('[data-rail="' + key + '"]');
+
+    function step() {
+      var first = rail.firstElementChild;
+      if (!first) return rail.clientWidth;
+      var gap = parseFloat(getComputedStyle(rail).columnGap || getComputedStyle(rail).gap) || 16;
+      return first.getBoundingClientRect().width + gap;
     }
 
-    burger.addEventListener('click', function () {
-      setMenu(!drawer.classList.contains('is-open'));
-    });
-    overlay.addEventListener('click', function () { setMenu(false); });
-    $$('#drawer a').forEach(function (a) {
-      a.addEventListener('click', function () { setMenu(false); });
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && drawer.classList.contains('is-open')) setMenu(false);
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        rail.scrollBy({ left: step() * Number(b.dataset.dir), behavior: reduced ? 'auto' : 'smooth' });
+      });
     });
 
-    // На десктопе шторка и оверлей скрыты по display, но overflow: hidden на body
-    // остался бы висеть — страница перестала бы скроллиться после поворота экрана.
-    var desktop = window.matchMedia('(min-width: 900px)');
-    (desktop.addEventListener ? desktop.addEventListener.bind(desktop, 'change')
-                              : desktop.addListener.bind(desktop))(function (e) {
-      if (e.matches && drawer.classList.contains('is-open')) setMenu(false);
-    });
-
-    /* ---------- Состояние навигации при скролле ---------- */
-    var nav = $('#nav');
-    function onScrollNav() { nav.classList.toggle('is-scrolled', window.scrollY > 40); }
-    onScrollNav();
-
-    /* ---------- Параллакс водяных знаков ---------- */
-    var marks = $$('[data-parallax]');
-    function onScrollParallax() {
-      var y = window.scrollY;
-      marks.forEach(function (m) {
-        m.style.setProperty('--parallax-y', (y * parseFloat(m.dataset.parallax)).toFixed(1) + 'px');
+    function sync() {
+      var max = rail.scrollWidth - rail.clientWidth - 2;
+      btns.forEach(function (b) {
+        b.disabled = Number(b.dataset.dir) < 0 ? rail.scrollLeft <= 2 : rail.scrollLeft >= max;
       });
     }
+    rail.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  });
 
-    var ticking = false;
-    window.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        onScrollNav();
-        onScrollParallax();
-        ticking = false;
+  /* ---------------- FAQ ---------------- */
+  $$('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.parentElement.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+
+  /* ---------------- Появление при скролле ---------------- */
+  var reveals = $$('.reveal');
+  if (reduced || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
       });
-    }, { passive: true });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
 
-    /* ---------- Появление при скролле ---------- */
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var reveals = $$('.reveal');
+  /* ---------------- Модальное окно ---------------- */
+  var modal = $('#modal'), modalBox = $('.modal-box', modal);
+  var tabs = $('#modal-tabs'), tabAsk = $('#tab-ask'), tabPay = $('#tab-pay');
+  var paneAsk = $('#pane-ask'), panePay = $('#pane-pay');
+  var lastFocus = null;
 
-    if (reduced || !('IntersectionObserver' in window)) {
-      reveals.forEach(function (el) { el.classList.add('is-visible'); });
-    } else {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-          if (entry.target.id === 'pricing-grid') countPrices();
-        });
-      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-      reveals.forEach(function (el) { io.observe(el); });
+  var MODES = {
+    order: {
+      title: 'Заказать разбор',
+      sub: function (t) { return t + ' — задайте вопрос или оплатите онлайн.'; },
+      tabs: true,
+      messageLabel: 'Вопрос или задача'
+    },
+    advisory: {
+      title: 'Обсудить сопровождение',
+      sub: function () { return 'Расскажите про бизнес и текущий план — предложу формат сопровождения.'; },
+      tabs: false,
+      messageLabel: 'Что уже сделано и что хотите довести до результата'
+    },
+    report: {
+      title: 'Пример отчёта',
+      sub: function () { return 'Пришлю пример отчёта на почту в течение нескольких минут.'; },
+      tabs: false,
+      messageLabel: 'Про какой бизнес речь <span class="opt">— необязательно</span>'
+    }
+  };
+
+  var currentMode = 'order', currentTier = '', currentPrice = '';
+
+  function openModal(mode, tier, price) {
+    var m = MODES[mode] || MODES.order;
+    currentMode = mode; currentTier = tier || ''; currentPrice = price || '';
+
+    $('#modal-title').textContent = m.title;
+    $('#modal-sub').textContent = m.sub(tier);
+    $('#m-message-field').querySelector('label').innerHTML = m.messageLabel;
+
+    tabs.hidden = !m.tabs;
+    selectTab('ask');
+    if (m.tabs) {
+      $('#pay-name').textContent = tier;
+      $('#pay-price').textContent = price;
     }
 
-    /* ---------- Набегающие цены ----------
-       Форматируем через toLocaleString('ru-RU'), чтобы разряды разделялись
-       так же, как в статической разметке, а не пробелом другой ширины. */
-    function countPrices() {
-      if (reduced) return;
-      $$('#pricing-grid [data-count]').forEach(function (el) {
-        var target = parseInt(el.dataset.count, 10);
-        var start = performance.now();
-        var suffix = ' ₽';
-        (function step(now) {
-          var p = Math.min((now - start) / 800, 1);
-          var eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(target * eased).toLocaleString('ru-RU') + suffix;
-          if (p < 1) requestAnimationFrame(step);
-        })(start);
-      });
+    setStatus($('#m-status'), '');
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    requestAnimationFrame(function () { modal.classList.add('is-open'); });
+    lockScroll(true);
+    setTimeout(function () { $('#m-name').focus(); }, 60);
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    lockScroll(false);
+    setTimeout(function () {
+      modal.hidden = true;
+      if (lastFocus) lastFocus.focus();
+    }, 260);
+  }
+
+  function selectTab(which) {
+    var ask = which === 'ask';
+    tabAsk.setAttribute('aria-selected', String(ask));
+    tabPay.setAttribute('aria-selected', String(!ask));
+    paneAsk.hidden = !ask;
+    panePay.hidden = ask;
+  }
+
+  tabAsk.addEventListener('click', function () { selectTab('ask'); });
+  tabPay.addEventListener('click', function () { selectTab('pay'); });
+  $('#pay-to-ask').addEventListener('click', function () { selectTab('ask'); $('#m-name').focus(); });
+
+  $$('[data-modal]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      openModal(b.dataset.modal, b.dataset.tier, b.dataset.price);
+    });
+  });
+
+  $('#modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('mousedown', function (e) { if (e.target === modal) closeModal(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (modal.classList.contains('is-open')) closeModal();
+      else if (drawer.classList.contains('is-open')) setMenu(false);
+      return;
     }
-
-    /* ---------- Подсветка строки таблицы тарифов ----------
-       На десктопе колонки разложены в общую сетку через display: contents,
-       поэтому «соседей по строке» селектором не достать — метим по data-row. */
-    var grid = $('#pricing-grid');
-    grid.addEventListener('mouseover', function (e) {
-      var cell = e.target.closest('[data-row]');
-      if (!cell || !grid.contains(cell)) return;
-      setRowHover(cell.dataset.row, true);
-    });
-    grid.addEventListener('mouseout', function (e) {
-      var cell = e.target.closest('[data-row]');
-      if (!cell || !grid.contains(cell)) return;
-      setRowHover(cell.dataset.row, false);
-    });
-
-    function setRowHover(row, on) {
-      $$('[data-row="' + row + '"]', grid).forEach(function (el) {
-        el.classList.toggle('is-row-hover', on);
-      });
+    // Фокус не должен уходить за пределы открытого диалога.
+    if (e.key === 'Tab' && modal.classList.contains('is-open')) {
+      var f = $$('a[href], button:not([disabled]), input, select, textarea', modalBox)
+                .filter(function (el) { return el.offsetParent !== null; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
+  });
 
-    /* ---------- FAQ ---------- */
-    $$('.faq-q').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var item = btn.parentElement;
-        var open = item.classList.toggle('is-open');
-        btn.setAttribute('aria-expanded', String(open));
-      });
-    });
+  /* ---------------- Отправка форм ---------------- */
+  function setStatus(el, text, state) {
+    el.textContent = text;
+    if (state) el.setAttribute('data-state', state); else el.removeAttribute('data-state');
+  }
 
-    /* ---------- Предвыбор тарифа при переходе к форме ---------- */
-    var tariffSelect = $('#f-tariff');
-    $$('[data-tariff]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        var value = link.dataset.tariff;
-        if (!value) return;
-        var match = Array.prototype.find.call(tariffSelect.options, function (o) {
-          return o.value === value || o.textContent.trim() === value;
-        });
-        if (match) tariffSelect.value = match.value;
-      });
-    });
-
-    /* ---------- Отправка ---------- */
-    var form   = $('#lead-form');
-    var status = $('#form-status');
-    var submit = $('#submit-btn');
-
-    function setStatus(text, state) {
-      status.textContent = text;
-      if (state) status.setAttribute('data-state', state);
-      else status.removeAttribute('data-state');
+  function validate(form, status) {
+    var invalid = $$('input, select, textarea', form).find(function (el) { return !el.checkValidity(); });
+    if (!invalid) return true;
+    var box = invalid.closest('.field') || invalid.closest('.consent');
+    if (box) {
+      box.classList.add('is-shaking');
+      setTimeout(function () { box.classList.remove('is-shaking'); }, 420);
     }
+    invalid.focus();
+    setStatus(status, invalid.name === 'consent'
+      ? 'Без согласия на обработку персональных данных заявку принять нельзя.'
+      : 'Заполните обязательные поля.', 'error');
+    return false;
+  }
 
+  function mailtoFallback(data, subject) {
+    var body = [
+      'Имя: ' + (data.name || '—'),
+      'Email: ' + (data.email || '—'),
+      'Телефон / мессенджер: ' + (data.messenger || '—'),
+      'Компания и сфера: ' + (data.company || '—'),
+      'Интересует: ' + (data.tariff || subject),
+      'Рекламная рассылка: ' + (data.marketing ? 'согласен' : 'нет'),
+      '',
+      data.message || ''
+    ].join('\n');
+    window.location.href = 'mailto:' + MAIL +
+      '?subject=' + encodeURIComponent('Заявка с сайта — ' + subject) +
+      '&body=' + encodeURIComponent(body);
+  }
+
+  function wireForm(form, submitBtn, status, subjectFn) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-
-      // novalidate снят с браузера намеренно: так первое невалидное поле
-      // можно подсветить и прокрутить к нему самим, а не полагаться на
-      // системную подсказку, которая на мобильных часто уезжает за экран.
-      var invalid = $$('input, textarea, select', form).find(function (el) {
-        return !el.checkValidity();
-      });
-
-      if (invalid) {
-        var field = invalid.closest('.field') || invalid.closest('.consent');
-        if (field) {
-          field.classList.add('is-shaking');
-          setTimeout(function () { field.classList.remove('is-shaking'); }, 420);
-        }
-        invalid.focus({ preventScroll: false });
-        setStatus(invalid.name === 'consent'
-          ? 'Без согласия на обработку персональных данных заявку принять нельзя.'
-          : 'Заполните обязательные поля.', 'error');
-        return;
-      }
+      if (!validate(form, status)) return;
 
       var data = Object.fromEntries(new FormData(form).entries());
+      var subject = subjectFn();
 
       if (!FORM_ENDPOINT) {
-        var body = [
-          'Имя: ' + data.name,
-          'Email: ' + data.email,
-          'Телефон / мессенджер: ' + (data.messenger || '—'),
-          'Компания и сфера: ' + (data.company || '—'),
-          'Интересует: ' + data.tariff,
-          '',
-          data.message
-        ].join('\n');
-
-        window.location.href = 'mailto:' + FALLBACK_EMAIL +
-          '?subject=' + encodeURIComponent('Заявка с сайта — ' + data.tariff) +
-          '&body=' + encodeURIComponent(body);
-
-        setStatus('Открыл почтовый клиент с готовым письмом — осталось нажать «Отправить». ' +
-                  'Если он не открылся, напишите на ' + FALLBACK_EMAIL + '.', 'error');
+        mailtoFallback(data, subject);
+        setStatus(status, 'Открыл почтовый клиент с готовым письмом — осталось нажать «Отправить». ' +
+                          'Если он не открылся, напишите на ' + MAIL + '.', 'error');
         return;
       }
 
-      var original = submit.innerHTML;
-      submit.disabled = true;
-      submit.innerHTML = '<span class="spinner" aria-hidden="true"></span> Отправляю';
-      setStatus('');
+      var original = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner" aria-hidden="true"></span> Отправляю';
+      setStatus(status, '');
 
       fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify(Object.assign({ subject: subject }, data))
       })
-        .then(function (r) {
-          if (!r.ok) throw new Error('HTTP ' + r.status);
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r; })
+        .then(function () {
           form.reset();
-          setStatus('Заявка отправлена. Отвечу лично в течение одного рабочего дня.', 'success');
+          setStatus(status, 'Заявка отправлена. Отвечу лично в течение одного рабочего дня.', 'success');
         })
         .catch(function () {
-          setStatus('Не получилось отправить. Напишите, пожалуйста, на ' + FALLBACK_EMAIL + '.', 'error');
+          setStatus(status, 'Не получилось отправить. Напишите, пожалуйста, на ' + MAIL + '.', 'error');
         })
         .finally(function () {
-          submit.disabled = false;
-          submit.innerHTML = original;
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = original;
         });
     });
+  }
 
-    /* ---------- Год в футере ---------- */
-    $('#year').textContent = new Date().getFullYear();
-  })();
-  </script>
+  wireForm($('#lead-form'), $('#lead-submit'), $('#lead-status'), function () {
+    return $('#f-tariff').value;
+  });
+  wireForm(paneAsk, $('#m-submit'), $('#m-status'), function () {
+    return currentMode === 'report' ? 'Пример отчёта' : (currentTier || 'Вопрос с сайта');
+  });
+
+  // Если обработчик подключён, оговорка про почтовый клиент неверна.
+  if (FORM_ENDPOINT) $$('[data-demo-note]').forEach(function (n) { n.remove(); });
+
+  /* ---------------- Предвыбор тарифа в нижней форме ---------------- */
+  $$('a[href="#contact"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var tier = a.closest('.tier');
+      if (!tier) return;
+      var name = $('.tier-idx', tier).textContent.split('·')[1].trim();
+      var opt = Array.prototype.find.call($('#f-tariff').options, function (o) {
+        return o.textContent.indexOf(name) === 0;
+      });
+      if (opt) $('#f-tariff').value = opt.value;
+    });
+  });
+
+  /* ---------------- Куки-баннер ---------------- */
+  var cookie = $('#cookie');
+  var COOKIE_KEY = 'dwelve-ru-cookie';
+
+  function cookieChoice() {
+    try { return localStorage.getItem(COOKIE_KEY); } catch (e) { return 'skip'; }
+  }
+  function rememberCookie(v) {
+    try { localStorage.setItem(COOKIE_KEY, v); } catch (e) { /* приватный режим — просто прячем */ }
+  }
+
+  if (!cookieChoice()) {
+    cookie.hidden = false;
+    setTimeout(function () { cookie.classList.add('is-shown'); }, 900);
+  }
+  $('#cookie-accept').addEventListener('click', function () { rememberCookie('all'); hideCookie(); });
+  $('#cookie-decline').addEventListener('click', function () { rememberCookie('necessary'); hideCookie(); });
+  function hideCookie() {
+    cookie.classList.remove('is-shown');
+    setTimeout(function () { cookie.hidden = true; }, 440);
+  }
+
+  /* ---------------- Год ---------------- */
+  $('#year').textContent = new Date().getFullYear();
+})();
+</script>
 
 </body>
 </html>

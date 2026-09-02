@@ -4,129 +4,143 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Документы — Dwelve</title>
-  <meta name="description" content="Публичная оферта, политика обработки персональных данных и условия возврата Dwelve.">
+  <meta name="description" content="Политика и согласие на обработку персональных данных, условия оказания услуг, договор оферты и условия возврата Dwelve.">
   <meta name="robots" content="noindex">
   <link rel="canonical" href="https://dwelve.ru/documents.html">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'%3E%3Cg transform='translate(100,100)'%3E%3Ccircle cx='0' cy='-65' r='8' fill='%231A1A2E'/%3E%3Ccircle cx='32.5' cy='-56.29' r='11' fill='%23FF7518'/%3E%3Ccircle cx='56.29' cy='-32.5' r='5' fill='%231A1A2E'/%3E%3Ccircle cx='65' cy='0' r='4.5' fill='%231A1A2E'/%3E%3Ccircle cx='56.29' cy='32.5' r='4' fill='%231A1A2E'/%3E%3Ccircle cx='32.5' cy='56.29' r='3.5' fill='%231A1A2E'/%3E%3Ccircle cx='0' cy='65' r='3' fill='%231A1A2E'/%3E%3Ccircle cx='-32.5' cy='56.29' r='2.8' fill='%231A1A2E'/%3E%3Ccircle cx='-56.29' cy='32.5' r='2.8' fill='%231A1A2E'/%3E%3Ccircle cx='-65' cy='0' r='3.8' fill='%231A1A2E'/%3E%3Ccircle cx='-56.29' cy='-32.5' r='5' fill='%231A1A2E'/%3E%3Ccircle cx='-32.5' cy='-56.29' r='6.5' fill='%231A1A2E'/%3E%3C/g%3E%3C/svg%3E">
 
   <link rel="stylesheet" href="theme.css">
 
   <style>
-    .container {
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
-    }
+    .wrap { width: 100%; max-width: 840px; margin: 0 auto; padding: var(--sp-2xl) var(--sp-lg) var(--sp-4xl); }
 
     .back {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-xl);
-      font-size: var(--text-small);
-      font-weight: 600;
-      color: var(--color-cta);
+      display: inline-flex; align-items: center; gap: var(--sp-sm);
+      margin-bottom: var(--sp-xl);
+      font-family: var(--font-mono); font-size: var(--text-caption);
+      color: var(--blue);
     }
+    .back:hover { border-bottom: 1px solid var(--blue); }
 
-    .back:hover { text-decoration: underline; }
-
-    h1 { margin-bottom: var(--space-md); }
+    h1 { font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem); margin: var(--sp-md) 0; }
 
     .intro {
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-2xl);
-      padding-bottom: var(--space-xl);
-      border-bottom: 1px solid var(--color-border);
+      color: var(--ink-2);
+      padding-bottom: var(--sp-xl);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: var(--sp-2xl);
     }
 
     .doc {
-      padding: var(--space-xl);
-      margin-bottom: var(--space-lg);
-      background: var(--color-base-dark);
-      border: 1px solid var(--color-border);
-      border-left: 3px solid var(--color-primary);
+      padding: var(--sp-lg) var(--sp-xl);
+      margin-bottom: var(--sp-md);
+      background: var(--white);
+      border: 1px solid var(--line-soft);
+      border-left: 3px solid var(--orange);
       border-radius: var(--radius-lg);
-      /* Якорь не должен уезжать под липкую шапку главной, если пользователь
-         пришёл сюда по ссылке вида documents.html#privacy */
-      scroll-margin-top: var(--space-xl);
+      box-shadow: var(--shadow-sm);
+      /* Якорь не должен уезжать под шапку главной при переходе
+         вида documents.html#privacy */
+      scroll-margin-top: var(--sp-xl);
     }
-
     .doc h2 {
-      font-size: var(--text-h3);
-      margin-bottom: var(--space-sm);
+      font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+      font-size: 1.4rem; line-height: 1.05; color: var(--blue-deep);
+      margin-bottom: var(--sp-sm);
     }
+    .doc p { font-size: var(--text-small); color: var(--ink-2); }
 
     .status {
-      display: inline-block;
-      margin-bottom: var(--space-md);
-      padding: 3px 10px;
-      border-radius: var(--radius-full);
-      background: var(--color-orange-pale);
-      color: var(--color-primary-dark);
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      display: inline-block; margin-bottom: var(--sp-md);
+      padding: 4px 12px; border-radius: var(--radius-pill);
+      background: var(--orange-pale); color: var(--orange-dark);
+      font-family: var(--font-mono); font-size: var(--text-micro);
+      letter-spacing: .1em; text-transform: uppercase;
     }
 
-    .doc p { font-size: var(--text-small); color: var(--color-text-muted); }
-
-    .contact-note {
-      margin-top: var(--space-2xl);
-      padding: var(--space-lg);
-      background: var(--color-blue-pale);
+    .note {
+      margin-top: var(--sp-2xl);
+      padding: var(--sp-lg) var(--sp-xl);
+      background: var(--blue-pale);
       border-radius: var(--radius-lg);
       font-size: var(--text-small);
     }
-
-    .contact-note a { color: var(--color-cta); font-weight: 600; }
+    .note a { color: var(--blue); font-weight: 700; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="wrap">
     <a href="index.html" class="back">← На главную</a>
 
-    <h1>Документы</h1>
+    <h1 class="display">Документы</h1>
     <p class="intro">
       Работа ведётся по договору в соответствии с законодательством Российской Федерации.
       Тексты документов готовятся и будут опубликованы на этой странице.
     </p>
-
-    <section class="doc" id="offer">
-      <h2>Публичная оферта</h2>
-      <span class="status">Готовится</span>
-      <p>
-        Предмет договора, порядок оказания услуг по тарифам «Точка роста», «Карта роста»
-        и «Рост под контролем», сроки, порядок приёмки результата, ответственность сторон
-        и реквизиты исполнителя.
-      </p>
-    </section>
 
     <section class="doc" id="privacy">
       <h2>Политика обработки персональных данных</h2>
       <span class="status">Готовится</span>
       <p>
         Состав обрабатываемых данных, цели и правовые основания обработки, сроки хранения,
-        передача третьим лицам, права субъекта персональных данных и порядок отзыва согласия
-        в соответствии с Федеральным законом № 152-ФЗ.
+        передача третьим лицам, использование cookie, права субъекта персональных данных
+        и порядок отзыва согласия — в соответствии с Федеральным законом № 152-ФЗ.
+      </p>
+    </section>
+
+    <section class="doc" id="consent">
+      <h2>Согласие на обработку персональных данных</h2>
+      <span class="status">Готовится</span>
+      <p>
+        Текст согласия, которое даётся при отправке формы: перечень данных, цели обработки,
+        срок действия согласия и способ его отзыва.
+      </p>
+    </section>
+
+    <section class="doc" id="marketing">
+      <h2>Согласие на рекламную рассылку</h2>
+      <span class="status">Готовится</span>
+      <p>
+        Отдельное согласие на получение информационных и рекламных писем: что именно
+        приходит, как часто и как отписаться в один клик. Даётся отдельной галочкой
+        и не влияет на возможность оставить заявку.
+      </p>
+    </section>
+
+    <section class="doc" id="terms">
+      <h2>Условия оказания услуг</h2>
+      <span class="status">Готовится</span>
+      <p>
+        Порядок работы по форматам «Точка роста», «Карта роста» и «Рост под контролем»:
+        что входит в работу, какие данные предоставляет заказчик, сроки, порядок приёмки
+        результата и ответственность сторон.
+      </p>
+    </section>
+
+    <section class="doc" id="offer">
+      <h2>Договор оферты</h2>
+      <span class="status">Готовится</span>
+      <p>
+        Публичная оферта: предмет договора, стоимость и порядок оплаты, момент заключения
+        договора, срок действия и реквизиты исполнителя.
       </p>
     </section>
 
     <section class="doc" id="refund">
-      <h2>Условия возврата</h2>
+      <h2>Условия возврата денег</h2>
       <span class="status">Готовится</span>
       <p>
-        Порядок применения гарантии «не увидите ценности — верну деньги»: срок обращения,
-        способ возврата и условия, при которых гарантия действует для каждого из трёх форматов.
+        Порядок применения гарантии «верну деньги, если не увидите ценности»: срок
+        обращения, способ возврата и условия, при которых гарантия действует для каждого
+        из трёх форматов.
       </p>
     </section>
 
-    <p class="contact-note">
+    <p class="note">
       Пока документы не опубликованы, любые вопросы об условиях работы, обработке данных
       и NDA можно задать напрямую: <a href="mailto:hello@dwelve.ru">hello@dwelve.ru</a>.
     </p>
