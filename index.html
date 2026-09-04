@@ -84,7 +84,11 @@
       display: inline-flex; align-items: center; justify-content: center;
       gap: var(--sp-sm);
       padding: 14px var(--sp-lg);
-      border-radius: var(--radius-md);
+      /* Овальные кнопки — как на англоязычной версии. Там задано 32px, но
+         браузер обрезает радиус до половины высоты, так что получается тот же
+         полный овал; 999px даёт его при любом кегле и не требует пересчёта
+         под .btn-sm и кнопки внутри карточек. */
+      border-radius: var(--radius-pill);
       font-family: var(--font-body);
       font-size: var(--text-small);
       font-weight: 700;
