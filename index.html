@@ -544,81 +544,7 @@
     }
 
     /* ==============================
-       ЦИТАТА-ПЕРЕДЫШКА
-       ============================== */
-    .breather { padding: var(--sp-4xl) 0; text-align: center; }
-    .breather p {
-      max-width: 720px; margin: 0 auto;
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
-      line-height: 1.35; letter-spacing: -0.015em;
-    }
-    .breather em { font-style: italic; color: var(--orange-dark); }
-
-    /* ==============================
-       05 — ЭКОНОМИКА РАЗБОРА
-       ============================== */
-    .charts { display: grid; gap: var(--sp-lg); }
-    .chart-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: var(--sp-lg);
-      color: var(--ink);
-      display: flex; flex-direction: column;
-    }
-    .chart-label {
-      font-family: var(--font-mono); font-size: var(--text-micro);
-      letter-spacing: .12em; text-transform: uppercase;
-      color: var(--ink-3); margin-bottom: var(--sp-lg);
-    }
-    .cmp-row { margin-bottom: var(--sp-lg); }
-    .cmp-name { font-size: var(--text-small); margin-bottom: 7px; }
-    .cmp-bar {
-      position: relative; height: 44px; border-radius: var(--radius-sm);
-      background: var(--cream-2);
-      display: flex; align-items: center;
-    }
-    .cmp-fill {
-      height: 100%; border-radius: var(--radius-sm);
-      display: flex; align-items: center; justify-content: flex-end;
-      padding-right: var(--sp-md);
-      font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem;
-      color: var(--white); white-space: nowrap;
-    }
-    .cmp-fill--loss { background: var(--orange); width: 100%; }
-    /* Столбец пропорционален по-настоящему: 245 000 ₽ — это 3% от 8,0 млн ₽.
-       Раздуть его «чтобы было видно» значило бы соврать ровно в том месте,
-       где весь смысл в соотношении. min-width только чтобы полоса не исчезла. */
-    .cmp-fill--cost { background: var(--blue); width: 3%; min-width: 26px; }
-    .cmp-out {
-      padding-left: var(--sp-md);
-      font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem;
-      color: var(--blue-deep); white-space: nowrap;
-    }
-    /* Левая карточка на англоязычной версии наполовину пустая — здесь низ
-       занимает вывод, который считается из тех же двух чисел. */
-    .cmp-conclusion {
-      margin-top: auto; padding-top: var(--sp-lg);
-      border-top: 1px solid var(--line-soft);
-      font-size: var(--text-small); color: var(--ink-2);
-    }
-    .cmp-conclusion b { color: var(--ink); font-weight: 800; }
-
-    .chart-svg { width: 100%; height: auto; }
-
-    .compare-note {
-      margin-top: var(--sp-lg);
-      padding: var(--sp-md) var(--sp-lg);
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: var(--radius-lg);
-      font-size: var(--text-caption);
-      color: rgba(255,255,255,.62);
-      max-width: none;
-    }
-    .compare-note b { color: rgba(255,255,255,.9); font-weight: 700; }
-
-    /* ==============================
-       06 — ПРОЦЕСС
+       05 — ПРОЦЕСС
        ============================== */
     .steps { display: grid; gap: var(--sp-xl); }
     .step-dot { position: relative; height: 2px; background: var(--line-soft); margin-bottom: var(--sp-md); }
@@ -642,7 +568,7 @@
     .step p { font-size: var(--text-small); color: var(--ink-2); }
 
     /* ==============================
-       07 — ОБО МНЕ
+       06 — ОБО МНЕ
        ============================== */
     .about-grid { display: grid; gap: var(--sp-2xl); align-items: center; }
     .about-card {
@@ -685,7 +611,7 @@
     .polaroid-badge span { font-size: 9px; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
 
     /* ==============================
-       08 — FAQ
+       07 — FAQ
        ============================== */
     .faq-grid { display: grid; gap: var(--sp-2xl); }
     .faq-list { border-top: 1px solid var(--line-soft); }
@@ -728,7 +654,7 @@
     .faq-a-inner p + p { margin-top: var(--sp-md); }
 
     /* ==============================
-       09 — БЛОГ
+       08 — БЛОГ
        ============================== */
     .posts { display: grid; gap: var(--sp-lg); }
     .post {
@@ -751,7 +677,7 @@
     .post:hover .post-link span { transform: translateX(4px); }
 
     /* ==============================
-       10 — ФОРМА
+       09 — ФОРМА
        ============================== */
     .contact { overflow: hidden; }
     .contact::after {
@@ -980,7 +906,6 @@
       .contact-grid { grid-template-columns: 1fr 1.1fr; }
       .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
       .posts { grid-template-columns: repeat(3, 1fr); }
-      .charts { grid-template-columns: 1fr 1.15fr; }
     }
 
     @media (min-width: 900px) {
@@ -1433,100 +1358,11 @@
     </div>
   </section>
 
-  <!-- ================= ЦИТАТА-ПЕРЕДЫШКА ================= -->
-  <section class="sec breather">
-    <div class="container">
-      <p class="reveal">
-        Проблема почти никогда не в рекламе.<br>
-        <em>Она глубже.</em>
-      </p>
-    </div>
-  </section>
-
-  <!-- ================= 05 — ЭКОНОМИКА РАЗБОРА ================= -->
-  <section class="sec sec--dark sec--wb" aria-labelledby="econ-title">
+  <!-- ================= 05 — ПРОЦЕСС ================= -->
+  <section class="sec" aria-labelledby="process-title">
     <div class="container">
       <div class="sec-head">
-        <p class="eyebrow reveal"><b>05</b> · Экономика разбора</p>
-        <h2 class="sec-title reveal" id="econ-title" style="--rd: 80ms">Разбор — это вложение, а не расход</h2>
-        <p class="reveal" style="--rd: 140ms">
-          Он не добавляет расходов, а показывает, где они уже происходят,
-          и переводит тот же бюджет в прибыль.
-        </p>
-      </div>
-
-      <div class="charts">
-        <div class="chart-card reveal">
-          <p class="chart-label">Демо-бизнес: потери за год против цены разбора</p>
-
-          <div class="cmp-row">
-            <p class="cmp-name">Недополученная прибыль при текущей системе</p>
-            <div class="cmp-bar"><div class="cmp-fill cmp-fill--loss">8,0–10,1 млн&nbsp;₽</div></div>
-          </div>
-
-          <div class="cmp-row">
-            <p class="cmp-name">«Карта роста» — единоразово</p>
-            <div class="cmp-bar">
-              <div class="cmp-fill cmp-fill--cost"></div>
-              <span class="cmp-out">245 000&nbsp;₽</span>
-            </div>
-          </div>
-
-          <p class="cmp-conclusion">
-            Разбор окупается, если сработает <b>примерно 3%</b> плана: 245 000 ₽ — это 3,0%
-            от нижней границы годовых потерь. Остальные 97% — то, ради чего он и делается.
-          </p>
-        </div>
-
-        <div class="chart-card reveal" style="--rd: 100ms">
-          <p class="chart-label">Выручка демо-бизнеса за 12 месяцев</p>
-          <svg class="chart-svg" viewBox="0 0 620 300" role="img"
-               aria-label="Три траектории выручки за 12 месяцев: без плана — медленное снижение, после разбора — рост, с сопровождением — рост сильнее">
-            <!-- Сетка -->
-            <line x1="90" y1="90"  x2="470" y2="90"  stroke="#E4E6EE" stroke-width="1" stroke-dasharray="4 5"/>
-            <line x1="90" y1="190" x2="470" y2="190" stroke="#E4E6EE" stroke-width="1" stroke-dasharray="4 5"/>
-            <text x="80" y="94"  text-anchor="end" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">Выше</text>
-            <text x="80" y="194" text-anchor="end" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">Сейчас</text>
-
-            <!-- Линии. Три разных тона: две почти одинаковые синие на англоязычной
-                 версии не различаются, и подпись там лежит прямо на кривой. -->
-            <path d="M90 190 C 200 196, 350 210, 470 216" fill="none" stroke="#D94A4A" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"/>
-            <path d="M90 190 C 210 186, 350 152, 470 118" fill="none" stroke="#4166F5" stroke-width="3" stroke-linecap="round"/>
-            <path d="M90 190 C 220 180, 350 128, 470 68"  fill="none" stroke="#0EA5A5" stroke-width="3" stroke-linecap="round"/>
-
-            <circle cx="470" cy="216" r="4" fill="#D94A4A"/>
-            <circle cx="470" cy="118" r="4" fill="#4166F5"/>
-            <circle cx="470" cy="68"  r="4" fill="#0EA5A5"/>
-
-            <!-- Подписи справа от точек, а не на кривых -->
-            <text x="484" y="220" font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#D94A4A">Без плана</text>
-            <text x="484" y="122" font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#4166F5">Карта роста</text>
-            <text x="484" y="72"  font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#0EA5A5">Сопровождение</text>
-
-            <!-- Ось X -->
-            <text x="90"  y="248" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">Старт</text>
-            <text x="185" y="248" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">3 мес</text>
-            <text x="280" y="248" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">6 мес</text>
-            <text x="375" y="248" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">9 мес</text>
-            <text x="470" y="248" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" fill="#8A8A9A">12 мес</text>
-          </svg>
-        </div>
-      </div>
-
-      <p class="compare-note reveal">
-        <b>Для сравнения, ориентиры рынка:</b> штатный маркетолог — 120–250 тыс. ₽ в месяц
-        плюс налоги и взносы; агентство — 150–400 тыс. ₽ за проект; часовая консультация —
-        8–15 тыс. ₽ и без документа на выходе. Цифры демо-бизнеса условные и приведены
-        как пример расчёта.
-      </p>
-    </div>
-  </section>
-
-  <!-- ================= 06 — ПРОЦЕСС ================= -->
-  <section class="sec sec--tint" aria-labelledby="process-title">
-    <div class="container">
-      <div class="sec-head">
-        <p class="eyebrow reveal"><b>06</b> · Процесс</p>
+        <p class="eyebrow reveal"><b>05</b> · Процесс</p>
         <h2 class="sec-title reveal" id="process-title" style="--rd: 80ms">Как устроена работа</h2>
       </div>
 
@@ -1565,11 +1401,11 @@
     </div>
   </section>
 
-  <!-- ================= 07 — ОБО МНЕ ================= -->
+  <!-- ================= 06 — ОБО МНЕ ================= -->
   <section class="sec sec--blue sec--wb" id="about" aria-labelledby="about-title">
     <div class="container">
       <div class="sec-head">
-        <p class="eyebrow reveal"><b>07</b> · Обо мне</p>
+        <p class="eyebrow reveal"><b>06</b> · Обо мне</p>
         <h2 class="sec-title reveal" id="about-title" style="--rd: 80ms">Кто стоит за Dwelve</h2>
       </div>
 
@@ -1606,11 +1442,11 @@
     </div>
   </section>
 
-  <!-- ================= 08 — FAQ ================= -->
+  <!-- ================= 07 — FAQ ================= -->
   <section class="sec sec--tint" id="faq" aria-labelledby="faq-title">
     <div class="container faq-grid">
       <div>
-        <p class="eyebrow reveal"><b>08</b> · Частые вопросы</p>
+        <p class="eyebrow reveal"><b>07</b> · Частые вопросы</p>
         <h2 class="sec-title reveal" id="faq-title" style="--rd: 80ms; margin-top: var(--sp-md)">До старта всё должно быть понятно</h2>
         <p class="accent-line reveal" style="--rd: 140ms; font-size: var(--text-lead); margin-top: var(--sp-lg)">
           Без мелкого шрифта и сюрпризов.
@@ -1695,11 +1531,11 @@
     </div>
   </section>
 
-  <!-- ================= 09 — БЛОГ ================= -->
+  <!-- ================= 08 — БЛОГ ================= -->
   <section class="sec sec--wb" id="blog" aria-labelledby="blog-title">
     <div class="container">
       <div class="sec-head sec-head--split">
-        <p class="eyebrow reveal"><b>09</b> · Блог</p>
+        <p class="eyebrow reveal"><b>08</b> · Блог</p>
         <h2 class="sec-title reveal" id="blog-title" style="--rd: 80ms">Полезные материалы</h2>
         <p class="reveal" style="--rd: 140ms">
           О продажах, клиентах, продукте, цене и рекламе — на языке собственника.
@@ -1729,11 +1565,11 @@
     </div>
   </section>
 
-  <!-- ================= 10 — ФОРМА ================= -->
+  <!-- ================= 09 — ФОРМА ================= -->
   <section class="sec sec--dark contact" id="contact" aria-labelledby="contact-title">
     <div class="container contact-grid">
       <div class="reveal">
-        <p class="eyebrow"><b>10</b> · Обсудить задачу</p>
+        <p class="eyebrow"><b>09</b> · Обсудить задачу</p>
         <h2 id="contact-title" style="margin-top: var(--sp-md)">
           Пока вы не знаете, где теряете деньги,
           <span class="hl">запуск рекламы не решит проблему.</span>
