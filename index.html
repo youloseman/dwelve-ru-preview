@@ -525,15 +525,34 @@
     /* ==============================
        04 — ПРИМЕР РЕЗУЛЬТАТА
        ============================== */
-    .strike {
-      display: inline-flex; align-items: flex-start; gap: 10px;
-      background: #FBEAEA; color: var(--coral);
-      border-radius: var(--radius-lg);
-      padding: 10px 18px;
-      font-size: var(--text-small);
-      margin-bottom: var(--sp-lg);
+    /* Мысль «вместо этого — вот это» была набрана коралловым по розовому и
+       вдобавок зачёркнута: три помехи чтению разом, и главная половина —
+       вторая — терялась. Теперь зачёркнутая строка нейтральная и читаемая,
+       а вес отдан тому, ради чего блок и существует. */
+    .swap { max-width: var(--max-text); }
+    .swap-row { display: flex; gap: 12px; }
+    .swap-mark { flex: none; width: 20px; text-align: center; font-weight: 800; }
+
+    /* Селекторы из двух классов — иначе .sec-head p перебивает цвет
+       по специфичности и обе половины оказываются одного тона. */
+    .swap .swap-no { font-size: var(--text-small); color: var(--ink-3); }
+    .swap-no .swap-mark { color: var(--coral); }
+    .swap-no s {
+      text-decoration-color: rgba(138, 138, 154, .75);
+      text-decoration-thickness: 1.5px;
     }
-    .strike s { text-decoration-thickness: 1.5px; }
+
+    .swap-arrow {
+      display: block; width: 2px; height: 20px;
+      margin: 10px 0 10px 9px;
+      border-radius: 2px;
+      background: linear-gradient(var(--line), var(--orange));
+    }
+
+    .swap .swap-yes {
+      font-size: var(--text-lead); font-weight: 600; color: var(--ink);
+    }
+    .swap-yes .swap-mark { color: var(--teal); }
 
     /* Все три страницы одной высоты: раньше карточки в карусели были разного
        размера и она выглядела разнокалиберной. Слайд растягивается, страница
@@ -579,10 +598,14 @@
       color: var(--orange); margin-bottom: 5px;
     }
     .step-name {
+      display: flex; align-items: center; gap: 9px;
       font-family: var(--font-display); font-weight: 700; font-size: 1.375rem;
       line-height: 1.15; letter-spacing: -0.015em;
       color: var(--blue-deep); margin-bottom: var(--sp-sm);
     }
+    /* Эмодзи задают дугу «до → после»: первый шаг и последний. Кегль ниже
+       имени — иначе смайлик перетягивает на себя строку. */
+    .step-face { font-size: 1.05rem; line-height: 1; }
     .step p { font-size: var(--text-small); color: var(--ink-2); }
 
     /* ==============================
@@ -893,6 +916,10 @@
       transition: transform 420ms var(--ease);
     }
     .cookie.is-shown { transform: none; }
+    /* display: flex выше по каскаду, чем браузерное [hidden] { display: none },
+       поэтому скрытый баннер уезжал трансформом, но оставался в порядке
+       обхода — до его кнопок доходили табом. */
+    .cookie[hidden] { display: none; }
     .cookie p { flex: 1 1 320px; max-width: none; }
     .cookie a { color: var(--orange); border-bottom: 1px solid rgba(255,117,24,.4); }
     .cookie-actions { display: flex; gap: var(--sp-sm); }
@@ -1337,15 +1364,17 @@
       <div class="sec-head sec-head--split">
         <p class="eyebrow reveal"><b>04</b> · Пример результата</p>
         <h2 class="sec-title reveal" id="report-title" style="--rd: 80ms">Вот так выглядит конкретика</h2>
-        <div class="reveal" style="--rd: 140ms">
-          <span class="strike">
-            <span aria-hidden="true">✕</span>
+        <div class="swap reveal" style="--rd: 140ms">
+          <p class="swap-row swap-no">
+            <span class="swap-mark" aria-hidden="true">✕</span>
             <s>Хаотично запускать рекламу. Затыкать дыры. Фонтан идей без привязки к окупаемости.</s>
-          </span>
-          <p>
-            Комплексный анализ бизнеса и факторов, влияющих на прибыль: выявление ключевых
-            проблем, оценка того, сколько денег из-за них теряет бизнес, и конкретный план
-            по их устранению.
+          </p>
+          <span class="swap-arrow" aria-hidden="true"></span>
+          <p class="swap-row swap-yes">
+            <span class="swap-mark" aria-hidden="true">✓</span>
+            <span>Комплексный анализ бизнеса и факторов, влияющих на прибыль: выявление
+            ключевых проблем, оценка того, сколько денег из-за них теряет бизнес,
+            и конкретный план по их устранению.</span>
           </p>
         </div>
       </div>
@@ -1388,7 +1417,7 @@
         <li class="step reveal">
           <div class="step-dot" aria-hidden="true"></div>
           <p class="step-n">Шаг 01</p>
-          <p class="step-name">Бриф</p>
+          <p class="step-name">Бриф <span class="step-face" aria-hidden="true">🙁</span></p>
           <p>Заполняете короткую анкету о бизнесе и присылаете данные, которые уже есть.</p>
         </li>
         <li class="step reveal" style="--rd: 70ms">
@@ -1412,8 +1441,8 @@
         <li class="step reveal" style="--rd: 280ms">
           <div class="step-dot" aria-hidden="true"></div>
           <p class="step-n">Шаг 05</p>
-          <p class="step-name">Рост</p>
-          <p>Внедряете план сами — или подключаете ежемесячное сопровождение.</p>
+          <p class="step-name">Рост <span class="step-face" aria-hidden="true">😀</span></p>
+          <p>Вы внедряете — я контролирую, усиливаю и нахожу новые возможности.</p>
         </li>
       </ol>
     </div>
