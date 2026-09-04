@@ -478,13 +478,33 @@
     }
     .guarantee p { max-width: none; }
 
+    /* Намеренно заметный блок. Часть покупателей не оформит заказ, пока не
+       поговорит с человеком, и тонкая строка с текстом эту роль не тянула —
+       её просто не замечали. Тот же тёмно-синий, что у выделенного тарифа:
+       поверхность повторяется, а не изобретается новая. */
     .after-block {
+      position: relative; overflow: hidden;
       display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: var(--sp-md);
-      margin-top: var(--sp-xl); padding-top: var(--sp-xl);
-      border-top: 1px solid var(--line-soft);
+      flex-wrap: wrap; gap: var(--sp-lg) var(--sp-xl);
+      margin-top: var(--sp-xl);
+      padding: clamp(24px, 3vw, 40px);
+      background: var(--blue-deep);
+      color: rgba(255,255,255,.78);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
     }
-    .after-block p { font-size: var(--text-small); color: var(--ink-2); }
+    /* Без :not() абсолютная клякса становится flex-элементом и встаёт
+       в середину панели. */
+    .after-block > *:not(.after-blob) { position: relative; z-index: 1; }
+    /* Белый блик, а не оранжевая клякса: оранжевый поверх тёмно-синего даёт
+       грязный лиловый. Фигура заходит за правый край, иначе виден не
+       органический контур, а кусок круга. */
+    .after-blob {
+      position: absolute; z-index: 0; pointer-events: none;
+      top: -62%; right: -5%; width: min(300px, 58%); opacity: .08;
+    }
+    .after-block h3 { color: var(--white); margin-bottom: 6px; }
+    .after-block p { font-size: var(--text-small); color: rgba(255,255,255,.72); max-width: 52ch; }
 
     /* ==============================
        03 — ЧТО РАЗБИРАЮ
@@ -1285,8 +1305,12 @@
       </div>
 
       <div class="after-block reveal">
-        <p>Остались вопросы? Обсудим конкретно вашу ситуацию — и я скажу, какой формат подходит.</p>
-        <a href="#contact" class="btn btn-outline">Обсудить мою ситуацию</a>
+        <svg class="after-blob" viewBox="-100 -100 200 200" aria-hidden="true"><use href="#blob-a" fill="#FFFFFF"/></svg>
+        <div>
+          <h3>Остались вопросы?</h3>
+          <p>Обсудим конкретно вашу ситуацию — и я скажу, какой формат подходит.</p>
+        </div>
+        <a href="#contact" class="btn btn-light">Обсудить мою ситуацию</a>
       </div>
     </div>
   </section>
