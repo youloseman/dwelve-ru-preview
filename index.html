@@ -363,6 +363,7 @@
     .pain p { font-size: var(--text-small); color: var(--ink-2); }
 
     .block-cta { margin-top: var(--sp-2xl); }
+    .block-cta--center { text-align: center; }
 
     /* ==============================
        02 — УСЛУГИ И ЦЕНЫ
@@ -534,13 +535,30 @@
     }
     .strike s { text-decoration-thickness: 1.5px; }
 
-    .doc-rail .doc-page { --doc-scale: 1; width: min(620px, 88vw); }
+    /* Все три страницы одной высоты: раньше карточки в карусели были разного
+       размера и она выглядела разнокалиберной. Слайд растягивается, страница
+       занимает его целиком, а колонтитул прижимается к низу. */
+    .doc-rail { align-items: stretch; }
+    .doc-rail > li { display: flex; flex-direction: column; }
+    .doc-rail .doc-page {
+      --doc-scale: 1; width: min(620px, 88vw);
+      flex: 1; display: flex; flex-direction: column;
+    }
+    .doc-rail .doc-foot { margin-top: auto; }
+    .doc-scatter { width: 100%; height: auto; }
     /* Подпись над страницей, а не под ней: страницы разной высоты, снизу
        подписи вставали бы вразнобой. */
+    /* Подпись занимает две строки при любой длине, а текст прижат к низу.
+       Слайды растягиваются по самому высокому, поэтому подпись из одной
+       строки отдавала бы своей карточке лишние 25px — на узком экране
+       страницы снова оказывались разной высоты. */
     .doc-slide-cap {
       width: min(620px, 88vw);
+      min-height: 2.7em;
+      display: flex; align-items: flex-end;
       margin-bottom: var(--sp-md);
       font-size: var(--text-small); font-weight: 700; color: var(--blue-deep);
+      line-height: 1.35;
     }
 
     /* ==============================
@@ -1352,7 +1370,7 @@
         </ul>
       </div>
 
-      <div class="block-cta reveal">
+      <div class="block-cta block-cta--center reveal">
         <button class="btn btn-primary" data-modal="report">Скачать пример отчёта</button>
       </div>
     </div>
@@ -1907,6 +1925,44 @@
       docFoot(1);
   }
 
+  /* Пузырьковая диаграмма второй страницы. Оси — частота покупок и средний
+     чек, площадь пузыря — доля базы. Так самый большой пузырь оказывается
+     внизу слева: людей много, денег мало. Это и есть довод страницы, и он
+     же выравнивает её высоту с соседними — без графика она была заметно
+     короче, и карусель выглядела разнокалиберной. */
+  function scatter() {
+    var PTS = [
+      // подпись, частота, чек, доля базы, цвет, подпись слева от пузыря
+      ['Быстрый забег',    1.6,  550, 34, '#8A8A9A', false],
+      ['Один посетитель',  2.4,  760, 22, '#8A8A9A', false],
+      ['Встреча / общение',3.3, 1320, 33, '#1E3A9F', true],
+      ['Семья / выходные', 2.8, 1850, 11, '#0EA5A5', false]
+    ];
+    var x = function (f) { return 60 + (f - 1.4) / 2.1 * 450; };
+    var y = function (c) { return 170 - (c - 400) / 1600 * 140; };
+    var r = function (s) { return 5 + s * 0.5; };
+
+    var dots = PTS.map(function (p) {
+      var cx = x(p[1]), cy = y(p[2]), rad = r(p[3]);
+      var lx = p[5] ? cx - rad - 6 : cx + rad + 6;
+      var anchor = p[5] ? 'end' : 'start';
+      return '<circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="' + rad.toFixed(1) +
+             '" fill="' + p[4] + '" opacity=".85"/>' +
+             '<text x="' + lx.toFixed(1) + '" y="' + (cy + 3).toFixed(1) + '" text-anchor="' + anchor +
+             '" font-size="9" fill="#4A4A5A">' + p[0] + '</text>';
+    }).join('');
+
+    return '<svg class="doc-scatter" viewBox="0 0 560 200" role="img" ' +
+      'aria-label="Сегменты клиентов: по горизонтали частота покупок, по вертикали средний чек, ' +
+      'размер круга — доля клиентской базы. Самый крупный сегмент даёт наименьший чек.">' +
+      '<line x1="52" y1="178" x2="530" y2="178" stroke="#E4E6EE" stroke-width="1"/>' +
+      '<line x1="52" y1="24" x2="52" y2="178" stroke="#E4E6EE" stroke-width="1"/>' +
+      '<text x="530" y="194" text-anchor="end" font-size="8" fill="#8A8A9A">Частота покупок →</text>' +
+      '<text x="52" y="16" font-size="8" fill="#8A8A9A">↑ Средний чек</text>' +
+      dots +
+      '</svg>';
+  }
+
   function docPage2() {
     // Шесть колонок на 620 px — заголовки и приоритеты держим короткими,
     // иначе последняя колонка уезжает за край, а .doc-page молча её срежет.
@@ -1930,6 +1986,8 @@
         '<th>Сегмент</th><th>Доля базы</th><th>Частота</th><th>Чек</th>' +
         '<th>Выручка за год</th><th>Приоритет</th>' +
       '</tr></thead><tbody>' + rows + '</tbody></table>' +
+      '<p class="doc-h">Деньги не там, где больше всего людей</p>' +
+      '<div class="doc-chart">' + scatter() + '</div>' +
       '<div class="doc-solution"><p class="doc-solution-label">Решение</p>' +
         '<p>Позиционирование, продукт и продвижение строятся вокруг сегментов с высокой ' +
         'ценностью, а не вокруг самой большой по численности группы.</p></div>' +
