@@ -731,22 +731,37 @@
       padding: var(--sp-xl); box-shadow: var(--shadow-xl);
       color: var(--ink);
     }
-    .form-row { display: grid; grid-template-columns: 1fr; gap: var(--sp-md); }
+    /* align-items: end — подписи в паре бывают разной высоты («Телефон /
+       мессенджер — необязательно» переносится на две строки), и без этого
+       левое поле опускалось ниже правого. */
+    .form-row { display: grid; grid-template-columns: 1fr; gap: var(--sp-md); align-items: end; }
     .field { margin-bottom: var(--sp-md); }
     .field label {
       display: block; margin-bottom: 6px;
       font-size: var(--text-caption); font-weight: 700; color: var(--ink-2);
     }
     .field label .opt { font-weight: 400; color: var(--ink-3); }
+    /* Однострочные поля — овальные, как кнопки. Боковой отступ увеличен
+       с 16 до 24px: у овала торцы скруглены, и на прежнем отступе текст
+       вплотную подходил к дуге. */
     .field input, .field select, .field textarea {
-      width: 100%; padding: 13px var(--sp-md);
+      width: 100%; padding: 13px var(--sp-lg);
       font: inherit; font-size: var(--text-small); color: var(--ink);
       background: var(--white);
       border: 1.5px solid var(--line);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-pill);
       transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
     }
-    .field textarea { min-height: 104px; resize: vertical; }
+
+    /* Многострочное поле — не овал. Радиус обрезается до половины высоты,
+       то есть на 104px это дуги по 52px: первая строка упирается в угол,
+       а поле перестаёт читаться как поле. Скругление крупное, но конечное —
+       того же семейства, что карточки формы. */
+    .field textarea {
+      min-height: 104px; resize: vertical;
+      border-radius: var(--radius-xl);
+      padding: 14px var(--sp-md);
+    }
     .field input::placeholder, .field textarea::placeholder { color: var(--ink-3); }
     .field input:focus, .field select:focus, .field textarea:focus {
       outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(65,102,245,.13);
