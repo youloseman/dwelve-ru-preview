@@ -256,8 +256,10 @@
 
     /* Бейдж свешивается с нижнего угла: любое положение внутри страницы
        закрывает содержательный блок, ради которого документ и показан. */
+    /* z-index обязателен: у .doc-page он равен 1, и без него плашка
+       уходит под документ. */
     .hero-badge {
-      position: absolute; bottom: -5%; left: -7%;
+      position: absolute; z-index: 2; bottom: -5%; left: -7%;
       background: var(--white); border-radius: var(--radius-md);
       box-shadow: var(--shadow-xl);
       padding: var(--sp-md) var(--sp-lg);
