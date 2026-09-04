@@ -78,6 +78,12 @@ ul, ol { list-style: none; }
   --cream-2: #F3F0E9;
   --white: #FFFFFF;
 
+  /* --- Логотип. Общий с англоязычной версией и живёт по своим правилам:
+         это единственное место, где на странице появляются индиго и медовый.
+         Менять их можно только вместе с англоязычной версией. --- */
+  --indigo: #234386;
+  --honey: #FFC400;
+
   /* --- Служебные --- */
   --teal: #0EA5A5;
   --teal-pale: #E6F7F7;
@@ -91,6 +97,9 @@ ul, ol { list-style: none; }
   --font-display: 'Playfair Display', 'Times New Roman', Georgia, serif;
   --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, monospace;
+  /* Только для логотипа. Кириллицы в Bebas Neue нет, но слово одно —
+     DWELVE, — так что ограничение здесь ни на что не влияет. */
+  --font-logo: 'Bebas Neue', 'Oswald', 'Arial Narrow', sans-serif;
 
   /* --- Кегли --- */
   --text-hero: clamp(2.25rem, 1.5rem + 3.1vw, 4rem);

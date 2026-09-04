@@ -19,9 +19,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'%3E%3Cg transform='translate(100,100)'%3E%3Ccircle cx='0' cy='-65' r='8' fill='%231A1A2E'/%3E%3Ccircle cx='32.5' cy='-56.29' r='11' fill='%23FF7518'/%3E%3Ccircle cx='56.29' cy='-32.5' r='5' fill='%231A1A2E'/%3E%3Ccircle cx='65' cy='0' r='4.5' fill='%231A1A2E'/%3E%3Ccircle cx='56.29' cy='32.5' r='4' fill='%231A1A2E'/%3E%3Ccircle cx='32.5' cy='56.29' r='3.5' fill='%231A1A2E'/%3E%3Ccircle cx='0' cy='65' r='3' fill='%231A1A2E'/%3E%3Ccircle cx='-32.5' cy='56.29' r='2.8' fill='%231A1A2E'/%3E%3Ccircle cx='-56.29' cy='32.5' r='2.8' fill='%231A1A2E'/%3E%3Ccircle cx='-65' cy='0' r='3.8' fill='%231A1A2E'/%3E%3Ccircle cx='-56.29' cy='-32.5' r='5' fill='%231A1A2E'/%3E%3Ccircle cx='-32.5' cy='-56.29' r='6.5' fill='%231A1A2E'/%3E%3C/g%3E%3C/svg%3E">
+  <!-- Фавикон — тот же знак, что в шапке: индиго #234386 с медовой точкой. -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'%3E%3Cg transform='translate(100,100)'%3E%3Ccircle cx='0' cy='-60' r='13' fill='%23234386'/%3E%3Ccircle cx='30' cy='-52' r='17' fill='%23FFC400'/%3E%3Ccircle cx='52' cy='-30' r='9' fill='%23234386'/%3E%3Ccircle cx='60' cy='0' r='8' fill='%23234386'/%3E%3Ccircle cx='52' cy='30' r='7.5' fill='%23234386'/%3E%3Ccircle cx='30' cy='52' r='7' fill='%23234386'/%3E%3Ccircle cx='0' cy='60' r='6.5' fill='%23234386'/%3E%3Ccircle cx='-30' cy='52' r='6.5' fill='%23234386'/%3E%3Ccircle cx='-52' cy='30' r='6.5' fill='%23234386'/%3E%3Ccircle cx='-60' cy='0' r='7.5' fill='%23234386'/%3E%3Ccircle cx='-52' cy='-30' r='9' fill='%23234386'/%3E%3Ccircle cx='-30' cy='-52' r='11' fill='%23234386'/%3E%3C/g%3E%3C/svg%3E">
 
   <script type="application/ld+json">
   {
@@ -132,13 +133,23 @@
     }
     .nav.is-scrolled .nav-inner { height: 62px; }
 
+    /* Логотип один в один с англоязычной версией: Bebas Neue заглавными,
+       трекинг 0.043em, индиго и медовая точка. Единственный элемент сайта,
+       который живёт не по палитре страницы, — знак должен быть один и тот же
+       на обоих доменах. */
     .nav-logo {
-      display: flex; align-items: center; gap: 9px;
-      font-family: var(--font-display); font-weight: 700; font-size: 1.4rem;
-      letter-spacing: -0.02em; flex: none;
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-logo);
+      font-size: 26px; line-height: 1;
+      letter-spacing: 0.043em; text-transform: uppercase;
+      color: var(--indigo);
+      flex: none;
     }
-    .nav-logo svg { width: 26px; height: 26px; transition: transform var(--dur-slow) var(--ease); }
-    .nav-logo:hover svg { transform: rotate(30deg); }
+    /* Точки стоят через 30°, поэтому поворот ровно на шаг переставляет медовую
+       на соседнее место — кольцо щёлкает на позицию, а не кренится. */
+    .nav-logo svg { width: 32px; height: 32px; transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .nav-logo:hover svg,
+    .nav-logo:focus-visible svg { transform: rotate(30deg); }
 
     .nav-links { display: none; align-items: center; gap: var(--sp-lg); margin-left: auto; }
     .nav-links a {
@@ -825,9 +836,13 @@
       font-size: var(--text-small);
     }
     .footer-grid { display: grid; gap: var(--sp-xl); }
+    /* На чернильном фоне индиго не читается, поэтому в футере знак белый,
+       а медовая точка остаётся — она единственная держит опознавание. */
     .footer-logo {
-      display: flex; align-items: center; gap: 9px;
-      font-family: var(--font-display); font-weight: 700; font-size: 1.4rem;
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-logo);
+      font-size: 24px; line-height: 1;
+      letter-spacing: 0.043em; text-transform: uppercase;
       color: var(--white); margin-bottom: var(--sp-md);
     }
     .footer h4 {
@@ -926,12 +941,12 @@
     <a href="#top" class="nav-logo" aria-label="Dwelve — на главную">
       <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g transform="translate(100,100)">
-          <circle cx="0" cy="-65" r="8" fill="#1A1A2E"/><circle cx="32.5" cy="-56.29" r="11" fill="#FF7518"/>
-          <circle cx="56.29" cy="-32.5" r="5" fill="#1A1A2E"/><circle cx="65" cy="0" r="4.5" fill="#1A1A2E"/>
-          <circle cx="56.29" cy="32.5" r="4" fill="#1A1A2E"/><circle cx="32.5" cy="56.29" r="3.5" fill="#1A1A2E"/>
-          <circle cx="0" cy="65" r="3" fill="#1A1A2E"/><circle cx="-32.5" cy="56.29" r="2.8" fill="#1A1A2E"/>
-          <circle cx="-56.29" cy="32.5" r="2.8" fill="#1A1A2E"/><circle cx="-65" cy="0" r="3.8" fill="#1A1A2E"/>
-          <circle cx="-56.29" cy="-32.5" r="5" fill="#1A1A2E"/><circle cx="-32.5" cy="-56.29" r="6.5" fill="#1A1A2E"/>
+          <circle cx="0" cy="-60" r="13" fill="#234386"/><circle cx="30" cy="-52" r="17" fill="#FFC400"/>
+          <circle cx="52" cy="-30" r="9" fill="#234386"/><circle cx="60" cy="0" r="8" fill="#234386"/>
+          <circle cx="52" cy="30" r="7.5" fill="#234386"/><circle cx="30" cy="52" r="7" fill="#234386"/>
+          <circle cx="0" cy="60" r="6.5" fill="#234386"/><circle cx="-30" cy="52" r="6.5" fill="#234386"/>
+          <circle cx="-52" cy="30" r="6.5" fill="#234386"/><circle cx="-60" cy="0" r="7.5" fill="#234386"/>
+          <circle cx="-52" cy="-30" r="9" fill="#234386"/><circle cx="-30" cy="-52" r="11" fill="#234386"/>
         </g>
       </svg>
       Dwelve
@@ -1698,14 +1713,14 @@
     <div class="footer-grid">
       <div>
         <div class="footer-logo">
-          <svg width="26" height="26" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 200 200" fill="none" aria-hidden="true">
             <g transform="translate(100,100)">
-              <circle cx="0" cy="-65" r="8" fill="#FFFFFF"/><circle cx="32.5" cy="-56.29" r="11" fill="#FF7518"/>
-              <circle cx="56.29" cy="-32.5" r="5" fill="#FFFFFF"/><circle cx="65" cy="0" r="4.5" fill="#FFFFFF"/>
-              <circle cx="56.29" cy="32.5" r="4" fill="#FFFFFF"/><circle cx="32.5" cy="56.29" r="3.5" fill="#FFFFFF"/>
-              <circle cx="0" cy="65" r="3" fill="#FFFFFF"/><circle cx="-32.5" cy="56.29" r="2.8" fill="#FFFFFF"/>
-              <circle cx="-56.29" cy="32.5" r="2.8" fill="#FFFFFF"/><circle cx="-65" cy="0" r="3.8" fill="#FFFFFF"/>
-              <circle cx="-56.29" cy="-32.5" r="5" fill="#FFFFFF"/><circle cx="-32.5" cy="-56.29" r="6.5" fill="#FFFFFF"/>
+              <circle cx="0" cy="-60" r="13" fill="#FFFFFF"/><circle cx="30" cy="-52" r="17" fill="#FFC400"/>
+              <circle cx="52" cy="-30" r="9" fill="#FFFFFF"/><circle cx="60" cy="0" r="8" fill="#FFFFFF"/>
+              <circle cx="52" cy="30" r="7.5" fill="#FFFFFF"/><circle cx="30" cy="52" r="7" fill="#FFFFFF"/>
+              <circle cx="0" cy="60" r="6.5" fill="#FFFFFF"/><circle cx="-30" cy="52" r="6.5" fill="#FFFFFF"/>
+              <circle cx="-52" cy="30" r="6.5" fill="#FFFFFF"/><circle cx="-60" cy="0" r="7.5" fill="#FFFFFF"/>
+              <circle cx="-52" cy="-30" r="9" fill="#FFFFFF"/><circle cx="-30" cy="-52" r="11" fill="#FFFFFF"/>
             </g>
           </svg>
           Dwelve
