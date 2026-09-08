@@ -1807,6 +1807,7 @@
 
       <button type="submit" class="btn btn-primary btn-block" id="m-submit">Отправить</button>
       <p class="form-status" id="m-status" role="status" aria-live="polite"></p>
+      <p class="form-note" id="m-report-note" hidden></p>
       <p class="form-note" data-demo-note>Демонстрационная версия формирует письмо в вашем почтовом приложении.</p>
     </form>
 
@@ -1848,6 +1849,11 @@
      ===================================================================== */
   var FORM_ENDPOINT = '';           // ← URL обработчика заявок
   var MAIL = 'hello@dwelve.ru';
+
+  /* Файл примера отчёта. Пока пусто — самого файла в проекте ещё нет, и окно
+     честно об этом пишет вместо того, чтобы обещать скачивание, которого не
+     будет. Как появится PDF: положить в ru/assets/ и указать путь здесь. */
+  var REPORT_FILE = '';
 
   var $  = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
@@ -2130,7 +2136,8 @@
       sub: function (t) { return t + ' — задайте вопрос или оплатите онлайн.'; },
       tabs: true,
       message: true,
-      messageLabel: 'Вопрос или задача'
+      messageLabel: 'Вопрос или задача',
+      submit: 'Отправить'
     },
     // Сопровождение не продаётся онлайн: оно доступно только после аудита,
     // и формат обсуждается лично. Поэтому ни вкладки оплаты, ни поля
@@ -2139,14 +2146,18 @@
       title: 'Обсудить сопровождение',
       sub: function () { return 'Оставьте контакты — свяжусь и предложу формат сопровождения.'; },
       tabs: false,
-      message: false
+      message: false,
+      submit: 'Отправить'
     },
+    // Отчёт отдаётся сразу на сайте, а не письмом: окно собирает контакты
+    // и запускает скачивание. Поэтому ни вкладок, ни поля о бизнесе —
+    // всё, что не нужно для выдачи файла, убрано.
     report: {
       title: 'Пример отчёта',
-      sub: function () { return 'Пришлю пример отчёта на почту в течение нескольких минут.'; },
+      sub: function () { return 'Отчёт скачается автоматически после отправки контактных данных.'; },
       tabs: false,
-      message: true,
-      messageLabel: 'Про какой бизнес речь <span class="opt">— необязательно</span>'
+      message: false,
+      submit: 'Скачать пример отчёта'
     }
   };
 
@@ -2165,6 +2176,19 @@
     msgField.hidden = !m.message;
     $('#m-message').disabled = !m.message;
     if (m.message) msgField.querySelector('label').innerHTML = m.messageLabel;
+
+    $('#m-submit').textContent = m.submit;
+
+    // Пока файла нет, окно говорит об этом прямо: кнопка «Скачать» без файла —
+    // ровно то обещание, которое сайт выполнить не может.
+    var note = $('#m-report-note');
+    note.hidden = mode !== 'report';
+    if (mode === 'report') {
+      note.textContent = REPORT_FILE
+        ? 'Файл откроется сразу после отправки. Контакты нужны, чтобы я знала, кому он ушёл.'
+        : 'Файл примера отчёта ещё не подключён: форма соберёт контакты, но скачивания не произойдёт.';
+      note.classList.toggle('todo', !REPORT_FILE);
+    }
 
     tabs.hidden = !m.tabs;
     selectTab('ask');
@@ -2263,6 +2287,17 @@
       '&body=' + encodeURIComponent(body);
   }
 
+  function downloadReport() {
+    if (!REPORT_FILE) return;
+    var a = document.createElement('a');
+    a.href = REPORT_FILE;
+    a.download = '';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
   function wireForm(form, submitBtn, status, subjectFn) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -2270,6 +2305,12 @@
 
       var data = Object.fromEntries(new FormData(form).entries());
       var subject = subjectFn();
+
+      // Скачивание запускается сразу после валидации, до отправки контактов:
+      // человек обещанный файл получает в любом случае, даже если обработчик
+      // заявок недоступен. Обратный порядок означал бы, что сбой на сервере
+      // отменяет выдачу отчёта.
+      if (currentMode === 'report' && form === paneAsk) downloadReport();
 
       if (!FORM_ENDPOINT) {
         mailtoFallback(data, subject);
