@@ -1862,10 +1862,12 @@
   var FORM_ENDPOINT = '';           // ← URL обработчика заявок
   var MAIL = 'hello@dwelve.ru';
 
-  /* Файл примера отчёта. Пока пусто — самого файла в проекте ещё нет, и окно
-     честно об этом пишет вместо того, чтобы обещать скачивание, которого не
-     будет. Как появится PDF: положить в ru/assets/ и указать путь здесь. */
-  var REPORT_FILE = '';
+  /* Файл примера отчёта. Собирается из страниц карусели скриптом
+     tools/build-report-ru.mjs (npm run report:ru) — после правки цифр
+     на странице отчёт нужно пересобрать, иначе PDF отстанет от сайта.
+     Имя на диске латиницей, посетитель получает файл с русским именем. */
+  var REPORT_FILE = 'assets/dwelve-primer-otcheta.pdf';
+  var REPORT_NAME = 'Dwelve — пример отчёта.pdf';
 
   var $  = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
@@ -2303,7 +2305,7 @@
     if (!REPORT_FILE) return;
     var a = document.createElement('a');
     a.href = REPORT_FILE;
-    a.download = '';
+    a.download = REPORT_NAME;
     a.rel = 'noopener';
     document.body.appendChild(a);
     a.click();
