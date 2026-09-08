@@ -60,6 +60,13 @@
       margin: 0 auto; padding: 0 var(--sp-lg);
     }
 
+    /* Компоненты вроде .modal-tabs, .modal и .cookie задают display, и он
+       перебивает браузерное [hidden] { display: none }: скрипт ставил hidden,
+       а браузер продолжал показывать элемент. Из-за этого в окне «Обсудить
+       сопровождение» оставались вкладки оплаты с ценой от прошлого тарифа.
+       Одно правило закрывает все такие случаи разом. */
+    [hidden] { display: none !important; }
+
     .sec-head { margin-bottom: var(--sp-2xl); }
     .sec-head .eyebrow { margin-bottom: var(--sp-md); }
     .sec-head h2 { margin-bottom: var(--sp-md); }
@@ -916,10 +923,6 @@
       transition: transform 420ms var(--ease);
     }
     .cookie.is-shown { transform: none; }
-    /* display: flex выше по каскаду, чем браузерное [hidden] { display: none },
-       поэтому скрытый баннер уезжал трансформом, но оставался в порядке
-       обхода — до его кнопок доходили табом. */
-    .cookie[hidden] { display: none; }
     .cookie p { flex: 1 1 320px; max-width: none; }
     .cookie a { color: var(--orange); border-bottom: 1px solid rgba(255,117,24,.4); }
     .cookie-actions { display: flex; gap: var(--sp-sm); }
@@ -2126,18 +2129,23 @@
       title: 'Заказать разбор',
       sub: function (t) { return t + ' — задайте вопрос или оплатите онлайн.'; },
       tabs: true,
+      message: true,
       messageLabel: 'Вопрос или задача'
     },
+    // Сопровождение не продаётся онлайн: оно доступно только после аудита,
+    // и формат обсуждается лично. Поэтому ни вкладки оплаты, ни поля
+    // с описанием задачи — только контакты.
     advisory: {
       title: 'Обсудить сопровождение',
-      sub: function () { return 'Расскажите про бизнес и текущий план — предложу формат сопровождения.'; },
+      sub: function () { return 'Оставьте контакты — свяжусь и предложу формат сопровождения.'; },
       tabs: false,
-      messageLabel: 'Что уже сделано и что хотите довести до результата'
+      message: false
     },
     report: {
       title: 'Пример отчёта',
       sub: function () { return 'Пришлю пример отчёта на почту в течение нескольких минут.'; },
       tabs: false,
+      message: true,
       messageLabel: 'Про какой бизнес речь <span class="opt">— необязательно</span>'
     }
   };
@@ -2150,14 +2158,20 @@
 
     $('#modal-title').textContent = m.title;
     $('#modal-sub').textContent = m.sub(tier);
-    $('#m-message-field').querySelector('label').innerHTML = m.messageLabel;
+
+    // Поле скрывается вместе с disabled: скрытое, но включённое, оно всё равно
+    // попадает в FormData и уезжает в заявку пустой строкой.
+    var msgField = $('#m-message-field');
+    msgField.hidden = !m.message;
+    $('#m-message').disabled = !m.message;
+    if (m.message) msgField.querySelector('label').innerHTML = m.messageLabel;
 
     tabs.hidden = !m.tabs;
     selectTab('ask');
-    if (m.tabs) {
-      $('#pay-name').textContent = tier;
-      $('#pay-price').textContent = price;
-    }
+    // Без очистки в окне без вкладок остаются имя и цена прошлого тарифа —
+    // именно это и всплыло у «Обсудить сопровождение».
+    $('#pay-name').textContent = m.tabs ? tier : '';
+    $('#pay-price').textContent = m.tabs ? price : '';
 
     setStatus($('#m-status'), '');
     lastFocus = document.activeElement;
