@@ -230,8 +230,16 @@
     /* ==============================
        ПЕРВЫЙ ЭКРАН
        ============================== */
-    .hero { padding: var(--sp-3xl) 0 var(--sp-4xl); overflow: hidden; }
-    .hero-grid { display: grid; gap: var(--sp-2xl); align-items: center; }
+    /* Первый экран стоит сразу под липкой шапкой, и полный отступ секции
+       здесь читается как пустой блок. Специфичность из двух классов нужна,
+       чтобы перебить .sec из медиазапроса ниже. */
+    .sec.hero { padding: 52px 0 var(--sp-4xl); overflow: hidden; }
+
+    /* start, а не center: документ справа выше левой колонки примерно на 85px,
+       и центрирование делило разницу пополам — половина уходила наверх, под
+       шапку, где её и видно как пустоту. Теперь обе колонки начинаются с одной
+       линии, а весь запас уходит вниз, где стоит клякса. */
+    .hero-grid { display: grid; gap: var(--sp-2xl); align-items: start; }
     .hero h1 { margin: var(--sp-md) 0 var(--sp-lg); }
 
     .hero-sub {
@@ -1052,7 +1060,11 @@
 
     <div class="container hero-grid">
       <div>
-        <svg class="hero-branch reveal" viewBox="0 0 260 120" aria-hidden="true"><use href="#branch"/></svg>
+        <!-- viewBox обрезан по самому рисунку: в исходных 0 0 260 120 штрих
+             занимает y 12–94, остальное — поля, которые добавлялись к пустоте
+             над заголовком. Оставлены 4 единицы запаса, чтобы не срезать
+             кончик верхнего листа. -->
+        <svg class="hero-branch reveal" viewBox="0 8 260 90" aria-hidden="true"><use href="#branch"/></svg>
         <p class="eyebrow reveal" style="--rd: 60ms">Разбор бизнеса для собственников</p>
 
         <h1 class="reveal" id="hero-title" style="--rd: 90ms">
