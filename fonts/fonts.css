@@ -1,0 +1,317 @@
+/* Шрифты хранятся на самом сайте (раньше грузились с Google Fonts). Источник: Fontsource, лицензия SIL OFL. */
+/* manrope-cyrillic-400-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(manrope-cyrillic-400-normal.woff2) format('woff2');
+}/* manrope-cyrillic-ext-400-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(manrope-cyrillic-ext-400-normal.woff2) format('woff2');
+}/* manrope-latin-400-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(manrope-latin-400-normal.woff2) format('woff2');
+}/* manrope-latin-ext-400-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(manrope-latin-ext-400-normal.woff2) format('woff2');
+}/* manrope-cyrillic-500-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(manrope-cyrillic-500-normal.woff2) format('woff2');
+}/* manrope-cyrillic-ext-500-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(manrope-cyrillic-ext-500-normal.woff2) format('woff2');
+}/* manrope-latin-500-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(manrope-latin-500-normal.woff2) format('woff2');
+}/* manrope-latin-ext-500-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(manrope-latin-ext-500-normal.woff2) format('woff2');
+}/* manrope-cyrillic-600-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(manrope-cyrillic-600-normal.woff2) format('woff2');
+}/* manrope-cyrillic-ext-600-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(manrope-cyrillic-ext-600-normal.woff2) format('woff2');
+}/* manrope-latin-600-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(manrope-latin-600-normal.woff2) format('woff2');
+}/* manrope-latin-ext-600-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(manrope-latin-ext-600-normal.woff2) format('woff2');
+}/* manrope-cyrillic-700-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(manrope-cyrillic-700-normal.woff2) format('woff2');
+}/* manrope-cyrillic-ext-700-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(manrope-cyrillic-ext-700-normal.woff2) format('woff2');
+}/* manrope-latin-700-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(manrope-latin-700-normal.woff2) format('woff2');
+}/* manrope-latin-ext-700-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(manrope-latin-ext-700-normal.woff2) format('woff2');
+}/* manrope-cyrillic-800-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(manrope-cyrillic-800-normal.woff2) format('woff2');
+}/* manrope-cyrillic-ext-800-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(manrope-cyrillic-ext-800-normal.woff2) format('woff2');
+}/* manrope-latin-800-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(manrope-latin-800-normal.woff2) format('woff2');
+}/* manrope-latin-ext-800-normal */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(manrope-latin-ext-800-normal.woff2) format('woff2');
+}/* bebas-neue-latin-400-normal */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(bebas-neue-latin-400-normal.woff2) format('woff2');
+}/* bebas-neue-latin-ext-400-normal */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(bebas-neue-latin-ext-400-normal.woff2) format('woff2');
+}/* playfair-display-cyrillic-400-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(playfair-display-cyrillic-400-normal.woff2) format('woff2');
+}/* playfair-display-latin-400-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(playfair-display-latin-400-normal.woff2) format('woff2');
+}/* playfair-display-latin-ext-400-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(playfair-display-latin-ext-400-normal.woff2) format('woff2');
+}/* playfair-display-cyrillic-600-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(playfair-display-cyrillic-600-normal.woff2) format('woff2');
+}/* playfair-display-latin-600-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(playfair-display-latin-600-normal.woff2) format('woff2');
+}/* playfair-display-latin-ext-600-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(playfair-display-latin-ext-600-normal.woff2) format('woff2');
+}/* playfair-display-cyrillic-700-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(playfair-display-cyrillic-700-normal.woff2) format('woff2');
+}/* playfair-display-latin-700-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(playfair-display-latin-700-normal.woff2) format('woff2');
+}/* playfair-display-latin-ext-700-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(playfair-display-latin-ext-700-normal.woff2) format('woff2');
+}/* playfair-display-cyrillic-400-italic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(playfair-display-cyrillic-400-italic.woff2) format('woff2');
+}/* playfair-display-latin-400-italic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(playfair-display-latin-400-italic.woff2) format('woff2');
+}/* playfair-display-latin-ext-400-italic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(playfair-display-latin-ext-400-italic.woff2) format('woff2');
+}/* playfair-display-cyrillic-600-italic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  src: url(playfair-display-cyrillic-600-italic.woff2) format('woff2');
+}/* playfair-display-latin-600-italic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  src: url(playfair-display-latin-600-italic.woff2) format('woff2');
+}/* playfair-display-latin-ext-600-italic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  src: url(playfair-display-latin-ext-600-italic.woff2) format('woff2');
+}/* jetbrains-mono-cyrillic-400-normal */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(jetbrains-mono-cyrillic-400-normal.woff2) format('woff2');
+}/* jetbrains-mono-cyrillic-ext-400-normal */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(jetbrains-mono-cyrillic-ext-400-normal.woff2) format('woff2');
+}/* jetbrains-mono-latin-400-normal */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(jetbrains-mono-latin-400-normal.woff2) format('woff2');
+}/* jetbrains-mono-latin-ext-400-normal */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(jetbrains-mono-latin-ext-400-normal.woff2) format('woff2');
+}/* jetbrains-mono-cyrillic-500-normal */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(jetbrains-mono-cyrillic-500-normal.woff2) format('woff2');
+}/* jetbrains-mono-cyrillic-ext-500-normal */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(jetbrains-mono-cyrillic-ext-500-normal.woff2) format('woff2');
+}/* jetbrains-mono-latin-500-normal */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(jetbrains-mono-latin-500-normal.woff2) format('woff2');
+}/* jetbrains-mono-latin-ext-500-normal */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(jetbrains-mono-latin-ext-500-normal.woff2) format('woff2');
+}
